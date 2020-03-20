@@ -1,0 +1,189 @@
+﻿/*vdd loutout user*/
+.tag {
+    font-size: 14px;
+    padding: .3em .4em .4em;
+    margin: 0 .1em;
+}
+
+    .tag a {
+        color: #bbb;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+        .tag a:hover {
+            opacity: 1.0
+        }
+
+    .tag .remove {
+        vertical-align: bottom;
+        top: 0;
+    }
+
+    .tag a {
+        margin: 0 0 0 .3em;
+    }
+
+        .tag a .glyphicon-white {
+            color: #fff;
+            margin-bottom: 2px;
+        }
+/*vdd loutout user*/
+
+
+
+.header-text:after {
+    margin: 0 !important;
+}
+
+/* VDD: reset the logout panel color*/
+.modal {
+    background-color: transparent;
+}
+
+.modal-header {
+    border-bottom-color: rebeccapurple;
+    border-bottom :solid;
+}
+
+.btn {
+    background-color: rebeccapurple;
+}
+
+    #titleimage {
+        background-image: url('images/DD01192016.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        /*    line-height: 120px;
+    position: relative;*/
+    }
+
+
+div.titleimage {
+    content: url('images/DD01192016.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.stikyHeader {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+.para {
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight:bolder;
+}
+
+.login-panel{
+    top: 100px;
+    border-radius: 25px;
+    border-color:  grey;
+    border-style:solid;
+    width : 100%;
+}
+
+.login-panel1 {
+    top: 100px;
+    border-radius: 25px;
+    border-color: grey;
+    border-style: solid;
+    width: 150%;
+}
+
+
+/*.header-text {
+    font-size: 1vw;
+}*/
+    /*/*margin-left: 10%;
+    color: Black;
+    background-color: aqua;
+    font-weight: bold;
+    border-bottom: thick;*/
+    /*padding-bottom: 1%;
+    border-bottom: 3px solid;
+   border-bottom-color: rebeccapurple;*/
+
+.header-text:after { /* this is the border */
+    content: "";
+    display: block;
+    width: 26em;
+    max-width: 100%;
+    border-bottom: 0.3em solid rebeccapurple;
+    margin: 2em auto 0;
+    float: left
+}
+
+
+
+.img-countySeal {
+    content: url('button-images/CountySeal.png');
+    /*// height: 90px;*/
+    width: 90px;
+    margin: auto;
+    margin-top: -15px;
+    margin-left: 190px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.loginpage_link {
+    color: white;
+}
+
+.Absolute-Center {
+    margin: auto;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+    width: 50%;
+    height: 50%;
+    min-width: 200px;
+    max-width: 400px;
+    padding: 40px;
+}
+
+/* Landing page*/
+.border-this {
+    color : aqua;
+    background-color: grey;
+}
+
+
+
+#link_bar a {
+    padding-left: 15px;
+}
+
+    #link_bar a:link {
+        color: #f0f0f0;
+    }
+
+    #link_bar a:visited {
+        color: #c0c0c0;
+        background-color: #0000a0;
+    }
+
+    #link_bar a:hover {
+        color: #ffffff;
+        background-color: #000060;
+    }
+
+    #link_bar a:active {
+        color: #f0f0f0;
+        background-color: #00ff00;
+    }
+
+

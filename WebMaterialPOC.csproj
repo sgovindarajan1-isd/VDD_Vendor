@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C09220A3-338B-425F-8280-EE6A373D4C49}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebMaterialPOC</RootNamespace>
+    <AssemblyName>WebMaterialPOC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44330</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Controllers\DepositController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdTextClass.cs" />
+    <Compile Include="Models\VM_Login.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\App_Themes\ConferenceRoomScheduler.css" />
+    <Content Include="Content\App_Themes\demo-container-bg.jpg" />
+    <Content Include="Content\App_Themes\demo-container-bg.png" />
+    <Content Include="Content\App_Themes\demo-container-sprite.png" />
+    <Content Include="Content\App_Themes\header.css" />
+    <Content Include="Content\App_Themes\headerfront.css" />
+    <Content Include="Content\App_Themes\header_ie7.css" />
+    <Content Include="Content\App_Themes\Images\admin_icon.jpg" />
+    <Content Include="Content\App_Themes\Images\arrowdown.jpg" />
+    <Content Include="Content\App_Themes\Images\ATTACHMENT.jpg" />
+    <Content Include="Content\App_Themes\Images\BANKINGINFO.jpg" />
+    <Content Include="Content\App_Themes\Images\blue.jpg" />
+    <Content Include="Content\App_Themes\Images\bluekey06042015.jpg" />
+    <Content Include="Content\App_Themes\Images\bluekey_ipadPortrait.jpg" />
+    <Content Include="Content\App_Themes\Images\blurry-cityscape-smaller.jpg" />
+    <Content Include="Content\App_Themes\Images\blurry-cityscape-smaller_old.jpg" />
+    <Content Include="Content\App_Themes\Images\calendar.gif" />
+    <Content Include="Content\App_Themes\Images\camera.png" />
+    <Content Include="Content\App_Themes\Images\checked.jpg" />
+    <Content Include="Content\App_Themes\Images\CheckSample.jpg" />
+    <Content Include="Content\App_Themes\Images\colalogo_1.png" />
+    <Content Include="Content\App_Themes\Images\ContactUs.jpg" />
+    <Content Include="Content\App_Themes\Images\CountySeal.png" />
+    <Content Include="Content\App_Themes\Images\CountySeal_old.png" />
+    <Content Include="Content\App_Themes\Images\county_logo.gif" />
+    <Content Include="Content\App_Themes\Images\CR1.png" />
+    <Content Include="Content\App_Themes\Images\CR2.png" />
+    <Content Include="Content\App_Themes\Images\CR3.png" />
+    <Content Include="Content\App_Themes\Images\CURRENTBANK.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016 - Copy.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016-b.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016-c.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016-d.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016-e.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016-f.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016-hh_authorizationadmin.png" />
+    <Content Include="Content\App_Themes\Images\DD01192016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016Admin.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_03312016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_03312016b.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04072016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04122016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04132016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04132016b.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04132016c.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04142016a.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_04162016d.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_05312016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_05312016_b.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_old.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_old02042016.jpg" />
+    <Content Include="Content\App_Themes\Images\DD01192016_old1.jpg" />
+    <Content Include="Content\App_Themes\Images\DD_front.jpg" />
+    <Content Include="Content\App_Themes\Images\delete.gif" />
+    <Content Include="Content\App_Themes\Images\demo-container-bg.jpg" />
+    <Content Include="Content\App_Themes\Images\demo-container-bg.png" />
+    <Content Include="Content\App_Themes\Images\demo-container-sprite.png" />
+    <Content Include="Content\App_Themes\Images\doc-25.png" />
+    <Content Include="Content\App_Themes\Images\docx-1429.png" />
+    <Content Include="Content\App_Themes\Images\fa fa-booktop.jpg" />
+    <Content Include="Content\App_Themes\Images\fa fa-booktop.png" />
+    <Content Include="Content\App_Themes\Images\fa fa-envelope.jpg" />
+    <Content Include="Content\App_Themes\Images\fa fa-envelope.png" />
+    <Content Include="Content\App_Themes\Images\fa fa-envelopetop.png" />
+    <Content Include="Content\App_Themes\Images\fa fa-information.jpg" />
+    <Content Include="Content\App_Themes\Images\fa fa-information.png" />
+    <Content Include="Content\App_Themes\Images\fa fa-informationtop.png" />
+    <Content Include="Content\App_Themes\Images\face.jpg" />
+    <Content Include="Content\App_Themes\Images\GE.jpg" />
+    <Content Include="Content\App_Themes\Images\grid_background.gif" />
+    <Content Include="Content\App_Themes\Images\Icon_v4.png" />
+    <Content Include="Content\App_Themes\Images\Icon_v4_old.png" />
+    <Content Include="Content\App_Themes\Images\imagesCA8DDL73.jpg" />
+    <Content Include="Content\App_Themes\Images\imagesCAEGVWFF.jpg" />
+    <Content Include="Content\App_Themes\Images\INQUIRY.jpg" />
+    <Content Include="Content\App_Themes\Images\jpg-44.png" />
+    <Content Include="Content\App_Themes\Images\LACChildSupport-Services.jpg" />
+    <Content Include="Content\App_Themes\Images\legend_fix.png" />
+    <Content Include="Content\App_Themes\Images\loading.gif" />
+    <Content Include="Content\App_Themes\Images\loading.jpg" />
+    <Content Include="Content\App_Themes\Images\loading_bar.gif" />
+    <Content Include="Content\App_Themes\Images\lock.jpg" />
+    <Content Include="Content\App_Themes\Images\lockword.jpg" />
+    <Content Include="Content\App_Themes\Images\logincover12082014.gif" />
+    <Content Include="Content\App_Themes\Images\logo1.JPG" />
+    <Content Include="Content\App_Themes\Images\logo2.JPG" />
+    <Content Include="Content\App_Themes\Images\logo3.JPG" />
+    <Content Include="Content\App_Themes\Images\mp3-58.png" />
+    <Content Include="Content\App_Themes\Images\NewCountySeal02102014.png" />
+    <Content Include="Content\App_Themes\Images\pattern.png" />
+    <Content Include="Content\App_Themes\Images\PAYEECERT.jpg" />
+    <Content Include="Content\App_Themes\Images\pdf-74.png" />
+    <Content Include="Content\App_Themes\Images\print.gif" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep1.jpg" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep2.jpg" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep3.jpg" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep4.jpg" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep5.jpg" />
+    <Content Include="Content\App_Themes\Images\progressbarNumberStep6.jpg" />
+    <Content Include="Content\App_Themes\Images\qsf-demo-canvas-bg.png" />
+    <Content Include="Content\App_Themes\Images\question.jpg" />
+    <Content Include="Content\App_Themes\Images\redR without.jpg" />
+    <Content Include="Content\App_Themes\Images\redR.jpg" />
+    <Content Include="Content\App_Themes\Images\redR_without.png" />
+    <Content Include="Content\App_Themes\Images\save.gif" />
+    <Content Include="Content\App_Themes\Images\section_bg.jpg" />
+    <Content Include="Content\App_Themes\Images\STAFFINFO.jpg" />
+    <Content Include="Content\App_Themes\Images\title_bg.gif" />
+    <Content Include="Content\App_Themes\Images\title_bg.jpg" />
+    <Content Include="Content\App_Themes\Images\title_bg_short.jpg" />
+    <Content Include="Content\App_Themes\Images\triangledown.jpg" />
+    <Content Include="Content\App_Themes\Images\triangleright.jpg" />
+    <Content Include="Content\App_Themes\Images\unchecked.jpg" />
+    <Content Include="Content\App_Themes\Images\UPDATEINFORMATION.jpg" />
+    <Content Include="Content\App_Themes\Images\UPDATENOTE.jpg" />
+    <Content Include="Content\App_Themes\Images\Vendor.jpg" />
+    <Content Include="Content\App_Themes\Images\VENDORINFORMATION.jpg" />
+    <Content Include="Content\App_Themes\Images\wave_02022015.png" />
+    <Content Include="Content\App_Themes\Images\wave_top_02022015.png" />
+    <Content Include="Content\App_Themes\Images\wma-115.png" />
+    <Content Include="Content\App_Themes\Images\xls-121.png" />
+    <Content Include="Content\App_Themes\Images\xlsx-1567.png" />
+    <Content Include="Content\App_Themes\Images\YellowY.jpg" />
+    <Content Include="Content\App_Themes\Images\YellowY_without.png" />
+    <Content Include="Content\App_Themes\login.css" />
+    <Content Include="Content\App_Themes\loginadmin.css" />
+    <Content Include="Content\App_Themes\login_ie7.css" />
+    <Content Include="Content\App_Themes\login_ie8.css" />
+    <Content Include="Content\App_Themes\login_ipad.css" />
+    <Content Include="Content\App_Themes\membership.css" />
+    <Content Include="Content\App_Themes\membership_ie7.css" />
+    <Content Include="Content\App_Themes\orko.css" />
+    <Content Include="Content\App_Themes\orkoadmin.css" />
+    <Content Include="Content\App_Themes\orko_ie8.css" />
+    <Content Include="Content\App_Themes\pattern.png" />
+    <Content Include="Content\App_Themes\qsf-demo-canvas-bg.png" />
+    <Content Include="Content\App_Themes\ReportpagesM.css" />
+    <Content Include="Content\App_Themes\ReportStyle.css" />
+    <Content Include="Content\App_Themes\reset.css" />
+    <Content Include="Content\App_Themes\reveal.css" />
+    <Content Include="Content\App_Themes\RoomBoothTile.css" />
+    <Content Include="Content\App_Themes\sitewide.css" />
+    <Content Include="Content\App_Themes\Style.css" />
+    <Content Include="Content\App_Themes\styles.css" />
+    <Content Include="Content\App_Themes\styles_ie7.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\button-images\CountySeal.png" />
+    <Content Include="Content\button-images\fa fa-envelope.png" />
+    <Content Include="Content\button-images\fa fa-information.png" />
+    <Content Include="Content\DataTable\dataTables.material.min.css" />
+    <Content Include="Content\DataTable\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTable\material.min.css" />
+    <Content Include="Content\DataTable\select.dataTables.min.css" />
+    <Content Include="Content\images\DD01192016.jpg" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\landing-page.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\materialize.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Log4Net.config" />
+    <Content Include="Scripts\App\DataTable\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\App\DataTable\dataTables.select.min.js" />
+    <Content Include="Scripts\App\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\App\dd_Authorization.js" />
+    <Content Include="Scripts\App\login.js" />
+    <Content Include="Scripts\App\VDDMain.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\App_Themes\Images\Thumbs.db" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\materialize.js" />
+    <Content Include="Scripts\materialize.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Template\DirectDepositLocation.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Deposit\Index.cshtml" />
+    <Content Include="Views\Shared\_partialDDLanding.cshtml" />
+    <Content Include="Views\Shared\_partialDDStatus.cshtml" />
+    <Content Include="Views\Shared\_partialNewDeposit.cshtml" />
+    <Content Include="Views\Home\UnAuthorized.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65268</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44330/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

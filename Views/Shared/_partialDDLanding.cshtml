@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "DD Landing";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+
+
+
+
+<div class="Absolute-Center is-Responsive">
+    <div class="col-sm-12 col-md-10 login-panel1">
+        <div class="form-group input-group">
+            <div class="form-group">
+                </br>
+                <div class="para">
+                    <p> Thank you for your interest in receiving your payments electronically from the County of Los Angeles. Please select an option below: </p>
+                </div>
+                </br>
+
+                @*@using (Html.BeginForm("NewDeposit", "Home", FormMethod.Post))*@
+                @using (Html.BeginForm("Index", "Deposit", FormMethod.Post))
+                {
+                    <button class="btn waves-effect waves-light btn-def btn-block" type="submit" name="action" id="btn_submitNew">
+                        <i class="material-icons">Submit New or Change Direct Deposit Authorization</i>
+                    </button>
+                }
+
+                </br> </br>
+
+                @using (Html.BeginForm("DDStatus", "Home", FormMethod.Post))
+                {
+                    <button class="btn waves-effect waves-light btn-def btn-block" type="submit" name="action" id="btn_checkstatus">
+                        <i class="material-icons">Check Direct Deposit Request Status</i>
+                    </button>
+                }
+
+                </br>
+
+            </div>
+    </div>
+    </div>
+</div>
+

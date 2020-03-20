@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+     
+    @*vdd move this down*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</head>
+<body>
+    <div class="login-header panel-body text-Middle" style="background-color:midnightblue">
+        <div>
+            <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
+
+
+            <div style="float:right">
+                @*<label id="lbl_userName-old" style="font-size:medium;font-weight:bold" aria-label="Close" />*@
+
+                <ul>
+                    <li class="dropdown" style="z-index: 2000">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span id="hello" class="glyphicon glyphicon-user">
+                                @*<em>User Name</em>*@
+                                <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
+                            </span>
+                            @*<b class="caret"></b>*@
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#modalLogout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <!-- Central Modal Medium Success -->
+            <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-success" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">LOGOUT</p>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                                <p style="font-weight:bold">
+                                    Are you sure you want to logout?
+                                </p>
+                            </div>
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">
+                            <button id="btn_logout" class="btn btn-success">Logout <i class="far fa-gem ml-1 white-text"></i></button>
+                            <button class="btn btn-outline-success waves-effect" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-fixed-top stikyHeader">
+        <div class="titleimage" />  @*stikyHeader*@
+    </div>
+    <div class="panel-body" style="background-color:lightgray; padding:unset">
+        <div class="container">
+            <div class="login-header  panel-body text-Middle" style="background-color:lightgray; padding:unset">
+                <div class="header-text">
+                    <h5 class="para">Vendor Direct Deposit Registration Portal</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layoutBody" class="container-fluid">
+        @RenderBody()
+        <footer class="footer navbar-fixed-bottom" style="height: 10%">
+            <div class="row">
+                <div class="col-md-4 img-countySeal" style="background:grey;"></div>
+                <div class="col-md-8">
+                    <div id="link_bar">
+                        <a href="#">Contact Us</a>
+                        <a href="#">General Information</a>
+                        <a href="#">FAQ</a>
+                    </div>
+
+                    <div id="link_bar">
+                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
+                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
+                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
+                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/jsbundles/jquery")
+
+    <script>
+        var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

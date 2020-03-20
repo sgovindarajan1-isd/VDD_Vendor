@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()*@
+
+@*@using (Html.BeginForm("LoginExternalVendor", "Home", FormMethod.Post))
+{*@
+
+@*@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{*@
+    <div class="container">
+        <div class="form-group">
+            <p class="para">This website allows Los Angeles vendors and payees to submit their Direct Deposit Authorization Form Online.</p>
+            <p class="para">To get started, enter your County Vendor Number (Code) and Social Security Number or Tax Payer Identification Number.</p>
+        </div>
+    </div>
+
+    <div class="Absolute-Center is-Responsive">
+        <div class="col-sm-12 col-md-10 login-panel">
+            <div class="form-group input-group">
+                <div class="form-group">
+                    <div class="input-field col s10">
+                        <input value="" id="txt_employee_id" type="text" class="validate">
+                        <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-field col s10">
+                        <input value="" id="txt_Password_id" type="text" class="validate">
+                        <label class="active" for="txt_Password_id:">SSN or TIN</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="lbl_invaliduserentry" style="font-size:medium; color: red; font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
+                </div>
+
+                @*@Html.AntiForgeryToken()*@
+                <div class="form-group">
+                    <button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
+                        <i class="material-icons">Login</i>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label class="active" for="txt_Password_id:">Not a registered vendor? Click below to register.</label>
+                    <button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
+                        <i class="material-icons">Vendor Self-Service</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@*}*@
+
+
+
+
+
