@@ -1,4 +1,5 @@
-﻿//var vdd = vdd || {};
+﻿//Checking - out
+//var vdd = vdd || {};
 $(document).ready(function () {
     $('#btn_login').click(clicklogin);
 
