@@ -3,119 +3,226 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./Content/Images/FavIcons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Content/Images/FavIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Content/Images/FavIcons/favicon-16x16.png">
+    <link rel="manifest" href="./Content/Images/FavIcons/manifest.json">
+    <link rel="mask-icon" href="./Content/Images/FavIcons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ff0000">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Vender Deposit Application </title>
+
+    <link href="./Content/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7COpen+Sans:100,200,300,400,500,600,700,800,900%7CArimo:100,200,300,400,500,600,700,800,900" type="text/css">
+    <link href="./Content/main2.css" rel="stylesheet" />
+
+    @*-----------header end ---------------*@
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-     
+
     @*vdd move this down*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
-    <div class="login-header panel-body text-Middle" style="background-color:midnightblue">
-        <div>
-            <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
+    @* srini header start*@
+
+    @*
+        <div class="login-header panel-body text-Middle" style="background-color:midnightblue">
+            <div>
+                <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
 
 
-            <div style="float:right">
-                @*<label id="lbl_userName-old" style="font-size:medium;font-weight:bold" aria-label="Close" />*@
+                <div style="float:right">
+                    <!-- <label id="lbl_userName-old" style="font-size:medium;font-weight:bold" aria-label="Close" />-->
 
-                <ul>
-                    <li class="dropdown" style="z-index: 2000">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span id="hello" class="glyphicon glyphicon-user">
-                                @*<em>User Name</em>*@
-                                <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
-                            </span>
-                            @*<b class="caret"></b>*@
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#modalLogout">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <ul>
+                        <li class="dropdown" style="z-index: 2000">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span id="hello" class="glyphicon glyphicon-user">
+                                    <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
+                                </span>
+                                <!-- <b class="caret"></b> -->
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#modalLogout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div>
-            <!-- Central Modal Medium Success -->
-            <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-success" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header">
-                            <p class="heading lead">LOGOUT</p>
+            <div>
+                <!-- Central Modal Medium Success -->
+                <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-success" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <p class="heading lead">LOGOUT</p>
 
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="white-text">&times;</span>
-                            </button>
-                        </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                </button>
+                            </div>
 
-                        <!--Body-->
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-                                <p style="font-weight:bold">
-                                    Are you sure you want to logout?
-                                </p>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                                    <p style="font-weight:bold">
+                                        Are you sure you want to logout?
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <button id="btn_logout" class="btn btn-success">Logout <i class="far fa-gem ml-1 white-text"></i></button>
+                                <button class="btn btn-outline-success waves-effect" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-fixed-top stikyHeader">
+            <div class="titleimage" />  <!--stikyHeader  -->
+        </div>
+        <div class="panel-body" style="background-color:lightgray; padding:unset">
+            <div class="container">
+                <div class="login-header  panel-body text-Middle" style="background-color:lightgray; padding:unset">
+                    <div class="header-text">
+                        <h5 class="para">Vendor Direct Deposit Registration Portal</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    *@
 
-                        <!--Footer-->
-                        <div class="modal-footer justify-content-center">
-                            <button id="btn_logout" class="btn btn-success">Logout <i class="far fa-gem ml-1 white-text"></i></button>
-                            <button class="btn btn-outline-success waves-effect" data-dismiss="modal">Cancel</button>
+    @*  srini header end*@
+
+    <div id="wp_header" class="menu-align-left">
+        <div id="info-bar" class="content-font row-wrapper">
+            @*<span role="heading" aria-level="1">Vendor Direct Deposit Registration Portal-test</span>*@
+            @*<div class="top-login-icon-left">
+             <a href="https://lacounty.gov"  target="_blank" title="Logout">
+                <span>lacounty.gov</span>
+            </a>*@
+            @*<a title="Logout" target="_blank" href="https://lacounty.gov">lacounty.gov123</a>*@
+            @*</div>*@
+
+            <div>
+                <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
+                <div style="float:right">
+                    <ul>
+                        <li class="dropdown" style="z-index: 2000">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span id="hello" class="fa fa-user-circle">
+                                    <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#modalLogout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header>
+            <nav id="top-menu">
+                <div class="logo-bar-wrapper">
+                    <div class="logo">
+                        <div id="logo"><img id="logo-default" src="./Content/Images/ac.logo3_.png" alt=""></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <div id="grey-info-bar" class="content-font row-wrapper">
+        <div class="logo-bar-wrapper">
+            <div class="col-xs-12">
+                <h3>Vendor Direct Deposit Registration Portal</h3>
+                <div class="header-line header-line-purple"><span></span></div>
+            </div>
+        </div>
+    </div>
+
+        <div id="layoutBody" class="container-fluid">
+
+            @RenderBody()
+
+            @*----------footer start-----------*@
+            <div id="wp_footer-wrapper" class="row-wrapper navbar-fixed-bottom">
+                @*footer navbar-fixed-bottom*@
+
+                <div id="wp_footer-widget-bar" class="widget">
+                    <div class="wp_container">
+                        <section class="widget-area">
+                            <div class="widget">
+                                <div class="textwidget">
+                                    <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="./Content/Images/LACountySeal.png" alt="County Seal">
+                                    @*<br><p style="PADDING-LEFT: 10px; padding-top:10px;"><b>Enriching Lives . . .</b></p>*@
+                                </div>
+                            </div>
+                        </section>
+
+                        <div id="link_bar">
+                            <a target="_blank" title="Contact Us" href="https://directdeposit.lacounty.gov/ContactUs.aspx">Contact Us</a>
+                            <a target="_blank" title="General Information" href="https://directdeposit.lacounty.gov/Instruction.aspx?Msg=N">General Information</a>
+                            <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
+                        </div>
+
+                        <div id="link_bar">
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
+                        </div>
+                    </div><!--.container-->
+                </div><!--#footer-widget-bar-->
+            </div>
+
+            @*----------------footer end-------------------*@
+
+            @*  Srini footer
+                <footer class="footer navbar-fixed-bottom" style="height: 10%">
+                <div class="row">
+                    <div class="col-md-4 img-countySeal" style="background:grey;"></div>
+                    <div class="col-md-8">
+                        <div id="link_bar">
+                            <a href="#">Contact Us</a>
+                            <a href="#">General Information</a>
+                            <a href="#">FAQ</a>
+                        </div>
+
+                        <div id="link_bar">
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
+                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
                         </div>
                     </div>
-                    <!--/.Content-->
                 </div>
-            </div>
+            </footer>
+            Srini footer end*@
+
         </div>
-    </div>
-    <div class="navbar-fixed-top stikyHeader">
-        <div class="titleimage" />  @*stikyHeader*@
-    </div>
-    <div class="panel-body" style="background-color:lightgray; padding:unset">
-        <div class="container">
-            <div class="login-header  panel-body text-Middle" style="background-color:lightgray; padding:unset">
-                <div class="header-text">
-                    <h5 class="para">Vendor Direct Deposit Registration Portal</h5>
-                </div>
-            </div>
-        </div>
-    </div>
+        @Scripts.Render("~/jsbundles/jquery")
 
-    <div id="layoutBody" class="container-fluid">
-        @RenderBody()
-        <footer class="footer navbar-fixed-bottom" style="height: 10%">
-            <div class="row">
-                <div class="col-md-4 img-countySeal" style="background:grey;"></div>
-                <div class="col-md-8">
-                    <div id="link_bar">
-                        <a href="#">Contact Us</a>
-                        <a href="#">General Information</a>
-                        <a href="#">FAQ</a>
-                    </div>
-
-                    <div id="link_bar">
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    @Scripts.Render("~/jsbundles/jquery")
-
-    <script>
+        <script>
         var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
-    </script>
+        </script>
 
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
 </body>
 </html>

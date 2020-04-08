@@ -1,6 +1,6 @@
 ﻿body {
     display: flex;
-    min-height: 100vh;
+    min-height: 150vh;  /* this one setting work space between header and footer*/
     flex-direction: column;
 }
 
@@ -8,10 +8,26 @@ main {
     flex: 1 0 auto;
 }
 
-
 .footer {
-    position: Fixed;
     clear: both;
+    /*position: Fixed;*/
+    /*height: 10px !important;*/
     padding-top: 20px;
-    background-color: midnightblue !important;
+    /*background-color: midnightblue !important;*/
+}
+
+#grey-info-bar {
+    background-color: #f2f2f2 !important;
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+p.alignleft {
+    float: left !important;
 }
