@@ -2,62 +2,123 @@
     ViewBag.Title = "Home Page";
 }
 
-@*@using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()*@
-
-@*@using (Html.BeginForm("LoginExternalVendor", "Home", FormMethod.Post))
-{*@
-
-@*@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
-{*@
-    <div class="container">
-        <div class="form-group">
-            <p class="para">This website allows Los Angeles vendors and payees to submit their Direct Deposit Authorization Form Online.</p>
-            <p class="para">To get started, enter your County Vendor Number (Code) and Social Security Number or Tax Payer Identification Number.</p>
+<div class="container">
+    <div class="row-wrapper row1 row-home-gray">
+        <div class="row-inner">
+            <div class="col-xs-12">
+                <div class="wizard1">
+                    <div class="wizard-inner1">
+                        <div class="form-group1">
+                            <p class="para">This website allows Los Angeles vendors and payees to submit their Direct Deposit Authorization Form Online.</p>
+                            <p class="para">To get started, enter your County Vendor Number (Code) and Social Security Number or TaxPayer Identification Number.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="Absolute-Center is-Responsive">
-        <div class="col-sm-12 col-md-10 login-panel">
-            <div class="form-group input-group">
+    <div class="login_container1">
+        <div class="container-login100">
+            <div class="wrap-login100 clearfix">
                 <div class="form-group">
-                    <div class="input-field col s10">
-                        <input value="" id="txt_employee_id" type="text" class="validate">
-                        <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
-                    </div>
-                </div>
+                    <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
+                    <input value="" id="txt_employee_id" type="text" class="form-control validate" placeholder="Enter your Vendor Number" maxlength="10">
 
+                </div>
                 <div class="form-group">
-                    <div class="input-field col s10">
-                        <input value="" id="txt_Password_id" type="text" class="validate">
-                        <label class="active" for="txt_Password_id:">SSN or TIN</label>
-                    </div>
+                    <label class="active" for="txt_Password_id:">SSN or TIN</label>
+                    <input value="" id="txt_Password_id" type="text" class="form-control validate" placeholder="Enter your SSN or TIN" maxlength="10">
                 </div>
 
                 <div class="form-group">
                     <label id="lbl_invaliduserentry" style="font-size:medium; color: red; font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
                 </div>
 
-                @*@Html.AntiForgeryToken()*@
-                <div class="form-group">
-                    <button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
-                        <i class="material-icons">Login</i>
-                    </button>
-                </div>
 
-                <div class="form-group">
-                    <label class="active" for="txt_Password_id:">Not a registered vendor? Click below to register.</label>
-                    <button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
-                        <i class="material-icons">Vendor Self-Service</i>
-                    </button>
+                <div class="input-group-btn1">
+                    <div class="form-group">
+                        @*<button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
+                            <i class="material-icons">Login</i>
+                            </button>*@
+                        <button id="btn_login" type="submit" name="action" class="btn btn-primary all-button" style="height: 50px !important">Login</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="active login-small-font"> Not a registered vendor? Click below to register.</label>
+                        @*<button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
+                                <i class="material-icons">Vendor Self-Service</i>
+                            </button>    *@
+                        <button id="btn-vendorself-service" type="submit" name="action" onclick=" window.open('https://camisvr.co.la.ca.us/webven/', '_blank');" class="btn all-button" style="font-size: smaller; color: #fff; background-color: gray !important">Vendor Self-Service</button>
+                    </div>
+
                 </div>
             </div>
         </div>
+
+
+        @*
+              <div class="row-inner">
+                <div class="col-xs-12">
+                    <div class="wizard">
+                        <div class="wizard-inner">
+
+                            <div class="Absolute-Center is-Responsive">
+                                <div class="col-sm-12test col-md-10test login-panel">
+                                    <div class="form-group input-group1">
+                                        <div class="form-group">
+                                            <div class="input-field1 col1 s101">
+                                                <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
+                                                <input value="" id="txt_employee_id" type="text" class="validate">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-field1 col1 s101">
+                                                <label class="active" for="txt_Password_id:">SSN or TIN</label>
+                                                <input value="" id="txt_Password_id" type="text" class="validate">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label id="lbl_invaliduserentry" style="font-size:medium; color: red; font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
+                                                <i class="material-icons">Login</i>
+                                            </button>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="active" for="txt_Password_id:">Not a registered vendor? Click below to register.</label>
+                                            <button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
+                                                <i class="material-icons">Vendor Self-Service</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  <!-- wizard-inner-->
+                    </div>
+                </div> <!-- col-xs-12-->
+
+            </div> *@
     </div>
-@*}*@
+</div>
 
 
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        at@using (Html.BeginForm("LoginExternalVendor", "Home", FormMethod.Post))
+    {
+    using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+    {
+    <div id="wp_content11">
+    </div>
+*@
 
 
 
