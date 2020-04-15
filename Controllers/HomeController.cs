@@ -61,13 +61,6 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult NewDeposit()
         {
             return PartialView(@"~/views/Shared/_partialNewDeposit.cshtml");
@@ -76,10 +69,25 @@ namespace WebMaterialPOC.Controllers
 
         public ActionResult UnAuthorized()
         {
-            ViewBag.Message = "Un Authorized Page!";
+            ViewBag.Message = "UnAuthorized Page!";
 
             return View();
         }
+
+        public ActionResult GeneralInfo()
+        {
+            ViewBag.Message = "General Infoformation";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Contact Us";
+
+            return View();
+        }
+
 
 
     }

@@ -24,7 +24,7 @@
     background: #fff;
     overflow: hidden;
     padding: 20px 55px 20px 55px;
-    width: 35%;
+    /*width: 35%;*/
     /*box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -243,7 +243,7 @@ div.login-panel{
 
 
 #link_bar a {
-    padding-left: 15px;
+    padding-right: 15px;
 }
 
     #link_bar a:link {

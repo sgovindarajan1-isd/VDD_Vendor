@@ -1,17 +1,158 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "Contact Us";
+    //Layout = null;
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@section Scripts
+{
+    <script src="~/Scripts/App/contactus.js"></script>
+}
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    <label>EMAIL</label>
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    @*Disb.DirectDeposit@auditor.lacounty.gov*@
+                    <a href="Disb.DirectDeposit@auditor.lacounty.gov"> Disb.DirectDeposit@auditor.lacounty.gov </a>
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    <label>MAILING ADDRESS</label>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    Los Angeles County Auditor-Controller
+                    Disbursements Division
+                    Vendor Direct Deposit Unit
+                    500 W. Temple Street, Room 502
+                    Los Angeles, CA 90012
+                </div>
+            </div>
+
+
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    <label>OFFICE HOURS</label>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    Monday through Friday from 8a.m. to 5p.m.
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    <label>WE CAN BE REACHED BY</label>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-md-6 mb-3">
+                    Phone: (213) 974-4796
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-5">
+            <p>
+                Have a question or need help? We would like to hear from you.  Please
+                complete and submit the contact form below to receive a response to  your inquiry.
+            </p>
+            <div style="padding-bottom: 3pt">
+                (* Indicates a required field.)
+            </div>
+        </div>
+
+        <div class="col-sm-4">t
+            <div class="row">
+                <label for="Company">*Company</label>
+                <input type="text" class="form-control" id="txtCompany" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Valid Company is required. 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">*First Name</label>
+                    <input type="text" class="form-control" id="txtFirstName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3" style="padding-left: 4px">
+                    <label for="lastName">*Last Name</label>
+                    <input type="text" class="form-control" id="txtLastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">*Phone</label>
+                    <input type="text" class="form-control" id="txtPhone" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid Phone is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3" style="padding-left: 4px">
+                    <label for="lastName">*Email</label>
+                    <input type="text" class="form-control" id="txtEmail" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid Email is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="subject">*Subject</label>
+                <input type="text" class="form-control" id="txtSubject" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Valid Subject is required.
+                </div>
+            </div>
+
+
+            <div class="row">
+                <label for="message">*Message</label>
+                <textarea class="form-control" id="txtMessage" name="message" rows="7" cols="30" placeholder="" value="" required></textarea>
+                <div class="invalid-feedback">
+                    Valid Message is required.
+                </div>
+            </div>
+            <div style="padding-bottom: 3pt">
+                (0/1000 charcters)
+            </div>
+
+            <div style="padding-bottom: 3pt">
+                <button class="btn-primary btn" id="btn_contactus_submit"> Submit </button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@*Los Angeles County Auditor-Controller
+    Disbursements Division
+    Vendor Direct Deposit Unit
+    500 W. Temple Street, Room 502
+    Los Angeles, CA 90012*@

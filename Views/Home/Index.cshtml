@@ -23,11 +23,14 @@
             <div class="wrap-login100 clearfix">
                 <div class="form-group">
                     <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
+                    <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                     <input value="" id="txt_employee_id" type="text" class="form-control validate" placeholder="Enter your Vendor Number" maxlength="10">
 
                 </div>
                 <div class="form-group">
                     <label class="active" for="txt_Password_id:">SSN or TIN</label>
+                    <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px  ; vertical-align: middle;">
+
                     <input value="" id="txt_Password_id" type="text" class="form-control validate" placeholder="Enter your SSN or TIN" maxlength="10">
                 </div>
 
@@ -35,76 +38,19 @@
                     <label id="lbl_invaliduserentry" style="font-size:medium; color: red; font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
                 </div>
 
-
                 <div class="input-group-btn1">
                     <div class="form-group">
-                        @*<button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
-                            <i class="material-icons">Login</i>
-                            </button>*@
                         <button id="btn_login" type="submit" name="action" class="btn btn-primary all-button" style="height: 50px !important">Login</button>
                     </div>
 
                     <div class="form-group">
                         <label class="active login-small-font"> Not a registered vendor? Click below to register.</label>
-                        @*<button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
-                                <i class="material-icons">Vendor Self-Service</i>
-                            </button>    *@
                         <button id="btn-vendorself-service" type="submit" name="action" onclick=" window.open('https://camisvr.co.la.ca.us/webven/', '_blank');" class="btn all-button" style="font-size: smaller; color: #fff; background-color: gray !important">Vendor Self-Service</button>
                     </div>
-
                 </div>
+
             </div>
         </div>
-
-
-        @*
-              <div class="row-inner">
-                <div class="col-xs-12">
-                    <div class="wizard">
-                        <div class="wizard-inner">
-
-                            <div class="Absolute-Center is-Responsive">
-                                <div class="col-sm-12test col-md-10test login-panel">
-                                    <div class="form-group input-group1">
-                                        <div class="form-group">
-                                            <div class="input-field1 col1 s101">
-                                                <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
-                                                <input value="" id="txt_employee_id" type="text" class="validate">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="input-field1 col1 s101">
-                                                <label class="active" for="txt_Password_id:">SSN or TIN</label>
-                                                <input value="" id="txt_Password_id" type="text" class="validate">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label id="lbl_invaliduserentry" style="font-size:medium; color: red; font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <button class="btn waves-effect waves-light btn-def btn-block" style="background-color: rebeccapurple" type="submit" name="action" id="btn_login">
-                                                <i class="material-icons">Login</i>
-                                            </button>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="active" for="txt_Password_id:">Not a registered vendor? Click below to register.</label>
-                                            <button class="btn waves-effect waves-light btn-block" style="background-color: Grey" type="submit" name="action" id="btn_login">
-                                                <i class="material-icons">Vendor Self-Service</i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  <!-- wizard-inner-->
-                    </div>
-                </div> <!-- col-xs-12-->
-
-            </div> *@
     </div>
 </div>
 
