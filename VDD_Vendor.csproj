@@ -326,6 +326,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Log4Net.config" />
+    <Content Include="Scripts\App\contactus.js" />
     <Content Include="Scripts\App\DataTable\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\App\DataTable\dataTables.select.min.js" />
     <Content Include="Scripts\App\DataTable\jquery.dataTables.min.js" />
@@ -375,6 +376,7 @@
     <Content Include="Views\Shared\_partialDDStatus.cshtml" />
     <Content Include="Views\Shared\_partialNewDeposit.cshtml" />
     <Content Include="Views\Home\UnAuthorized.cshtml" />
+    <Content Include="Views\Home\GeneralInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

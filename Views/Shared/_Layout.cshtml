@@ -112,14 +112,6 @@
 
     <div id="wp_header" class="menu-align-left">
         <div id="info-bar" class="content-font row-wrapper">
-            @*<span role="heading" aria-level="1">Vendor Direct Deposit Registration Portal-test</span>*@
-            @*<div class="top-login-icon-left">
-             <a href="https://lacounty.gov"  target="_blank" title="Logout">
-                <span>lacounty.gov</span>
-            </a>*@
-            @*<a title="Logout" target="_blank" href="https://lacounty.gov">lacounty.gov123</a>*@
-            @*</div>*@
-
             <div>
                 <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
                 <div style="float:right">
@@ -142,7 +134,7 @@
             <nav id="top-menu">
                 <div class="logo-bar-wrapper">
                     <div class="logo">
-                        <div id="logo"><img id="logo-default" src="./Content/Images/ac.logo3_.png" alt=""></div>
+                        <div id="logo"><img id="logo-default" src="/Content/Images/ac.logo3_.png" alt=""></div>
                     </div>
                 </div>
             </nav>
@@ -170,15 +162,22 @@
                         <section class="widget-area">
                             <div class="widget">
                                 <div class="textwidget">
-                                    <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="./Content/Images/LACountySeal.png" alt="County Seal">
-                                    @*<br><p style="PADDING-LEFT: 10px; padding-top:10px;"><b>Enriching Lives . . .</b></p>*@
+                                    <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="/Content/Images/LACountySeal.png" alt="County Seal">
                                 </div>
                             </div>
                         </section>
 
                         <div id="link_bar">
-                            <a target="_blank" title="Contact Us" href="https://directdeposit.lacounty.gov/ContactUs.aspx">Contact Us</a>
-                            <a target="_blank" title="General Information" href="https://directdeposit.lacounty.gov/Instruction.aspx?Msg=N">General Information</a>
+                            @*<a target="_blank" title="Contact Us" href="https://directdeposit.lacounty.gov/ContactUs.aspx">Contact Us</a>*@
+                            <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-envelope.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                            <a target="" title="Contact Us" href="/Home/Contact">Contact Us</a>
+                            @*<a target="_blank" title="Contact Us" href="@Url.Action("_partialGeneralInfo")">Contact Us</a>*@
+
+                            <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-information.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                            <a target="" title="Contact Us" href="/Home/GeneralInfo">General Information</a>
+                            @*<a target="_blank" title="General Information" href="https://directdeposit.lacounty.gov/Instruction.aspx?Msg=N">General Information</a>*@
+
+                            <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/faq.jpg" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
                             <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
                         </div>
 

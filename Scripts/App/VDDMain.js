@@ -28,3 +28,9 @@ $("#btn_logout").on('click', function () {
     sessionStorage.setItem('accessToken', "");
     window.location.href = "/Home/Index";
 });
+
+$("#btn_generalInfo").on('click', function () {
+    debugger;
+    alert('gen info');
+    window.location.href = "/Home/UnAuthorized";
+}
