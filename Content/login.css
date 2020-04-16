@@ -1,4 +1,83 @@
-﻿/*vdd loutout user*/
+﻿/* [ login ]*/
+/*.limiter {
+    width: 100%;
+    margin: 0 auto;
+}*/
+
+.container-login100 {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.wrap-login100 {
+    border-radius: 40px;
+    border: #f2f2f2;
+    border-style: solid;
+    background: #fff;
+    overflow: hidden;
+    padding: 20px 55px 20px 55px;
+    /*width: 35%;*/
+    /*box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);*/
+}
+
+
+
+/*------------------------------------------------------------------
+[login  Form ]*/
+
+/*.login100-form {
+    width: 100%;
+}
+
+.login100-form-title {
+    display: block;
+    font-family: Poppins-Bold;
+    font-size: 30px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+}
+
+    .login100-form-title i {
+        font-size: 60px;
+    }*/
+
+/*---Input Controls--------------------------------------------------------------- */
+
+.form-control {
+    border: 2px solid #000060 !important;
+    border-radius: 9px !important;
+}
+
+.all-button {
+    width: 100%;
+    background-color: rebeccapurple !important ;
+    border-radius: 9px !important;
+    border-width: thick;
+}
+
+.login-small-font {
+    font-size: small; 
+    color: gray;
+}
+
+
+/*------------------------------------------------------------------
+
+
+/*vdd loutout user*/
 .tag {
     font-size: 14px;
     padding: .3em .4em .4em;
@@ -81,7 +160,7 @@ div.titleimage {
     font-weight:bolder;
 }
 
-.login-panel{
+div.login-panel{
     top: 100px;
     border-radius: 25px;
     border-color:  grey;
@@ -164,7 +243,7 @@ div.titleimage {
 
 
 #link_bar a {
-    padding-left: 15px;
+    padding-right: 15px;
 }
 
     #link_bar a:link {
