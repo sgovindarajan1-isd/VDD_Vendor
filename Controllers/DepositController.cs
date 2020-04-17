@@ -12,7 +12,7 @@ namespace WebMaterialPOC.Controllers
         public ActionResult Index()
         {
             return View();
-            //return PartialView(@"~/views/Shared/Deposit/Index.cshtml");
+           // return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
         }
 
 

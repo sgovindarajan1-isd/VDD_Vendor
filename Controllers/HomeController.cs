@@ -13,34 +13,26 @@ namespace WebMaterialPOC.Controllers
       
         public ActionResult Index()
         {
-            try
-            {
-                int i = 0;
-                int k = 100 / i;
-                i = k;
-            }
-            catch ( DivideByZeroException ex)
-            {
-                LogManager.log.Info("Info: connecting database failed !");
-                LogManager.log.Error("Error connecting Database!");
-                //log4net.LogManager.GetLogger("EmailLogger").Error("Error connecting Database!");
-            }
             return View();
         }
 
-        public ActionResult PartialViewExample()
-        {
-            return PartialView();
-        }
-    ////    [ValidateAntiForgeryToken]
+        //public ActionResult PartialViewExample()
+        //{
+        //    return PartialView();
+        //}
         public ActionResult LoginExternalVendor()
         {
-            //call api
-            // if pass 
-            // newtonsoft -receive parse
-            // 
-            // return RedirectToAction("Index", "Deposit");
-            return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
+            //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
+            //return View(@"~/views/Deposit/Index.cshtml");
+            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
+
+
+            return this.RedirectToAction("Index", "Deposit");
+            //return RedirectToAction("Index", "Deposit");
+            //return View("Index", "Deposit");
+            //return View("Deposit", "Index");
+            //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
+            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
         }
 
         public ActionResult DDStatus()
@@ -92,3 +84,18 @@ namespace WebMaterialPOC.Controllers
 
     }
 }
+
+
+
+
+//LoginExternalVendor()
+    //call api
+    // if pass 
+    // newtonsoft -receive parse
+    // 
+    //return this.RedirectToAction("Index", "Deposit");
+    //return RedirectToAction("Index", "Deposit");
+    //return View("Index", "Deposit");
+    //return View("Deposit", "Index");
+    //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
+            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
