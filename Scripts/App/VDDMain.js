@@ -33,4 +33,4 @@ $("#btn_generalInfo").on('click', function () {
     debugger;
     alert('gen info');
     window.location.href = "/Home/UnAuthorized";
-}
+});

@@ -1,12 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DD Landing";
     //Layout = "~/Views/Shared/_Layout.cshtml";
     Layout = null;
 }
-
-
-
 
 <div class="Absolute-Center is-Responsive">
     <div class="col-sm-12 col-md-10 login-panel1">
@@ -18,7 +14,6 @@
                 </div>
                 </br>
 
-                @*@using (Html.BeginForm("NewDeposit", "Home", FormMethod.Post))*@
                 @using (Html.BeginForm("Index", "Deposit", FormMethod.Post))
                 {
                     <button class="btn waves-effect waves-light btn-def btn-block" type="submit" name="action" id="btn_submitNew">

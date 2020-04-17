@@ -1,28 +1,24 @@
 ﻿var vdd = vdd || {};
-
 $(document).ready(function () {
-
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
-   // function getvendordata() {
-        debugger;
-        var vendordata;
+    var vendorNumber = sessionStorage.getItem('vendorNumber')
+    var vendordata;
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
         dataType: 'json',
-        data: JSON.stringify({ 'vendorNumber': '160431' }),
+        data: JSON.stringify({ 'vendorNumber': vendorNumber }),
         headers: {
             'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
         },
         url: hostdomainUrl + "api/values/GetVendorDetailsByName/",
         success: function (data) {
-            debugger;
             $('#ddGrid').dataTable({
                 responsive: true,
                 data: data.data.vendorlst,
                 columns: [
                     { 'data': '' },
-                    { 'data': 'VendorNumber' },
+                    { 'data': 'VendorNumber'},
                     { 'data': 'VendorName' },
                     { 'data': 'VendorAddress' },
                     { 'data': 'RoutingNumber' },
@@ -41,7 +37,7 @@ $(document).ready(function () {
                         defaultContent: '',
                         orderable: false,
                         className: 'select-checkbox'
-                    }
+                    },
                 ],
                 select: {
                     style: 'os',
@@ -50,9 +46,7 @@ $(document).ready(function () {
             });
 
         },
-
         error: function (_XMLHttpRequest, textStatus, errorThrown) {
-            debugger;
             if (_XMLHttpRequest.status == '401') {
                 window.location.href = "/Home/UnAuthorized";
             }

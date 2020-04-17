@@ -1,4 +1,8 @@
-﻿    body {
+﻿.vdd-modeltextalign {
+    text-align: center !important;
+}
+
+body {
     /*  s padding-top: 50px;*/
     padding-bottom: 20px;
 }
