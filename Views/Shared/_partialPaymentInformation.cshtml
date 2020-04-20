@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Partial Payment Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+
+@*@section Scripts
+{
+    <link href="//cdn.datatables.net/responsive/2.2.3/css/dataTables.responsive.css" />
+    <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
+    <script src="~/Scripts/App/dd_Authorization.js"></script>
+}*@
+
+
+<div class="para">
+    <p> Your Direct Deposit bank account will be associated with the following addresses.</p>
+</div>
+
+<div class="gj-margin-top-10">
+    <table id="grid"></table>
+</div>
+
+
+<div class="gj-margin-top-10">
+    <table id="ddGrid" class="mdl-data-table" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>VendorNumber</th>
+                <th>VendorName</th>
+                <th>VendorAddress</th>
+                <th>RoutingNumber</th>
+                <th>AcccountNo</th>
+                <th>AccountType</th>
+                <th>RemittanceEmail</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="para">
+    <p> To update your address information, please contact us at Disb.directdeposit@auditor.lacounty.gov</p>
+</div>
+
+
+<div>
+    <button class="btn waves-effect waves-light" type="submit" name="action" id="btn_back">
+        <i class="material-icons right">Back</i>
+    </button>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action" id="btn_next">
+        <i class="material-icons right">Next</i>
+    </button>
+
+</div>
+
+

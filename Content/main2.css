@@ -445,8 +445,10 @@ html {
 	font-size: 24px}.h4,h4{
 	font-size: 18px}.h5,h5{
 	font-size: 14px}.h6,h6{
-	font-size: 12px}p{
-	margin: 0 0 10px}.lead{
+	font-size: 12px}
+					p{
+	margin: 0 0 10px}
+					.lead{
 	margin-bottom: 20px;
 	font-size: 16px;
 	font-weight: 300;
@@ -2347,9 +2349,12 @@ html {
 	filter: alpha(opacity=0);
 	opacity: 0}.modal-backdrop.in{
 	filter: alpha(opacity=50);
-	opacity: .5}.modal-header{
+	opacity: .5}
+.modal-header {
 	padding: 15px;
-	border-bottom: 1px solid #e5e5e5}.modal-header .close{
+	border-bottom: 1px solid #663399
+}
+			   .modal-header .close{
 	margin-top: -2px}.modal-title{
 	margin: 0;
 	line-height: 1.42857143}.modal-body{

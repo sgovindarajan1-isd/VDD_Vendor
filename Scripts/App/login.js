@@ -1,6 +1,4 @@
-﻿//Checking - out 3 test- Created aDEV Branch and checking in
-//DEV-3-20-2020 Change -1
-//var vdd = vdd || {};
+﻿//var vdd = vdd || {};
 $(document).ready(function () {
     $('#btn_login').click(clicklogin);
 
@@ -28,40 +26,29 @@ function loginExternalVendor(userid, tin) {
         url: hostdomainUrl + "api/values/LoginExternalVendor_authen/",
         dataType: 'json',
         data: JSON.stringify({ 'UserId': userid, 'Tin': tin }),
+        beforeSend: function () {
+            $("#loaderDiv").show();
+        },
         headers: {
             'Authorization': 'Basic ' + btoa(SecuredToken + ":" + userid + ':' + tin)
         },
-        
+       
         success: function (data) {
-            debugger;
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
+            sessionStorage.setItem('vendorNumber', userid);
 
             if (data.data[0].IsValidUser == true) {
                 var UserName = data.data[0].UserName;
                 // Setting global variable to authendicate the user
                 //vdd.GlobalVariables.IsValidUser = true;
-
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'html',
-                    url: '/Home/LoginExternalVendor',
-                    data: {
-                        id: userid, name: tin
-                    },
-                    success: function (data) {
-                        debugger;
-                        $('#layoutBody').html(data);
-                        vdd.GlobalVariables.UserName = UserName;
-                        $('#lbl_userName').text(UserName);
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert('error in antiforgery');
-                    }
-                });
+                window.location.href = '/deposit/Index';   
+                vdd.GlobalVariables.UserName = UserName;
+                $("#loaderDiv").hide();
             }
             else {
                 $("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                $("#loaderDiv").hide();
             }
         }
         , complete: function (jqXHR) {
@@ -69,23 +56,14 @@ function loginExternalVendor(userid, tin) {
             if (jqXHR.status == '404') {
                 $("#lbl_invaliduserentry").text("Invalid Username and Password!")
             }
+            $("#loaderDiv").hide();
         }
         , error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status == '401') {
                 window.location.href = "/Home/UnAuthorized";
             }
+            $("#loaderDiv").hide();
         }
     });
 };
-//$.ajax({
-//    url: '/ Home/GetProductDetails',
-//    contentType: 'application/html; charset=utf-8',
-//    type: 'GET',
-//    dataType: 'html'
-//})
-//    .success(function (result) {
-//        $('#dvProductDetails').html(result);
-//    })
-//    .error(function (xhr, status) {
-//        alert(status);
-//    })  
+ 
