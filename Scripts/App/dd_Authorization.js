@@ -1,13 +1,14 @@
 ﻿var vdd = vdd || {};
 $(document).ready(function () {
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
-    var vendorNumber = sessionStorage.getItem('vendorNumber')
+    var vendorNumber = sessionStorage.getItem('vendorNumber');
+    var payeeId = sessionStorage.getItem('payeeId');
     var vendordata;
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
         dataType: 'json',
-        data: JSON.stringify({ 'vendorNumber': vendorNumber }),
+        data: JSON.stringify({ 'vendorNumber': vendorNumber, 'payeeId': payeeId }),
         headers: {
             'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
         },

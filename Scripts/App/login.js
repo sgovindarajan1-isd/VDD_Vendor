@@ -27,7 +27,7 @@ function loginExternalVendor(userid, tin) {
         dataType: 'json',
         data: JSON.stringify({ 'UserId': userid, 'Tin': tin }),
         beforeSend: function () {
-            $("#loaderDiv").show();
+            //$("#loaderDiv").show();
         },
         headers: {
             'Authorization': 'Basic ' + btoa(SecuredToken + ":" + userid + ':' + tin)
@@ -37,6 +37,7 @@ function loginExternalVendor(userid, tin) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
             sessionStorage.setItem('vendorNumber', userid);
+            sessionStorage.setItem('payeeId', data.data[0].PayeeId);
 
             if (data.data[0].IsValidUser == true) {
                 var UserName = data.data[0].UserName;
