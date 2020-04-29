@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
     var vendorNumber = sessionStorage.getItem('vendorNumber');
     var payeeId = sessionStorage.getItem('payeeId');
-    var vendordata;
+    //var vendordata;
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
@@ -18,17 +18,15 @@ $(document).ready(function () {
                 responsive: true,
                 data: data.data.vendorlst,
                 columns: [
-                    { 'data': '' },
-                    { 'data': 'VendorNumber'},
-                    { 'data': 'VendorName' },
-                    { 'data': 'VendorAddress' },
+                    { 'data': ''},
+                    { 'data': 'VendorAddress'},
                     { 'data': 'RoutingNumber' },
                     { 'data': 'AcccountNo' },
                     { 'data': 'AccountType' },
                     { 'data': 'RemittanceEmail' },
-                    { 'data': 'Status' }
+                   { 'data': 'Status', "width": '140px'  }
                 ],
-                "order": [[1, "VendorNumber"]],
+               //"order": [[1, "VendorNumber"]],
 
                 columnDefs: [
                     {
@@ -37,11 +35,11 @@ $(document).ready(function () {
                         data: null,
                         defaultContent: '',
                         orderable: false,
-                        className: 'select-checkbox'
+                        className: 'select-checkbox',
                     },
                 ],
                 select: {
-                    style: 'os',
+                    style: 'multi',
                     selector: 'td:first-child'
                 },
             });
@@ -52,6 +50,10 @@ $(document).ready(function () {
                 window.location.href = "/Home/UnAuthorized";
             }
         }
+    });
+
+    $('#btn_deposit_next').on('click', function (e) {
+        window.location.href = '/deposit/_partialBankDetails';
     });
 });
 

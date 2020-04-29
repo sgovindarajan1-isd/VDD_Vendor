@@ -6,133 +6,46 @@
 
 @section Scripts
 {
-    @*<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css" />
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.material.min.css" />
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-
-        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"> </script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
-        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />*@
-
+    <link href="~/Content/main2.css" rel="stylesheet" />
     <link href="//cdn.datatables.net/responsive/2.2.3/css/dataTables.responsive.css" />
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
     <script src="~/Scripts/App/dd_Authorization.js"></script>
 }
+    <div class="para">
+        <p> Your Direct Deposit bank account will be associated with the following address(es).</p>
+    </div>
 
+    <div class="gj-margin-top-10" >
+        <table id="grid"></table>
+    </div>
 
-<div class="row-wrapper row  row-home-gray">
-    <div class="row-inner ">
-        <div class="col-xs-12">
-            <div class="wizard">
-                <div class="wizard-inner">
-                    <div class="connecting-line"></div>
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <span title="Payment Information" class="wizard-step">
-                                <span class="round-tab ">
-                                    <img src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
+    <div class="gj-margin-top-10">
+        <table id="ddGrid" class="w-auto mdl-data-table cell-border" cellspacing="0" style="border-collapse:collapse; border: 1px solid black; width:100%">
+            <thead>
+                <tr class="button-header-color">
+                    <th></th>
+                    <th>Address</th>
+                    <th>Routing Number</th>
+                    <th>Acccount #</th>
+                    <th>Account Type</th>
+                    <th>Remittance Email</th>
+                    <th>Current Payment Status</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 
-                        <li role="presentation" class="">
-                            <span title="Enter Banking Information" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
+    <div class="para">
+        <p> To update your address information, please contact the Department you're doing business with.</p>
+    </div>
 
-                        <li role="presentation" class="">
-                            <span title="Add Attachment" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
-
-                        <li role="presentation" class="">
-                            <span title="Verify Banking Information" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
-
-                        <li role="presentation" class="">
-                            <span title="Certify" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
-
-                        <li role="presentation" class="">
-                            <span title="Submit" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
-
-                        <li role="presentation" class="">
-                            <span title="Confirmation" class="wizard-step">
-                                <span class="round-tab disabled ">
-                                    <img src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                </span>
-                            </span>
-                        </li>
-
-                    </ul>
-                </div>
+    <div class="container"  style="padding-bottom: 10px">
+        <div class="row">
+            <div class="col text-center" type="submit" name="action" id="btn_next">
+                <button class="btn btn-default button-header-color" id="btn_deposit_next">Next</button>
             </div>
         </div>
-
     </div>
-</div>
-
-
-<div class="para">
-    <p> Your Direct Deposit bank account will be associated with the following address(es).</p>
-</div>
-
-<div class="gj-margin-top-10">
-    <table id="grid" ></table>
-</div>
-
-
-<div class="gj-margin-top-10">
-    <table id="ddGrid" class="mdl-data-table cell-border" cellspacing="0" style="border-collapse:collapse; border: 1px solid black; width:100%">
-        <thead>
-            <tr>
-                <th></th>
-                <th>VendorNumber</th>
-                <th>VendorName</th>
-                <th>Address</th>
-                <th>Routing Number</th>
-                <th>Acccount No</th>
-                <th>AccountType</th>
-                <th>Remittance Email</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-    </table>
-</div>
-
-<div class="para">
-    <p> To update your address information, please contact the Department you're doing business with.</p>
-</div>
-
-
-<div>
-    <button class="btn waves-effect waves-light" type="submit" name="action" id="btn_next">
-        <i class="material-icons right">Next</i>
-    </button>
-
-</div>
 
 

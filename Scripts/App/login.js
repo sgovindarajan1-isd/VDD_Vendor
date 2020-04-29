@@ -1,9 +1,38 @@
 ﻿//var vdd = vdd || {};
 $(document).ready(function () {
+
+    var isNumberKey = function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
+
+    $("#txt_Password_id").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            //display error message
+            $("#errmsg").html("Digits Only").show();
+            return false;
+        }
+        else {
+            $("#errmsg").hide();
+        }
+    });
+
+    $('[data-toggle="popover"]').popover(); 
     $('#btn_login').click(clicklogin);
 
     $(".validate").on('input', function (e) {      
         $("#lbl_invaliduserentry").text("");
+    });
+
+    $('body').on('click', function (e) {
+        if ($(e.target).data('toggle') !== 'popover'
+            && $(e.target).parents('.popover.in').length === 0) {
+            $('[data-toggle="popover"]').popover('hide');
+        }
     });
 });
 
@@ -16,18 +45,19 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-    //var userid = '160431';
-    //var tin = '205770300';
+    //var userid = '000593'; //'000339';//'000076';
+    //var tin = '232116774'; //'942647607'; //'953765453';
+
     var SecuredToken = '';
 
     $.ajax({
         contentType: 'application/json; charset=utf-8',
-        type: "POST",  // "POST"
+        type: "POST",
         url: hostdomainUrl + "api/values/LoginExternalVendor_authen/",
         dataType: 'json',
         data: JSON.stringify({ 'UserId': userid, 'Tin': tin }),
         beforeSend: function () {
-            //$("#loaderDiv").show();
+            $("#loaderDiv").show();
         },
         headers: {
             'Authorization': 'Basic ' + btoa(SecuredToken + ":" + userid + ':' + tin)

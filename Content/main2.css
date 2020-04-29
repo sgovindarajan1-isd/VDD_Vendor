@@ -1,4 +1,29 @@
-#wp_header {
+.errmessage {
+	color: red !important;
+}
+
+table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+	height: 15px;
+	/*margin-left: 1px !important;*/
+}
+
+/* resetting the color*/
+
+.button-header-color {
+	background-color: dodgerblue !important;
+	color: #fff !important;
+	width: 10%;
+	white-space: pre-wrap !important;
+}
+
+
+table.dataTable thead th, table.dataTable thead td {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 18px;
+	border: 1px solid #111;
+}
+	#wp_header {
 	background-color: linear-gradient(to bottom,#392757 0%,#192130 100%) !important;
 }
 
@@ -2350,14 +2375,18 @@ html {
 	opacity: 0}.modal-backdrop.in{
 	filter: alpha(opacity=50);
 	opacity: .5}
-.modal-header {
-	padding: 15px;
-	border-bottom: 1px solid #663399
-}
+	.modal-header {
+		padding: 15px;
+		border-bottom: 1px solid #663399;
+		text-align:center;  /*logout modal header alignment*/
+	}
 			   .modal-header .close{
-	margin-top: -2px}.modal-title{
+	margin-top: -2px}
+.modal-title {
 	margin: 0;
-	line-height: 1.42857143}.modal-body{
+	line-height: 1.42857143;
+	font-weight:bold;
+}.modal-body{
 	position: relative;
 	padding: 15px}.modal-footer{
 	padding: 15px;
@@ -2757,8 +2786,11 @@ html {
 	opacity: 1;
 	display: inline-block}.btn.active span.glyphicon-unchecked{
 	opacity: 0;
-	display: none}.modal-footer{
-	text-align: left}.text-xs-left{
+	display: none}
+	.modal-footer{
+	text-align: center  /*this is to make logout modal button center*/
+	}
+	.text-xs-left{       
 	text-align: left}.text-xs-right{
 	text-align: right}.text-xs-center{
 	text-align: center}.text-xs-justify{

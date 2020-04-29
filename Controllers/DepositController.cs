@@ -16,5 +16,10 @@ namespace WebMaterialPOC.Controllers
         }
 
 
+        public ActionResult _partialBankDetails()
+        {
+            return View();
+        }
+
     }
 }
