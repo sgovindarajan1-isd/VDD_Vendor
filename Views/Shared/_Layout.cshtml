@@ -84,7 +84,7 @@
                             <li role="presentation" class="active" style="text-align:center">
                                 <span title="Payment Information" class="wizard-step" style="text-align:center">
                                     <span class="round-tab ">
-                                        <img src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id ="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="padding-bottom:10px; font-size:smaller; text-align:left">billing Information</div>*@
@@ -93,7 +93,7 @@
                             <li role="presentation" class="">
                                 <span title="Enter Banking Information" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id ="img_bank_step" src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="font-size:smaller; text-align:left">Enter Bank Information</div>*@
@@ -103,7 +103,7 @@
                             <li role="presentation" class="">
                                 <span title="Add Attachment" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id ="img_bank_attachment_step" src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="font-size:smaller; text-align:left">Add Attachment</div>*@
@@ -112,7 +112,7 @@
                             <li role="presentation" class="">
                                 <span title="Verify Banking Information" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id ="img_bank_verify_step"  src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="font-size:smaller; text-align:left">Verify Bank Information</div>*@
@@ -121,7 +121,7 @@
                             <li role="presentation" class="">
                                 <span title="Certify" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id="img_certify_step_step" src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="font-size:smaller; text-align:left">Certify</div>*@
@@ -130,7 +130,7 @@
                             <li role="presentation" class="">
                                 <span title="Submit" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id="img_submit_step" src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                                 @*<div style="font-size:smaller; text-align:left">Submit</div>*@
@@ -139,7 +139,7 @@
                             <li role="presentation" class="">
                                 <span title="Confirmation" class="wizard-step">
                                     <span class="round-tab disabled ">
-                                        <img src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        <img id="img_confirmation_step" src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                     </span>
                                 </span>
                             </li>
@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <div id="layoutBody" class="container-fluid row row-home">
+    <div id="layoutBody" class="container-fluid">
         @* style="overflow:auto" row row-home*@
         @RenderBody()
     </div>
