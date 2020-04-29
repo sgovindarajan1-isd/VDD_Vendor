@@ -8,29 +8,27 @@ vdd.GlobalVariables = {
 
 var Globaljqvar = {
 };
-//export { Globaljqvar };
 window.__INITIAL_STATE__ = {
     IsValidUser: false
 };
 
 $('#lbl_userName').on('click', function (e) {
-    if (confirm("Are you sure you want to logout?"))
-        //window.location.href = "";
-        alert('LOGGING OUT')
-
-    return false;
+    $('#exampleModal').modal('show');
+    //if (confirm("Are you sure you want to logout?"))
+    //    //window.location.href = "";
+   // return false;
 });
 
 $("#btn_logout").on('click', function () {
-    $('#modalLogout').modal('hide');
-    debugger;
+    $('#exampleModal').modal('hide');
     sessionStorage.setItem('userName', "");
     sessionStorage.setItem('accessToken', "");
+    sessionStorage.setItem('vendorNumber', "");
+    sessionStorage.setItem('payeeId', "");
+
     window.location.href = "/Home/Index";
 });
 
 $("#btn_generalInfo").on('click', function () {
-    debugger;
-    alert('gen info');
     window.location.href = "/Home/UnAuthorized";
 });

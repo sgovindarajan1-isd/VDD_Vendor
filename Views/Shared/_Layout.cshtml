@@ -15,7 +15,6 @@
 
     @*<script src="~/Scripts/App/dd_Authorization.js"></script>*@
 
-
     <meta name="theme-color" content="#ff0000">
     <meta name="theme-color" content="#ffffff">
 
@@ -36,109 +35,24 @@
 
 </head>
 <body>
-    @* srini header start*@
-
-    @*
-        <div class="login-header panel-body text-Middle" style="background-color:midnightblue">
-            <div>
-                <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
-
-
-                <div style="float:right">
-                    <!-- <label id="lbl_userName-old" style="font-size:medium;font-weight:bold" aria-label="Close" />-->
-
-                    <ul>
-                        <li class="dropdown" style="z-index: 2000">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span id="hello" class="glyphicon glyphicon-user">
-                                    <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
-                                </span>
-                                <!-- <b class="caret"></b> -->
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#modalLogout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <!-- Central Modal Medium Success -->
-                <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-success" role="document">
-                        <!--Content-->
-                        <div class="modal-content">
-                            <!--Header-->
-                            <div class="modal-header">
-                                <p class="heading lead">LOGOUT</p>
-
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true" class="white-text">&times;</span>
-                                </button>
-                            </div>
-
-                            <!--Body-->
-                            <div class="modal-body">
-                                <div class="text-center">
-                                    <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-                                    <p style="font-weight:bold">
-                                        Are you sure you want to logout?
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!--Footer-->
-                            <div class="modal-footer justify-content-center">
-                                <button id="btn_logout" class="btn btn-success">Logout <i class="far fa-gem ml-1 white-text"></i></button>
-                                <button class="btn btn-outline-success waves-effect" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        <!--/.Content-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar-fixed-top stikyHeader">
-            <div class="titleimage" />  <!--stikyHeader  -->
-        </div>
-        <div class="panel-body" style="background-color:lightgray; padding:unset">
-            <div class="container">
-                <div class="login-header  panel-body text-Middle" style="background-color:lightgray; padding:unset">
-                    <div class="header-text">
-                        <h5 class="para">Vendor Direct Deposit Registration Portal</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    *@
-
-    @*  srini header end*@
-
+    @*<form1111 class="form11" id="vddform">*@
+    @*data-toggle="validator"  role="form"*@
     <div id="wp_header" class="menu-align-left">
         <div id="info-bar" class="content-font row-wrapper">
             <div>
-                <a target="_blank" href="https://lacounty.gov" style="font-size:medium;font-weight:bold">lacounty.gov</a>
+                @*this is to bring loginout logo and lacounty text to bring together*@
+                <a target="_blank" href="https://lacounty.gov" style=" color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif; font-size:medium;font-weight:bold">lacounty.gov</a>
                 <div style="float:right">
-                    <ul>
-                        <li class="dropdown" style="z-index: 2000">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span id="hello" class="fa fa-user-circle">
-                                    <label id="lbl_userName" style="font-size:medium;font-weight:bold" aria-label="Close" data-toggle="modal" data-target="#modalLogout" />
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><i class="icon-arrow-up"></i><a data-toggle="modal" data-target="#centralModalSm">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div>
+                        <div data-toggle="modal" data-target="#exampleModal" class="dropdown" style="z-index: 2000; cursor: pointer">
+                            <span id="hello" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
+                                <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#exampleModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
         <header>
             <nav id="top-menu">
                 <div class="logo-bar-wrapper">
@@ -149,6 +63,8 @@
             </nav>
         </header>
     </div>
+
+    @*<div>        id="wp_content11"*@
     <div id="grey-info-bar" class="content-font row-wrapper">
         <div class="logo-bar-wrapper">
             <div class="col-xs-12">
@@ -158,99 +74,146 @@
         </div>
     </div>
 
+    <div class="row-wrapper row  row-home-gray">
+        <div class="row-inner ">
+            <div class="col-xs-12">
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active" style="text-align:center">
+                                <span title="Payment Information" class="wizard-step" style="text-align:center">
+                                    <span class="round-tab ">
+                                        <img src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="padding-bottom:10px; font-size:smaller; text-align:left">billing Information</div>*@
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Enter Banking Information" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="font-size:smaller; text-align:left">Enter Bank Information</div>*@
+
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Add Attachment" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="font-size:smaller; text-align:left">Add Attachment</div>*@
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Verify Banking Information" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="font-size:smaller; text-align:left">Verify Bank Information</div>*@
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Certify" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="font-size:smaller; text-align:left">Certify</div>*@
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Submit" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                                @*<div style="font-size:smaller; text-align:left">Submit</div>*@
+                            </li>
+
+                            <li role="presentation" class="">
+                                <span title="Confirmation" class="wizard-step">
+                                    <span class="round-tab disabled ">
+                                        <img src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                    </span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
-    <!-- Central Modal Small -->
-    <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-
-        <!-- Change class .modal-sm to change the size of the modal -->
-        <div class="modal-dialog modal-md" role="document">
-
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title w-100 vdd-modeltextalign" id="myModalLabel">LOGOUT</h4>
+                    <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
                 </div>
+
                 <div class="modal-body" style="text-align:center">
                     Are you sure you want to logout?
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" style="alighfloat:none !important" id="btn_logout" class="btn btn-default  btn-lg" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary btn-lg">Yes</button>
-
+                    @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes11</button>*@
+                    <button type="button" style="text-align:center" class="btn btn-default  btn-lg" data-dismiss="modal">No</button>
+                    <button id="btn_logout" type="button" class="btn btn-primary btn-lg">Yes</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Central Modal Small -->
 
-
-
-
-    <div id="layoutBody" class="container-fluid">
-
+    <div id="layoutBody" class="container-fluid row row-home">
+        @* style="overflow:auto" row row-home*@
         @RenderBody()
-
-        @*----------footer start-----------*@
-        <div id="wp_footer-wrapper" class="row-wrapper navbar-fixed-bottom">
-            <div id="wp_footer-widget-bar" class="widget">
-                <div class="wp_container">
-                    <section class="widget-area">
-                        <div class="widget">
-                            <div class="textwidget">
-                                <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="/Content/Images/LACountySeal.png" alt="County Seal">
-                            </div>
-                        </div>
-                    </section>
-
-                    <div id="link_bar">
-                        <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-envelope.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="" title="Contact Us" href="/Home/Contact">Contact Us</a>
-
-                        <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-information.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="" title="Contact Us" href="/Home/GeneralInfo">General Information</a>
-
-                        <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/faq.jpg" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
-                    </div>
-
-                    <div id="link_bar">
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
-                        <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
-                    </div>
-                </div><!--.container-->
-            </div><!--#footer-widget-bar-->
-        </div>
-
-        @*----------------footer end-------------------*@
-
-        @*  Srini footer
-                <footer class="footer navbar-fixed-bottom" style="height: 10%">
-                <div class="row">
-                    <div class="col-md-4 img-countySeal" style="background:grey;"></div>
-                    <div class="col-md-8">
-                        <div id="link_bar">
-                            <a href="#">Contact Us</a>
-                            <a href="#">General Information</a>
-                            <a href="#">FAQ</a>
-                        </div>
-
-                        <div id="link_bar">
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            Srini footer end*@
-
     </div>
+
+    @*----------footer start-----------*@
+    <div id="wp_footer-wrapper" class="row-wrapper">
+        @*navbar-fixed-bottom*@
+        <div id="wp_footer-widget-bar" class="widget">
+            <div class="wp_container">
+                <section class="widget-area">
+                    <div class="widget">
+                        <div class="textwidget">
+                            <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="/Content/Images/LACountySeal.png" alt="County Seal">
+                        </div>
+                    </div>
+                </section>
+
+                <div id="link_bar">
+                    <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-envelope.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                    <a target="" title="Contact Us" href="/Home/Contact">Contact Us</a>
+
+                    <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-information.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                    <a target="" title="Contact Us" href="/Home/GeneralInfo">General Information</a>
+
+                    <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/Footer_QuestionIcon.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                    <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
+                </div>
+
+                <div id="link_bar">
+                    <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
+                    <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
+                    <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
+                    <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
+                </div>
+            </div><!--.container-->
+        </div><!--#footer-widget-bar-->
+    </div>
+
+    @*</div>  @*wp_content*@
+
     @Scripts.Render("~/jsbundles/jquery")
 
     <script>
@@ -259,5 +222,6 @@
 
     @RenderSection("scripts", required: false)
     @*<script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>*@
+    @*</form1111>*@
 </body>
 </html>

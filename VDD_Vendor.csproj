@@ -202,6 +202,7 @@
     <Content Include="Content\App_Themes\Images\fa fa-information.png" />
     <Content Include="Content\App_Themes\Images\fa fa-informationtop.png" />
     <Content Include="Content\App_Themes\Images\face.jpg" />
+    <Content Include="Content\App_Themes\Images\Footer_QuestionIcon.png" />
     <Content Include="Content\App_Themes\Images\GE.jpg" />
     <Content Include="Content\App_Themes\Images\grid_background.gif" />
     <Content Include="Content\App_Themes\Images\Icon_v4.png" />
@@ -605,6 +606,7 @@
     <Content Include="Views\Home\UnAuthorized.cshtml" />
     <Content Include="Views\Home\GeneralInfo.cshtml" />
     <Content Include="Views\Shared\_partialPaymentInformation.cshtml" />
+    <Content Include="Views\Deposit\_partialBankDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
