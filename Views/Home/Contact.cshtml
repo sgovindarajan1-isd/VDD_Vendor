@@ -1,17 +1,28 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Contact Us";
-    //Layout = null;
 }
 
 @section Scripts
 {
     <script src="~/Scripts/App/contactus.js"></script>
+    <link href="~/Content/main2.css" rel="stylesheet" />
+    <link src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>"
+
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+    @*<link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />*@
+
+    <!-- BootstrapValidator CSS -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" />*@
+
+    <!-- BootstrapValidator JS -->
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>*@
+
 }
-
-
 <div class="container">
-
     <div class="row">
         <div class="col-sm-6">
             <div class="row" style="padding-bottom: 10px">
@@ -77,71 +88,56 @@
             </div>
         </div>
 
-        <div class="col-sm-4">t
-            <div class="row">
-                <label for="Company">*Company</label>
-                <input type="text" class="form-control" id="txtCompany" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                    Valid Company is required. 
-                </div>
+        <div class="col-sm-4">      
+            <div class="row padding-bottom-div form-group">
+                <label for="company">*Company</label>
+                <input type="text" class="form-control" id="txtCompany" name="Company" placeholder="Company Name" required >
+                <span id="companyspan" class="errmessage"/>
             </div>
 
-            <div class="row">
+            <div class="row padding-bottom-div">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">*First Name</label>
-                    <input type="text" class="form-control" id="txtFirstName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="text" class="form-control" id="txtFirstName" name="FirstName" placeholder="Your First Name" required>
+                    <span id="firstNamespan" class="errmessage" />
                 </div>
                 <div class="col-md-6 mb-3" style="padding-left: 4px">
                     <label for="lastName">*Last Name</label>
-                    <input type="text" class="form-control" id="txtLastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid last name is required.
-                    </div>
+                    <input type="text" class="form-control" id="txtLastName" name="LastName" placeholder="Your Last Name" required>
+                    <span id="lastNamespan" class="errmessage" />
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row padding-bottom-div">
                 <div class="col-md-6 mb-3">
-                    <label for="firstName">*Phone</label>
-                    <input type="text" class="form-control" id="txtPhone" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid Phone is required.
-                    </div>
+                    <label for="phone">*Phone</label>
+                    <input type="text" class="form-control" id="txtPhone" name="Phone" placeholder="213-123-4567" required>
+                    <span id="phonespan" class="errmessage invalid-feedback" />
                 </div>
                 <div class="col-md-6 mb-3" style="padding-left: 4px">
-                    <label for="lastName">*Email</label>
-                    <input type="text" class="form-control" id="txtEmail" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid Email is required.
-                    </div>
+                    <label for="email">*Email</label>
+                    <input type="text" class="form-control" id="txtEmail" name="Email" placeholder="Your Email Name" required>
+                    <span id="emailspan" class="errmessage invalid-feedback" />
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row padding-bottom-div">
                 <label for="subject">*Subject</label>
-                <input type="text" class="form-control" id="txtSubject" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                    Valid Subject is required.
-                </div>
+                <input type="text" class="form-control" id="txtSubject" name="Subject" placeholder="" required>
+                <span id="subjectspan" class="errmessage invalid-feedback" />
             </div>
-
 
             <div class="row">
                 <label for="message">*Message</label>
-                <textarea class="form-control" id="txtMessage" name="message" rows="7" cols="30" placeholder="" value="" required></textarea>
-                <div class="invalid-feedback">
-                    Valid Message is required.
-                </div>
+                <textarea class="form-control" id="txtMessage" name="Message" rows="7" cols="30" placeholder="Your Message" required></textarea>
+                <span id="messagespan" class="errmessage invalid-feedback" />
             </div>
             <div style="padding-bottom: 3pt">
                 (0/1000 charcters)
             </div>
 
-            <div style="padding-bottom: 3pt">
-                <button class="btn-primary btn" id="btn_contactus_submit"> Submit </button>
+            <div style="padding-bottom: 3pt" class="form-group">
+                <button class="btn-primary btn" id="btn_contactus_submit" type="button"> Submit </button>
             </div>
 
 
