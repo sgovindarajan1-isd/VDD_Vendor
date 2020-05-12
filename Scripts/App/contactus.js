@@ -1,6 +1,7 @@
 ﻿var vdd = vdd || {};
 
 $(document).ready(function () {
+    $('#lbl_userName').text(sessionStorage.getItem('userName'));
     $('#btn_contactus_submit').click(btn_contactus_click);
 });
 

@@ -17,51 +17,53 @@ $('#lbl_userName').on('click', function (e) {
 });
 
 
-$(".nav li").on("click", function () {
-    $(".nav li").removeClass("active");
-    //$(".nav li span span").removeClass("disabled");
-    $(this).addClass("active");
-    //$(".nav li span span").removeClass("disabled");
+$(".nav li").on("click", function (e) {
+    e.preventDefault();
 });
+//    $(".nav li").removeClass("active");
+//    --$(".nav li span span").removeClass("disabled");
+//    $(this).addClass("active");
+//    --$(".nav li span span").removeClass("disabled");
 
-$(".nav li span span img").on("click", function () {
-    $("#img_confirmation_step").attr('src', '/Content/Images/confirmation_step.png');
-    $("#img_submit_step").attr('src', '/Content/Images/submit_step.png');
-    $("#img_certify_step_step").attr('src', '/Content/Images/certify_step.png');
-    $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step.png');
-    $("#img_bank_attachment_step").attr('src', '/Content/Images/attachment_step.png');
-    $("#img_bank_step").attr('src', '/Content/Images/bank_step.png');
-    $("#img_info_step").attr('src', '/Content/Images/info_step.png');
 
-    if ($(this)[0].id == "img_confirmation_step") {
-        $(this).attr('src', '/Content/Images/confirmation_step_on.png');
-    }
-    if ($(this)[0].id == "img_submit_step_step") {
-        $(this).attr('src', '/Content/Images/submit_step_on.png');
-    }
-    if ($(this)[0].id == "img_certify_step_step") {
-        $(this).attr('src', '/Content/Images/certify_step_on.png');
-    }
-    if ($(this)[0].id == "img_bank_verify_step") {
-        $(this).attr('src', '/Content/Images/verify_step_on.png');
-    }
-    if ($(this)[0].id == "img_bank_attachment_step") {
-        $(this).attr('src', '/Content/Images/attachment_step_on.png');
-    }
-    if ($(this)[0].id == "img_info_step") {
-        $(this).attr('src', '/Content/Images/info_step_on.png');
-    }
-    if ($(this)[0].id == "img_bank_step") {
-        $(this).attr('src', '/Content/Images/bank_step_on.png');
-    }
-});
+//$(".nav li span span img").on("click", function () {
+//    $("#img_confirmation_step").attr('src', '/Content/Images/confirmation_step.png');
+//    $("#img_submit_step").attr('src', '/Content/Images/submit_step.png');
+//    $("#img_certify_step_step").attr('src', '/Content/Images/certify_step.png');
+//    $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step.png');
+//    $("#img_bank_attachment_step").attr('src', '/Content/Images/attachment_step.png');
+//    $("#img_bank_step").attr('src', '/Content/Images/bank_step.png');
+//    $("#img_info_step").attr('src', '/Content/Images/info_step.png');
+
+//    if ($(this)[0].id == "img_confirmation_step") {
+//        $(this).attr('src', '/Content/Images/confirmation_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_submit_step_step") {
+//        $(this).attr('src', '/Content/Images/submit_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_certify_step_step") {
+//        $(this).attr('src', '/Content/Images/certify_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_bank_verify_step") {
+//        $(this).attr('src', '/Content/Images/verify_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_bank_attachment_step") {
+//        $(this).attr('src', '/Content/Images/attachment_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_info_step") {
+//        $(this).attr('src', '/Content/Images/info_step_on.png');
+//    }
+//    if ($(this)[0].id == "img_bank_step") {
+//        $(this).attr('src', '/Content/Images/bank_step_on.png');
+//    }
+//});
 
 $("#btn_logout").on('click', function () {
     $('#exampleModal').modal('hide');
     sessionStorage.setItem('userName', "");
     sessionStorage.setItem('accessToken', "");
     sessionStorage.setItem('vendorNumber', "");
-    sessionStorage.setItem('payeeId', "");
+    //sessionStorage.setItem('payeeId', "");
 
     window.location.href = "/Home/Index";
 });
