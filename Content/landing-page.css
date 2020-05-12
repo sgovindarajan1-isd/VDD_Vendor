@@ -1,9 +1,10 @@
 ﻿body {
-    display: flex;
-     /*min-height: 150vh;*/  /* this one setting work space between header and footer
-    /*display: block;*/ /*this will make the grid in full width,  display : flex will bring the grid smaller width **/
+    /*display: flex;
     overflow: auto;
-    flex-direction: column;
+    flex-direction: column;*/
+
+    /*min-height: 150vh;*/ /* this one setting work space between header and footer
+    /*display: block;*/ /*this will make the grid in full width,  display : flex will bring the grid smaller width **/
 }
 
 main {

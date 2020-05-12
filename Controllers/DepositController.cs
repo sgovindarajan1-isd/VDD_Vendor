@@ -21,5 +21,10 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
+        public ActionResult _partialAttachment()
+        {
+            return View();
+        }
+
     }
 }

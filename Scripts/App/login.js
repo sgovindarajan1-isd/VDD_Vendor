@@ -1,6 +1,6 @@
 ﻿//var vdd = vdd || {};
 $(document).ready(function () {
-
+    $("#liNavigation").hide();
     var isNumberKey = function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode != 46 && charCode > 31
@@ -20,16 +20,22 @@ $(document).ready(function () {
             $("#errmsg").hide();
         }
     });
-
-    $('[data-toggle="popover"]').popover(); 
+        
     $('#btn_login').click(clicklogin);
 
     $(".validate").on('input', function (e) {      
         $("#lbl_invaliduserentry").text("");
     });
 
+    $('[data-toggle="popover"]').popover(); 
+
+    $('[data-toggle="popover"]').on('click', function (e) {
+        $('[data-toggle="popover"]').not(this).popover('hide');
+    });
+
     $('body').on('click', function (e) {
         if ($(e.target).data('toggle') !== 'popover'
+            
             && $(e.target).parents('.popover.in').length === 0) {
             $('[data-toggle="popover"]').popover('hide');
         }
@@ -45,8 +51,8 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-    //var userid = '000593'; //'000339';//'000076';
-    //var tin = '232116774'; //'942647607'; //'953765453';
+    //var userid = '000076'; //'000593'; //'000339';
+    //var tin = '953765453'; //'232116774'; //'942647607'; 
 
     var SecuredToken = '';
 
@@ -67,7 +73,7 @@ function loginExternalVendor(userid, tin) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
             sessionStorage.setItem('vendorNumber', userid);
-            sessionStorage.setItem('payeeId', data.data[0].PayeeId);
+            //sessionStorage.setItem('payeeId', data.data[0].PayeeId);
 
             if (data.data[0].IsValidUser == true) {
                 var UserName = data.data[0].UserName;
