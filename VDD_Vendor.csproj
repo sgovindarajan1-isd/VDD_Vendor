@@ -463,6 +463,7 @@
     <Content Include="packages\Newtonsoft.Json.12.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.xml" />
     <Content Include="packages\WebGrease.1.6.0\lib\WebGrease.dll" />
     <Content Include="packages\WebGrease.1.6.0\tools\WG.EXE" />
+    <Content Include="Scripts\App\bankdetails.js" />
     <Content Include="Scripts\App\contactus.js" />
     <Content Include="Scripts\App\DataTable\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\App\DataTable\dataTables.select.min.js" />
@@ -607,6 +608,7 @@
     <Content Include="Views\Home\GeneralInfo.cshtml" />
     <Content Include="Views\Shared\_partialPaymentInformation.cshtml" />
     <Content Include="Views\Deposit\_partialBankDetails.cshtml" />
+    <Content Include="Views\Deposit\_partialAttachment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

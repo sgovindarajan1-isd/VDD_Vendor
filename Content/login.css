@@ -18,7 +18,7 @@
 }
 
 .wrap-login100 {
-    border-radius: 40px;
+    /*border-radius: 40px;*/
     border: #f2f2f2;
     border-style: solid;
     background: #fff;
@@ -56,17 +56,7 @@
 
 /*---Input Controls--------------------------------------------------------------- */
 
-.form-control {
-    border: 2px solid #000060 !important;
-    border-radius: 9px !important;
-}
 
-.all-button {
-    width: 100%;
-    background-color: rebeccapurple !important ;
-    border-radius: 9px !important;
-    border-width: thick;
-}
 
 .login-small-font {
     font-size: small; 
