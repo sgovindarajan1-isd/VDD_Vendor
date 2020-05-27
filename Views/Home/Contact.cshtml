@@ -8,23 +8,11 @@
     <link href="~/Content/main2.css" rel="stylesheet" />
     <link src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>"
-
-
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-    <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
-    @*<link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />*@
-
-    <!-- BootstrapValidator CSS -->
-    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" />*@
-
-    <!-- BootstrapValidator JS -->
-    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>*@
-
 }
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row rowtwo" style="padding: 30px 10px 10px 10px">
+        <div class="col-sm-7 columnTwo" style="padding:20px 1px 10px 1px">
             <div class="row" style="padding-bottom: 10px">
                 <div class="col-md-6 mb-3">
                     <label>EMAIL</label>
@@ -33,7 +21,6 @@
 
             <div class="row" style="padding-bottom: 10px">
                 <div class="col-md-6 mb-3">
-                    @*Disb.DirectDeposit@auditor.lacounty.gov*@
                     <a href="Disb.DirectDeposit@auditor.lacounty.gov"> Disb.DirectDeposit@auditor.lacounty.gov </a>
                 </div>
             </div>
@@ -45,14 +32,13 @@
             </div>
             <div class="row" style="padding-bottom: 10px">
                 <div class="col-md-6 mb-3">
-                    Los Angeles County Auditor-Controller
-                    Disbursements Division
-                    Vendor Direct Deposit Unit
-                    500 W. Temple Street, Room 502
-                    Los Angeles, CA 90012
+                    <p style="line-height:normal">Los Angeles County Auditor-Controller</p>
+                    <p style="line-height:normal">Disbursements Division</p>
+                    <p style="line-height:normal">Vendor Direct Deposit Unit</p>
+                    <p style="line-height:normal">500 W. Temple Street, Room 502</p>
+                    <p style="line-height:normal">Los Angeles, CA 90012</p>
                 </div>
             </div>
-
 
             <div class="row" style="padding-bottom: 10px">
                 <div class="col-md-6 mb-3">
@@ -60,7 +46,7 @@
                 </div>
             </div>
             <div class="row" style="padding-bottom: 10px">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-7 mb-3">
                     Monday through Friday from 8a.m. to 5p.m.
                 </div>
             </div>
@@ -75,10 +61,9 @@
                     Phone: (213) 974-4796
                 </div>
             </div>
-
-
         </div>
-        <div class="col-sm-5">
+
+        <div class="col-sm-5 columnTwo">
             <p>
                 Have a question or need help? We would like to hear from you.  Please
                 complete and submit the contact form below to receive a response to  your inquiry.
@@ -86,16 +71,15 @@
             <div style="padding-bottom: 3pt">
                 (* Indicates a required field.)
             </div>
-        </div>
 
-        <div class="col-sm-4">      
-            <div class="row padding-bottom-div form-group">
+
+            <div class="padding-bottom-div">
                 <label for="company">*Company</label>
-                <input type="text" class="form-control" id="txtCompany" name="Company" placeholder="Company Name" required >
-                <span id="companyspan" class="errmessage"/>
+                <input type="text" class="form-control" id="txtCompany" name="Company" placeholder="Company Name" required>
+                <span id="companyspan" class="errmessage" />
             </div>
 
-            <div class="row padding-bottom-div">
+            <div class="padding-bottom-div">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">*First Name</label>
                     <input type="text" class="form-control" id="txtFirstName" name="FirstName" placeholder="Your First Name" required>
@@ -108,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="row padding-bottom-div">
+            <div class="padding-bottom-div">
                 <div class="col-md-6 mb-3">
                     <label for="phone">*Phone</label>
                     <input type="text" class="form-control" id="txtPhone" name="Phone" placeholder="213-123-4567" required>
@@ -121,13 +105,21 @@
                 </div>
             </div>
 
-            <div class="row padding-bottom-div">
+            <div class="padding-bottom-div">
                 <label for="subject">*Subject</label>
-                <input type="text" class="form-control" id="txtSubject" name="Subject" placeholder="" required>
+                <select id="txtSubject" class="form-control" placeholder="--SELECT Subject ">
+                    <option value="-1" selected>--SELECT Subject </option>
+                    <option value="1">Vendor code issue</option>
+                    <option value="2">Where to change address</option>
+                    <option value="3">When will I receive my payment</option>
+                    <option value="4">I did not receive my payment</option>
+                    <option value="5">Other</option>
+                </select>
+
                 <span id="subjectspan" class="errmessage invalid-feedback" />
             </div>
 
-            <div class="row">
+            <div>
                 <label for="message">*Message</label>
                 <textarea class="form-control" id="txtMessage" name="Message" rows="7" cols="30" placeholder="Your Message" required></textarea>
                 <span id="messagespan" class="errmessage invalid-feedback" />
@@ -139,16 +131,131 @@
             <div style="padding-bottom: 3pt" class="form-group">
                 <button class="btn-primary btn button-header-color" id="btn_contactus_submit" type="button"> Submit </button>
             </div>
-
-
         </div>
     </div>
-</div>
+
+            @*<div class="row row-wrapper">
+                <div class="col-sm-6" style="padding-top: 20px">
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            <label>EMAIL</label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            <a href="Disb.DirectDeposit@auditor.lacounty.gov"> Disb.DirectDeposit@auditor.lacounty.gov </a>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            <label>MAILING ADDRESS</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            Los Angeles County Auditor-Controller
+                            Disbursements Division
+                            Vendor Direct Deposit Unit
+                            500 W. Temple Street, Room 502
+                            Los Angeles, CA 90012
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            <label>OFFICE HOURS</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            Monday through Friday from 8a.m. to 5p.m.
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            <label>WE CAN BE REACHED BY</label>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 10px">
+                        <div class="col-md-6 mb-3">
+                            Phone: (213) 974-4796
+                        </div>
+                    </div>
 
 
+                </div>
+                <div class="col-sm-5" style="padding-top: 20px">
+                    <p>
+                        Have a question or need help? We would like to hear from you.  Please
+                        complete and submit the contact form below to receive a response to  your inquiry.
+                    </p>
+                    <div style="padding-bottom: 3pt">
+                        (* Indicates a required field.)
+                    </div>
+                </div>
 
-@*Los Angeles County Auditor-Controller
-    Disbursements Division
-    Vendor Direct Deposit Unit
-    500 W. Temple Street, Room 502
-    Los Angeles, CA 90012*@
+                <div class="col-sm-4" style="padding-top: 20px">
+                    <div class="row padding-bottom-div form-group">
+                        <label for="company">*Company</label>
+                        <input type="text" class="form-control" id="txtCompany" name="Company" placeholder="Company Name" required>
+                        <span id="companyspan" class="errmessage" />
+                    </div>
+
+                    <div class="row padding-bottom-div">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">*First Name</label>
+                            <input type="text" class="form-control" id="txtFirstName" name="FirstName" placeholder="Your First Name" required>
+                            <span id="firstNamespan" class="errmessage" />
+                        </div>
+                        <div class="col-md-6 mb-3" style="padding-left: 4px">
+                            <label for="lastName">*Last Name</label>
+                            <input type="text" class="form-control" id="txtLastName" name="LastName" placeholder="Your Last Name" required>
+                            <span id="lastNamespan" class="errmessage" />
+                        </div>
+                    </div>
+
+                    <div class="row padding-bottom-div">
+                        <div class="col-md-6 mb-3">
+                            <label for="phone">*Phone</label>
+                            <input type="text" class="form-control" id="txtPhone" name="Phone" placeholder="213-123-4567" required>
+                            <span id="phonespan" class="errmessage invalid-feedback" />
+                        </div>
+                        <div class="col-md-6 mb-3" style="padding-left: 4px">
+                            <label for="email">*Email</label>
+                            <input type="text" class="form-control" id="txtEmail" name="Email" placeholder="Your Email Name" required>
+                            <span id="emailspan" class="errmessage invalid-feedback" />
+                        </div>
+                    </div>
+
+                    <div class="row padding-bottom-div">
+                        <label for="subject">*Subject</label>
+                        <select id="txtSubject" class="form-control" placeholder="--SELECT Subject ">
+                            <option value="-1" selected>--SELECT Subject </option>
+                            <option value="1">Vendor code issue</option>
+                            <option value="2">Where to change address</option>
+                            <option value="3">When will I receive my payment</option>
+                            <option value="4">I did not receive my payment</option>
+                            <option value="5">Other</option>
+                        </select>
+
+                        <span id="subjectspan" class="errmessage invalid-feedback" />
+                    </div>
+
+                    <div class="row">
+                        <label for="message">*Message</label>
+                        <textarea class="form-control" id="txtMessage" name="Message" rows="7" cols="30" placeholder="Your Message" required></textarea>
+                        <span id="messagespan" class="errmessage invalid-feedback" />
+                    </div>
+                    <div style="padding-bottom: 3pt">
+                        (0/1000 charcters)
+                    </div>
+
+                    <div style="padding-bottom: 3pt" class="form-group">
+                        <button class="btn-primary btn button-header-color" id="btn_contactus_submit" type="button"> Submit </button>
+                    </div>
+                </div>
+            </div>*@
+        </div>

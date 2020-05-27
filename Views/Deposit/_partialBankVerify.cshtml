@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Verify Bank Details";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/App/bankdetails.js"></script>
+    <link href="~/Content/main2.css" rel="stylesheet" />
+}
+<div class="container">
+    <div class="row rowtwo" style="padding: 30px 0px 100px 0px">
+        <div class="col-sm-7 columnTwo" style="padding:20px 1px 10px 1px">
+            <div class="form-group padding-bottom-div">
+                <label for="Type Of Account" class="col-sm-5">Type of Account</label>
+                <div class="col-sm-7">
+                    @* <input type="text" class="form-control" id="txtAccountType" placeholder="" value="" required>*@
+                    <span id="accountType" class="fontBold" />
+                </div>
+            </div>
+
+            <div class="form-group padding-bottom-div">
+                <label for="Bank Account Number" class="col-sm-5">
+                    Name on Bank Account
+                </label>
+                <div class="col-sm-7">
+                    <div style="float:left">
+                        <span id="nameonbankAc" class="fontBold" />
+                    </div>
+                    <div style="float:right">
+                        <button class="btn-primary btn button-header-color" data-toggle="alertmodal" data-target=".bd-example-modal-lg" style="white-space: normal !important;font-size:10px" id="btn_verify_notyou"> Not you? Click Here </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group padding-bottom-div">
+                <label for="Bank Account Number" class="col-sm-5">
+                    Bank Account Number
+                </label>
+                <div class="col-sm-7">
+                    <span id="bankAcNo" class="fontBold" />
+                </div>
+            </div>
+
+            <div class="form-group padding-bottom-div">
+                <label for="" class="col-sm-5">
+                    Bank Routing Number
+                </label>
+
+                <div class="col-sm-7">
+                    <span id="bankRoutingNo" class="fontBold" />
+                </div>
+            </div>
+
+            <div class="form-group fontBold">
+                <div>Does the above information match your attachment?</div>
+            </div>
+            <div class="form-group padding-bottom-div">
+                <div style="padding : 50pt 3pt; text-align: center">
+                    <button class="btn btn-primary button-header-color" id="btn_verify_yes"> Yes </button>
+                    <button class="btn btn-primary button-header-color" id="btn_verify_no"> No </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 columnTwo">
+            <div id="divBankVerifyImage" style="text-align: center; display:none ; padding : 20pt 3pt;">
+                <img src="~/Content/images/attachment_step.png" />
+
+                <span id="modifiedFileName" class="text-bold attachment-header">
+                    <a id="filelink" class="text-bold attachment-header"></a>
+                </span>
+            </div>
+
+            <div id="divBankVerifyDoc" class="container  imagearea1 responsive" style=" display:none; overflow:hidden;  max-width:500px; width:100%; max-height:400px; height: 100%">
+                <img id="Verifyimg" />
+            </div>
+        </div>
+    </div>
+</div>
+

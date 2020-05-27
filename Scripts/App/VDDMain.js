@@ -12,14 +12,17 @@ window.__INITIAL_STATE__ = {
     IsValidUser: false
 };
 
-$('#lbl_userName').on('click', function (e) {
-    $('#exampleModal').modal('show');
+$('#img_username').on('click', function (e) {
+    //$('#logoutModal').modal('show');
 });
 
-
-$(".nav li").on("click", function (e) {
-    e.preventDefault();
+$('.liselect').on('click', function () {
+    //$(this).toggleClass('background_selected');
 });
+
+//$(".nav li").on("click", function (e) {
+//   // e.preventDefault();
+//});
 //    $(".nav li").removeClass("active");
 //    --$(".nav li span span").removeClass("disabled");
 //    $(this).addClass("active");
@@ -59,7 +62,7 @@ $(".nav li").on("click", function (e) {
 //});
 
 $("#btn_logout").on('click', function () {
-    $('#exampleModal').modal('hide');
+    $('#logoutModal').modal('hide');
     sessionStorage.setItem('userName', "");
     sessionStorage.setItem('accessToken', "");
     sessionStorage.setItem('vendorNumber', "");
@@ -71,3 +74,12 @@ $("#btn_logout").on('click', function () {
 $("#btn_generalInfo").on('click', function () {
     window.location.href = "/Home/UnAuthorized";
 });
+
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(email)) {
+        return false;
+    } else {
+        return true;
+    }
+}

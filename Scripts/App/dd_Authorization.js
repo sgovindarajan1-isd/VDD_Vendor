@@ -1,10 +1,12 @@
 ﻿var vdd = vdd || {};
 $(document).ready(function () {
     $("#liNavigation").show();
+    $(".nav li").removeClass("active");
+    $(".round-tab").css("border-color", "#e0e0e0");
+    $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
     var vendorNumber = sessionStorage.getItem('vendorNumber');
     //var payeeId = sessionStorage.getItem('payeeId');
-    //var vendordata;
 
     $.ajax({
         contentType: 'application/json; charset=utf-8',
@@ -46,6 +48,14 @@ $(document).ready(function () {
                 }
             });
 
+            var table = $('#ddGrid').DataTable();
+            table.rows(function (idx, data, node) {
+                if (data.Status.toLowerCase() === 'pending') {  // direct deposit
+                    $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
+                    $('#btn_deposit_next').hide();
+                    return false;
+                }
+            });
         },
         error: function (_XMLHttpRequest, textStatus, errorThrown) {
             if (_XMLHttpRequest.status == '401') {
@@ -55,28 +65,34 @@ $(document).ready(function () {
     });
 
     $('#btn_deposit_next').on('click', function (e) {
-        $(".nav li").removeClass("active");
-        $("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
-        $("#img_bank_step").addClass("active");
-
+        //$(".nav li").removeClass("active");
+        //$(".nav li").removeClass('background_selected');
+        //$("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
         var paymentRows = [];
         var table = $('#ddGrid').DataTable();
-        $.each(table.rows('.selected').data(), function () {
-            paymentRows.push({
-                VendorNumber: this["VendorNumber"],
-                VendorName: this["VendorName"],
-                VendorAddress: this["VendorAddress"],
-                RoutingNumber: this["RoutingNumber"],
-                AcccountNo: this["AcccountNo"],
-                AccountType: this["AccountType"],
-                RemittanceEmail: this["RemittanceEmail"],
-                Status: this["Status"],
-            });
-        })
+        if (table.rows('.selected').any()) {
+            $.each(table.rows('.selected').data(), function () {
+                paymentRows.push({
+                    VendorNumber: this["VendorNumber"],
+                    VendorName: this["VendorName"],
+                    VendorAddress: this["VendorAddress"],
+                    RoutingNumber: this["RoutingNumber"],
+                    AcccountNo: this["AcccountNo"],
+                    AccountType: this["AccountType"],
+                    RemittanceEmail: this["RemittanceEmail"],
+                    Status: this["Status"],
+                });
+            })
 
-        sessionStorage.setItem('paymentJson', paymentRows);
-        window.location.href = '/deposit/_partialBankDetails';
+            sessionStorage.setItem('paymentJson', JSON.stringify(paymentRows));
+            window.location.href = '/deposit/_partialBankDetails';
+        }
+        else {
+            toastr.options.positionClass = "toast-bottom-right";
+            toastr.warning("Please select atleast one Address to Continue!");            
+        }
     });
+
 });
 
    

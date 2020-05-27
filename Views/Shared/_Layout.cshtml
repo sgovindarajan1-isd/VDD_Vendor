@@ -11,6 +11,10 @@
     <link rel="manifest" href="./Content/Images/FavIcons/manifest.json">
     <link rel="mask-icon" href="./Content/Images/FavIcons/safari-pinned-tab.svg" color="#5bbad5">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
+
+
     @*<link href="//cdn.datatables.net/responsive/2.2.3/css/dataTables.responsive.css" />*@
 
     @*<script src="~/Scripts/App/dd_Authorization.js"></script>*@
@@ -18,9 +22,9 @@
     <meta name="theme-color" content="#ff0000">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Vender Deposit Application </title>
+    <title>Vendor Deposit Application </title>
 
-    <link href="./Content/print.css" rel="stylesheet" type="text/css" media="print" />
+    @*<link href="./Content/print.css" rel="stylesheet" type="text/css" media="print" />*@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7COpen+Sans:100,200,300,400,500,600,700,800,900%7CArimo:100,200,300,400,500,600,700,800,900" type="text/css">
     <link href="/Content/main2.css" rel="stylesheet" />
 
@@ -32,6 +36,7 @@
     @*vdd move this down*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 </head>
 <body>
@@ -44,9 +49,9 @@
                 <a target="_blank" href="https://lacounty.gov" style=" color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif; font-size:medium;font-weight:bold">lacounty.gov</a>
                 <div style="float:right">
                     <div>
-                        <div data-toggle="modal" data-target="#exampleModal" class="dropdown" style="z-index: 2000; cursor: pointer">
-                            <span id="hello" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
-                                <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#exampleModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
+                        <div data-toggle="modal" class="dropdown" style="z-index: 2000; cursor: pointer">
+                            <span id="img_username" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
+                                <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
                             </span>
                         </div>
                     </div>
@@ -65,159 +70,190 @@
     </div>
 
     <div id="wp_content">
-    <div id="grey-info-bar" class="content-font row-wrapper">
-        <div class="logo-bar-wrapper">
-            <div class="col-xs-12">
-                <h3>Vendor Direct Deposit Registration Portal</h3>
-                <div class="header-line header-line-purple"><span></span></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="liNavigation" class="row-wrapper row  row-home-gray">
-        <div class="row-inner ">
-            <div class="col-xs-12">
-                <div class="wizard">
-                    <div class="wizard-inner">
-                        <div class="connecting-line"></div>
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active" style="text-align:center">
-                                <span title="Payment Information" class="wizard-step" style="text-align:center">
-                                    <span class="round-tab ">
-                                        <img id ="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="padding-bottom:10px; font-size:smaller; text-align:left">billing Information</div>*@
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Enter Banking Information" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id ="img_bank_step" src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="font-size:smaller; text-align:left">Enter Bank Information</div>*@
-
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Add Attachment" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id ="img_bank_attachment_step" src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="font-size:smaller; text-align:left">Add Attachment</div>*@
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Verify Banking Information" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id ="img_bank_verify_step"  src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="font-size:smaller; text-align:left">Verify Bank Information</div>*@
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Certify" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id="img_certify_step_step" src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="font-size:smaller; text-align:left">Certify</div>*@
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Submit" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id="img_submit_step" src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                                @*<div style="font-size:smaller; text-align:left">Submit</div>*@
-                            </li>
-
-                            <li role="presentation" class="">
-                                <span title="Confirmation" class="wizard-step">
-                                    <span class="round-tab disabled ">
-                                        <img id="img_confirmation_step" src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
-                                    </span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
-                </div>
-
-                <div class="modal-body" style="text-align:center">
-                    Are you sure you want to logout?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" style="text-align:center" class="btn btn-default  btn-lg" data-dismiss="modal">No</button>
-                    <button id="btn_logout" type="button" class="btn btn-primary btn-lg">Yes</button>
+        <div id="grey-info-bar" class="content-font row-wrapper">
+            <div class="logo-bar-wrapper">
+                <div class="col-xs-12">
+                    <h3>Vendor Direct Deposit Registration Portal</h3>
+                    <div class="header-line header-line-purple"><span></span></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="layoutBody" class="row-wrapper" style="overflow:auto; min-height: 600px; padding-bottom:100px; " >
-        @*container-fluid*@
-        @* style="overflow:auto" row row-home*@
-        @RenderBody()
-    </div>
+        <div id="liNavigation" class="row-wrapper row  row-home-gray">
+            <div class="row-inner ">
+                <div class="col-xs-12">
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="liselect active" style="text-align:center">
+                                    <span title="Payment Information" class="wizard-step" style="text-align:center">
+                                        <span class="round-tab">
+                                            <img id="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="padding-bottom:10px; font-size:10px; text-align:center">Billing Information</div>
+                                </li>
 
-    @*----------footer start-----------*@
-    <div id="wp_footer-wrapper" class="row-wrapper">
-        @*navbar-fixed-bottom*@
-        <div id="wp_footer-widget-bar" class="widget">
-            <div class="wp_container1">
+                                <li role="presentation" class="liselect ">
+                                    <span title="Enter Banking Information" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_bank_step" src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Enter Bank Information</div>
 
-                <div class="wrapper">
-                    <div id="first">
-                        <section class="widget-area">
-                            <div class="widget">
-                                <div class="textwidget">
-                                    <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="/Content/Images/LACountySeal.png" alt="County Seal">
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <div id="second">
-                        @*<section class="widget-area">
-        <div class="widget">
-            <div id="link_bar">*@
-                        <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-envelope.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="" title="Contact Us" href="/Home/Contact">Contact Us</a>
+                                </li>
 
-                        <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-information.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="" title="Contact Us" href="/Home/GeneralInfo">General Information</a>
+                                <li role="presentation" class="">
+                                    <span title="Add Attachment" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_bank_attachment_step" src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Add Attachment</div>
+                                </li>
 
-                        <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/Footer_QuestionIcon.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
-                        <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
-                        @* </div>
-            </div>
-        </section>*@
+                                <li role="presentation" class="">
+                                    <span title="Verify Banking Information" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_bank_verify_step" src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Verify Bank Information</div>
+                                </li>
 
-                        <div id="link_bar">
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
-                            <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
+                                <li role="presentation" class="">
+                                    <span title="Certify" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_certify_step" src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Certify</div>
+                                </li>
+
+                                <li role="presentation" class="">
+                                    <span title="Submit" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_submit_step" src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Submit</div>
+                                </li>
+
+                                <li role="presentation" class="">
+                                    <span title="Confirmation" class="wizard-step">
+                                        <span class="round-tab disabled ">
+                                            <img id="img_confirmation_step" src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
+                                        </span>
+                                    </span>
+                                    <div style="font-size:10px; text-align:center">Confirmation</div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div><!--.container-->
-        </div><!--#footer-widget-bar-->
-    </div>
+
+            </div>
+        </div>
+
+        <div id="alertModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p id="alertContent"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_alertOK" class="btn button-header-color">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
+                    </div>
+
+                    <div class="modal-body" style="text-align:center">
+                        Are you sure you want to logout?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style="text-align:center" class="btn btn-default  btn-lg" data-dismiss="modal">No</button>
+                        <button id="btn_logout" type="button" class="btn btn-primary btn-lg">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+        <div class="modal" id="logoutModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">LOGOUT</h5>
+                    </div>
+                    <div class="modal-body" style="text-align:center">
+                        Are you sure you want to logout?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style="text-align:center" class="btn btn-default  btn-lg" data-dismiss="modal">No</button>
+                        <button id="btn_logout" type="button" class="btn btn-primary btn-lg">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="layoutBody" class="row-wrapper" style="overflow:auto; min-height: 600px; padding-bottom:100px; ">
+            @* style="overflow:auto" row row-home*@
+            @RenderBody()
+        </div>
+
+        @*----------footer start-----------*@
+        <div id="wp_footer-wrapper" class="row-wrapper">
+            @*navbar-fixed-bottom*@
+            <div id="wp_footer-widget-bar" class="widget">
+                <div class="wp_container1">
+
+                    <div class="wrapper">
+                        <div id="first">
+                            <section class="widget-area">
+                                <div class="widget">
+                                    <div class="textwidget">
+                                        <img style="PADDING-LEFT: 10px; PADDING-TOP: 0px" src="/Content/Images/LACountySeal.png" alt="County Seal">
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div id="second">
+                            @*<section class="widget-area">
+                            <div class="widget">
+                                <div id="link_bar">*@
+                            <img id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-envelope.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                            <a target="" title="Contact Us" href="/Home/Contact">Contact Us</a>
+
+                            <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/fa%20fa-information.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                            <a target="" title="Contact Us" href="/Home/GeneralInfo">General Information</a>
+
+                            <img id="Image3" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/Footer_QuestionIcon.png" style="width: 20px; height: 20px; margin: 0px auto; vertical-align: middle;">
+                            <a target="_blank" title="FAQ" href="https://directdeposit.lacounty.gov/Documents/Direct_Deposit_FAQ_V3.pdf">FAQ</a>
+                            @* </div>
+                                </div>
+                            </section>*@
+
+                            <div id="link_bar">
+                                <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/privacy/">Privacy Policy</a>  |
+                                <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/user/">Terms of Use</a>  |
+                                <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/accessibility/">Accessibility</a>  |
+                                <a target="_blank" title="" href="http://www.lacounty.gov/wps/portal/lac/disclaimer/">Disclaimer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--.container-->
+            </div><!--#footer-widget-bar-->
+        </div>
 
     </div>  @*wp_content*@
 

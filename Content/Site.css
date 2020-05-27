@@ -1,9 +1,13 @@
-﻿@media screen and (min-width: 992px) {
+﻿
+@media screen and (min-width: 992px) {
     .padding-bottom-div {
         padding-bottom: 30px;
     }
 }
 
+.fontBold {
+    font-weight:bold;
+}
 
 /* Create two equal columns */
 #ddGrid_filter label input {
@@ -24,7 +28,7 @@
 .columnTwo {
     flex: 50%;
     padding: 20px;
-    margin: auto;
+    /*margin: auto;*/
 }
 
 /* On screens that are 992px wide or less, go from four columns to two columns */
@@ -54,6 +58,18 @@
     background-color: #299aec !important; /*rebeccapurple 
     border-radius: 9px !important;
     border-width: thick;*/
+}
+
+.btn-continue { /*green color */
+    color: #fff;
+    background-color: #5cb85c !important;
+    border-color: #4cae4c !important;
+}
+
+.btn-back {   /*white color */
+    color: #333;
+    background-color: #fff;
+    border-color: #808080 !important;
 }
 
 

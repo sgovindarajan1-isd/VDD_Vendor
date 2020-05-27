@@ -12,40 +12,46 @@
     <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
     <script src="~/Scripts/App/dd_Authorization.js"></script>
 }
-    <div class="para">
-        <p> Your Direct Deposit bank account will be associated with the following address(es).</p>
-    </div>
+<div id="pendingMessage" class="para errmessage" style="font-weight:bold; text-align:center" visible="false"></div>
 
-    <div class="gj-margin-top-10" >
-        <table id="grid"></table>
-    </div>
+<div class="para">
+    <p> Your Direct Deposit bank account will be associated with the following address(es).</p>
+</div>
 
-    <div class="gj-margin-top-10">
-        <table id="ddGrid" class="w-auto mdl-data-table cell-border" cellspacing="0" style="border-collapse:collapse; border: 1px solid black; width:100%">
-            <thead>
-                <tr class="button-header-color">
-                    <th></th>
-                    <th>Address</th>
-                    <th>Routing Number</th>
-                    <th>Acccount #</th>
-                    <th>Account Type</th>
-                    <th>Remittance Email</th>
-                    <th>Current Payment Status</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+<div class="gj-margin-top-10">
+    <table id="grid"></table>
+</div>
 
-    <div class="para">
-        <p> To update your address information, please contact the Department you're doing business with.</p>
-    </div>
+<div class="gj-margin-top-10">
+    <table id="ddGrid" class="w-auto mdl-data-table cell-border" cellspacing="0" style="border-collapse:collapse; border: 1px solid black; width:100%">
+        <thead>
+            <tr class="button-header-color">
+                <th></th>
+                <th>Address</th>
+                <th>Routing Number</th>
+                <th>Acccount #</th>
+                <th>Account Type</th>
+                <th>Remittance Email</th>
+                <th>Current Payment Status</th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
-    <div class="container"  style="padding-bottom: 10px">
+<div class="para">
+    <p> To update your address information, please contact the Department you're doing business with.</p>
+</div>
+
+@*<div class="container"  style="padding-bottom: 10px">
         <div class="row">
             <div class="col text-center" type="submit" name="action" id="btn_next">
                 <button class="btn btn-default button-header-color" id="btn_deposit_next">Next</button>
             </div>
         </div>
-    </div>
+    </div>*@
+
+<div style="padding : 50pt 3pt; text-align: center" class=" container row-wrapper">
+    <button style="float: right" class="btn btn-continue" id="btn_deposit_next"> Continue </button>
+</div>
 
 

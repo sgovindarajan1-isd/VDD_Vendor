@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Certify";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/App/certifyconfirm.js"></script>
+    <link href="~/Content/main2.css" rel="stylesheet" />
+}
+<div class="container" style="padding-top: 20px;">
+    <div class="row-wrapper row1 row-home-gra1y">
+        <div class="row-inner1">
+            <div class="col-xs-121">
+                <div class="wizard1">
+                    <div class="wizard-inner1">
+                        <blockquote>
+                            <p style="padding-bottom: 3pt">
+                                a.	I hereby confirm my authority, as an authorized signer of the above-referenced payee, to issue these instructions to credit and/or debit the bank account. I authorize the County of Los Angeles, Department of Auditor-Controller, or their agents, to direct deposit all entitled payments to the above-referenced bank account and to initiate (if necessary) debit entries or adjustments for any credit (1) that was made in error, (2) of an incorrect amount, or (3) that were duplicates of a correct payment.
+                            </p>
+                            <p style="padding-bottom: 3pt">
+                                This authorization will remain in effect until (1) five business days after a written cancellation request is received by the Auditor-Controller; or, (2) Auditor-Controller in its sole discretion determines to issue a warrant in place of an electronic deposit. I understand that if my account is closed without providing the Department of Auditor-Controller at least five business days written notice, may payment may be delayed.
+                            </p>
+                            <p style="padding-bottom: 3pt">
+                                I also understand that I will not receive remittance information via mail. Instead, I will receive remittance information via email, and I will need to access my <span style="text-decoration: underline"> Vendor Self-Service </span>to retrieve detail information about my payment(s).
+                            </p>
+
+
+                            <div class="col-sm-12" style="text-align: center">
+
+                                @*<div class="block">
+                                        <label style="display: inline-block">Autho sign name</label>
+                                        <input type="text" />
+                                    </div>*@
+
+
+                                <div class="form-group padding-bottom-div">
+                                    <label for="Signer Name" class="col-sm-6 certify-text-spacing" style="padding-right: 15px">
+                                        Authorized Signer’s Name
+                                        <img data-toggle="popover" data-placement="top" data-content="If you are the payee, enter your name. If the payee is an organization, enter the authorized representative’s name." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div style="float:left">
+                                            <input type="text" class="form-control" id="txtSignerName" maxlength="15" placeholder="Authorized Signer’s Name" value="" required>
+                                            <span id="signerName" class="fontBold errmessage" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group padding-bottom-div">
+                                    <label for="Signer Title" class="col-sm-6 certify-text-spacing" style="padding-right: 15px;">
+                                        Authorized Signer’s Title
+                                        <img data-toggle="popover" data-placement="top" data-content="If you are the payee, enter your title. If the payee is an organization, enter the authorized representative’s title." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div style="float:left">
+                                            <input type="text" class="form-control" id="txtSignerTitle" maxlength="15" placeholder="Authorized Signer’s Title" value="" required>
+                                            <span id="signerTitle" class="fontBold errmessage" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group padding-bottom-div">
+                                    <label for="Signer Phone" class="col-sm-6 certify-text-spacing" style="padding-right: 15px;">
+                                        Authorized Signer’s Phone #
+                                        <img data-toggle="popover" data-placement="top" data-content="Enter authorized signer’s phone number." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div style="float:left">
+                                            <input type="text" class="form-control" id="txtSignerPhone" maxlength="15" placeholder="Authorized Signer’s Phone #" value="" required>
+                                            <span id="signerPhone" class="fontBold errmessage" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group padding-bottom-div">
+                                    <label for="Signer Email" class="col-sm-6 certify-text-spacing" style="padding-right: 15px;">
+                                        Authorized Signer’s Email
+                                        <img data-toggle="popover" data-placement="top" data-content="Enter authorized signer’s email address." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                                    </label>
+
+                                    <div class="col-sm-6">
+                                        <div style="float:left">
+                                            <input type="text" class="form-control" id="txtSignerEmail" maxlength="15" placeholder=" Authorized Signer’s Email" value="" required>
+                                            <span id="signerEmail" class="fontBold errmessage" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="fontBold" style="text-decoration: underline"><input id="chk_certify" type="checkbox" style="height: 20px; width: 20px;" />I authorize this request for direct deposit.</label>
+                                </div>
+
+                                <div style="padding-top :10pt; text-align: center" class="row-wrapper">
+                                    <button style="float: left" class="btn btn-back" id="btn_certify_back"> Back </button>
+                                    <button style="float: right" class="btn btn-continue" id="btn_certify_next"> Continue </button>
+                                </div>
+
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

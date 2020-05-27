@@ -24,7 +24,8 @@ $(document).ready(function () {
     $('#btn_login').click(clicklogin);
 
     $(".validate").on('input', function (e) {      
-        $("#lbl_invaliduserentry").text("");
+        //$("#lbl_invaliduserentry").text("");
+        $("#fileError_or_Info").html("");
     });
 
     $('[data-toggle="popover"]').popover(); 
@@ -51,8 +52,8 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-    //var userid = '000076'; //'000593'; //'000339';
-    //var tin = '953765453'; //'232116774'; //'942647607'; 
+  //  var userid = 'SP8313';//'000076'; //'000593'; //'000339';
+  //  var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
 
     var SecuredToken = '';
 
@@ -84,14 +85,16 @@ function loginExternalVendor(userid, tin) {
                 $("#loaderDiv").hide();
             }
             else {
-                $("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
                 $("#loaderDiv").hide();
             }
         }
         , complete: function (jqXHR) {
             
             if (jqXHR.status == '404') {
-                $("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
             }
             $("#loaderDiv").hide();
         }

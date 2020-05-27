@@ -5,23 +5,24 @@
 @section Scripts
 {
     <script src="~/Scripts/App/bankdetails.js"></script>
+    <script src="~/Scripts/App/jquery.json.js"></script>
     <link href="~/Content/main2.css" rel="stylesheet" />
 }
 <div class="container">
     <div class="row padding-bottom-div" style="text-align:center;">
         <p class="text-bold attachment-header"> Select one attachment you are providing: </p>
         <div class="col-sm-4 ">
-            <button class="btn-primary btn button-header-color buttonBig" id="btn_voidCheck"> Voided Check </button>
+            <button class="btn-primary btn  buttonBig" id="btn_voidCheck"> Voided Check </button>
         </div>
         <div class="col-sm-4 ">
-            <button class="btn-primary btn button-header-color buttonBig" id="btn_Statement"> First page of Bank Statement </button>
+            <button class="btn-primary btn  buttonBig" id="btn_Statement"> First page of Bank Statement </button>
         </div>
         <div class="col-sm-4 ">
-            <button class="btn-primary btn button-header-color buttonBig" id="btn_verifyLetter"> Bank Verification Letter </button>
+            <button class="btn-primary btn buttonBig" id="btn_verifyLetter"> Bank Verification Letter </button>
         </div>
     </div>
 
-    <div style="text-align: center" class="custom-file-input container" id="pnlAttachment" visible="false">
+    <div class="container" style="text-align: center;vertical-align:central" id="pnlAttachment" visible="false">
         <label for="attachment">
             Attachment
             <span>
@@ -30,28 +31,31 @@
                     The file you attach must either be .PDF, .DOC, .DOCX, .JPG, .JPEG, .GIF, or .PNG. No other file types are allowed." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
             </span>
         </label>
-        <input type="file" accept="image/*,.PDF, .DOC, .DOCX, .JPG, .JPEG, .GIF, .PNG">
-        <input type="text" id="txtattachment">
-        <input type="button" style="width: 150px" class="btn-primary btn button-header-color" value="Upload Attachment">
-        @*<button type="button" style="width: 150px;" class="btn-primary btn button-header-color" id="btnAttachmentUpload">Upload Attachment</button>*@
-        <div>
-            <span id="fileError_or_Info" style="text-align: center" class="errmessage" />
 
+        <div style="text-align: center" class="custom-file-input" visible="false">
+
+            <input type="file" accept="image/*,.PDF, .DOC, .DOCX, .JPG, .JPEG, .GIF, .PNG">
+            <input type="text" id="txtattachment">
+            <input type="button" style="width: 150px" class="btn-primary btn button-header-color" value="Upload Attachment">
+            <div>
+                <span id="fileError_or_Info" style="text-align: center" class="errmessage" />
+            </div>
         </div>
     </div>
 
-    <div style="text-align: center; padding : 20pt 3pt;">
-        <span id="fileExtention" class="text-bold attachment-header" />
-        @*<input type="button" style="float: left" class="btn-primary btn button-header-color" value="Delete">*@
-    </div>
+    <div id="divmodifiedFileName" style="text-align: center; padding : 20pt 3pt;">
+        <img src="~/Content/images/attachment_step.png" visible="false" />
 
+        <span id="modifiedFileName" class="text-bold attachment-header">
+        </span>
+        <button type="button" id="btn_FileAttachmentDelete" style="width : auto" class="btn-primary btn button-header-color"> Delete</button>
+    </div>
 
     <p class="text-bold attachment-header"> The maximum file size allowed is 10 mb.</p>
 
-    <div style="padding : 50pt 3pt; text-align: center">
-        <button class="btn-primary btn button-header-color" id="btn_bank_back"> Back </button>
-        <button class="btn-primary btn button-header-color" id="btn_bank_next"> Next </button>
+    <div style="padding : 50pt 3pt; text-align: center" class="row-wrapper">
+        <button style="float: left" class="btn btn-back" id="btn_attach_back"> Back </button>
+        <button style="float: right" class="btn btn-continue" id="btn_attach_next"> Continue </button>
     </div>
-
 </div>
 
