@@ -607,6 +607,8 @@
     <Content Include="Template\DirectDepositLocation.aspx" />
     <Content Include="Views\Deposit\_partialBankVerify.cshtml" />
     <Content Include="Views\Deposit\_partialCertify.cshtml" />
+    <Content Include="Views\Deposit\_partialSubmit.cshtml" />
+    <Content Include="Views\Deposit\_partialConfirmation.cshtml" />
     <None Include="Web References\ABAServices\abaservice.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

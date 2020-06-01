@@ -51,7 +51,7 @@ function btn_contactus_click() {
     }
 
     if (eMail.length <= 0) {
-        $("#emailspan").html('EMail required');
+        $("#emailspan").html('Email required');
         bool = false;
     }
     else if (!isEmail(eMail)) {
@@ -92,11 +92,8 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
             'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
         },
         success: function (data) {
-            debugger;
         }
         , complete: function (jqXHR) {
-            debugger;
-
         }
         , error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status == '401') {

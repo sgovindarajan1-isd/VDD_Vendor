@@ -38,7 +38,6 @@
         //img.src = sessionStorage.getItem('imagefile-selectedFile');  //working earlier
         img.src = sessionStorage.getItem('uploadedfile');
         $(".imagearea").html(img);
-        debugger;
 
         var str = ".pdf,.doc,.docx,";
         var strarray = str.split(",");
@@ -108,7 +107,6 @@
     });
 
     function handleFileSelect(fileInput) {  ////  if sessionstorage 'uploadedfile'  works delete this key
-        debugger;
         var file = fileInput;
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -116,7 +114,6 @@
             img.src = reader.result;
             //localStorage.theImage = reader.result; //stores the image to localStorage
             sessionStorage.setItem('imagefile-selectedFile', reader.result);
-            //$(".imagearea").html(img);
         }
 
         var aa = reader.readAsDataURL(file);
@@ -127,8 +124,8 @@
     };
 
     $('input[type="file"]').change(function (e) {
-        debugger;
         var ext = ['.PDF', '.DOC', '.DOCX', '.JPG', '.JPEG', '.GIF', '.PNG'];
+        $("#fileError_or_Info").html("");
         var fileName = e.target.files[0].name;
         var file = e.target.files[0];
 
@@ -148,7 +145,6 @@
                 var cHour = today.getHours();
                 var cMin = today.getMinutes();
                 var cSec = today.getSeconds();
-                debugger;
                 var d = new Date($.now());
                 var stmp = d.getDate() + '' + (d.getMonth() + 1) + '' + d.getFullYear() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
 
@@ -166,6 +162,7 @@
         sessionStorage.setItem('selectedFile', null);
         sessionStorage.setItem('imagefile-selectedFile', null);
         $("#modifiedFileName").text("");
+        $("#fileError_or_Info").html("");
         $("#divmodifiedFileName").hide();
         $("#txtattachment").val("");
     });
@@ -185,7 +182,6 @@
     });
 
       $('#btn_bank_next').on('click', function (e) {
-        debugger;
         var accountType = $('#txtAccountType').val();
         var bankAcNo = $('#txtBankAcNo').val();
         var re_BankAcNo = $('#txtRe-BankAcNo').val();
@@ -197,21 +193,21 @@
         var bool = true;
 
         if (parseInt(accountType) <= 0) {
-            $("#accountType").html('Account Type is required');
+            $("#accountType").html('Account Type is required.');
             bool = false;
         } else {
             $("#accountType").html('');
         }
 
         if (bankAcNo.length <= 0) {
-            $("#bankAcNo").html('Bank Account Number is required');
+            $("#bankAcNo").html('Bank Account Number is required.');
             bool = false;
         } else {
             $("#bankAcNo").html('');
         }
 
         if (re_BankAcNo.length <= 0) {
-            $("#re_BankAcNo").html('Re Enter Bank Account Number is required');
+            $("#re_BankAcNo").html('Re Enter Bank Account Number is required.');
             bool = false;
         } else if (bankAcNo !== re_BankAcNo) {
             $("#re_BankAcNo").html('Bank Account Numbers do not match.');
@@ -221,12 +217,12 @@
         }
 
         if (bankRoutingNo.length <= 0) {
-            $("#bankRoutingNo").html('Bank Routing Number is required');
-            $("#txtFinancialIns").css({ "background-color": "#ccc" });
+            $("#bankRoutingNo").html('Bank Routing Number is required.');
+           // $("#txtFinancialIns").css({ "background-color": "#ccc" });
             bool = false;
         } else {
             $("#bankRoutingNo").html('');
-            $("#txtFinancialIns").css({ "background-color": "#fff" });
+            //$("#txtFinancialIns").css({ "background-color": "#fff" });
         }
 
         if ((financialIns.length <= 0) || (financialIns === ("no banks found"))) {
@@ -237,21 +233,21 @@
         }
 
         if (dDNotifiEmail.length <= 0) {
-            $("#dDNotifiEmail").html('Email Address is required');
+            $("#dDNotifiEmail").html('Email Address is required.');
             bool = false;
         } else if (!isEmail(dDNotifiEmail)) {
-            $("#dDNotifiEmail").html('Please enter valid Email Address');
+            $("#dDNotifiEmail").html('Please enter valid Email Address.');
             bool = false;
         } else {
             $("#dDNotifiEmail").html('');
         }
 
         if (reDDNotifiEmail.length <= 0) {
-            $("#reDDNotifiEmail").html('Re Enter Email Address is required');
+            $("#reDDNotifiEmail").html('Re Enter Email Address is required.');
             bool = false;
         } else if (!isEmail(reDDNotifiEmail)) {
 
-            $("#reDDNotifiEmail").html('Please enter valid Email Address');
+            $("#reDDNotifiEmail").html('Please enter valid Email Address.');
             bool = false;
         } else if (dDNotifiEmail !== reDDNotifiEmail) {
             $("#reDDNotifiEmail").html('Direct Deposit Notification Email Addresses do not match.');
@@ -285,15 +281,6 @@
             }
         });
     });
-
-    //function isEmail(email) {
-    //    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    //    if (!regex.test(email)) {
-    //        return false;
-    //    } else {
-    //        return true;
-    //    }
-    //}
 
     function storeDetails() {
         var bankdetailsRow = [];
@@ -394,7 +381,7 @@
                     sessionStorage.setItem('uploadedfileExtenstion', ext);    //to do get from config file
                 },
                 error: function (err) {
-                    alert(err.statusText);
+                   // alert(err.statusText);
                 }
             });
         } else {

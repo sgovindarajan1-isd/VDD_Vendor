@@ -37,7 +37,20 @@ namespace WebMaterialPOC.Controllers
         public ActionResult _partialCertify()
         {
             return View();
-        }        
+        }
+
+        public ActionResult _partialSubmit()
+        {
+            return View();
+        }
+
+
+        public ActionResult _partialConfirmation()
+        {
+            return View();
+        }
+
+        
 
         public string ValidateRoughtingNumber(string aba)
         {

@@ -25,7 +25,7 @@ $(document).ready(function () {
                     { 'data': ''},
                     { 'data': 'VendorAddress'},
                     { 'data': 'RoutingNumber' },
-                    { 'data': 'AcccountNo' },
+                    { 'data': 'AcccountNo', "width": '12%'  },
                     { 'data': 'AccountType' },
                     { 'data': 'RemittanceEmail' },
                    { 'data': 'Status', "width": '140px'  }

@@ -52,8 +52,8 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-  //  var userid = 'SP8313';//'000076'; //'000593'; //'000339';
-  //  var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
+    //var userid = 'SP8313';//'000076'; //'000593'; //'000339';
+    //var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
 
     var SecuredToken = '';
 
@@ -74,6 +74,7 @@ function loginExternalVendor(userid, tin) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
             sessionStorage.setItem('vendorNumber', userid);
+            sessionStorage.setItem('tin', tin);
             //sessionStorage.setItem('payeeId', data.data[0].PayeeId);
 
             if (data.data[0].IsValidUser == true) {

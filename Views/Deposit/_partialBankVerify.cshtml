@@ -8,27 +8,27 @@
     <link href="~/Content/main2.css" rel="stylesheet" />
 }
 <div class="container">
-    <div class="row rowtwo" style="padding: 30px 0px 100px 0px">
+    <div class="row rowtwo" style="padding: 30px 5px 100px 5px">
         <div class="col-sm-7 columnTwo" style="padding:20px 1px 10px 1px">
+
             <div class="form-group padding-bottom-div">
                 <label for="Type Of Account" class="col-sm-5">Type of Account</label>
                 <div class="col-sm-7">
-                    @* <input type="text" class="form-control" id="txtAccountType" placeholder="" value="" required>*@
                     <span id="accountType" class="fontBold" />
                 </div>
             </div>
 
             <div class="form-group padding-bottom-div">
-                <label for="Bank Account Number" class="col-sm-5">
+                <label for="Name on Bank Account" class="col-sm-5">
                     Name on Bank Account
                 </label>
                 <div class="col-sm-7">
                     <div style="float:left">
                         <span id="nameonbankAc" class="fontBold" />
                     </div>
-                    <div style="float:right">
-                        <button class="btn-primary btn button-header-color" data-toggle="alertmodal" data-target=".bd-example-modal-lg" style="white-space: normal !important;font-size:10px" id="btn_verify_notyou"> Not you? Click Here </button>
-                    </div>
+                    @*<div style="float:right">*@
+                        <button class="btn-primary btn button-header-color" data-toggle="alertmodal" data-target=".bd-example-modal-lg" style="margin-left: 20px; width: 20%; white-space: normal !important;font-size:7px" id="btn_verify_notyou"> Not you? Click Here </button>
+                    @*</div>*@
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                 <div>Does the above information match your attachment?</div>
             </div>
             <div class="form-group padding-bottom-div">
-                <div style="padding : 50pt 3pt; text-align: center">
+                <div style="padding : 50pt 3pt; text-align: right">
                     <button class="btn btn-primary button-header-color" id="btn_verify_yes"> Yes </button>
                     <button class="btn btn-primary button-header-color" id="btn_verify_no"> No </button>
                 </div>
