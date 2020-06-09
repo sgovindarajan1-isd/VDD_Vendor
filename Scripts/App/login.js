@@ -52,8 +52,8 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-    //var userid = 'SP8313';//'000076'; //'000593'; //'000339';
-    //var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
+    var userid = 'SP8313';//'000076'; //'000593'; //'000339';
+    var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
 
     var SecuredToken = '';
 

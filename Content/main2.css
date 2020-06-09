@@ -9,6 +9,7 @@ input[type=checkbox] {
     height: 100%;
     min-height: 600px;
     padding-bottom: 100px;
+    background-color: #f2f2f2 !important;
 }
 /* Layout spacing end */
 /*Start certify page*/
@@ -83,13 +84,13 @@ input[type=checkbox] {
     display: inline-block;
 }
 
-#second {
-    /*width: 400px;*/
+#footerNavLink {
+    width: 100%;
     display: inline-block;
-    padding-left: 200px;
     overflow: hidden;
     text-align: -webkit-center;
     vertical-align: middle;
+    text-align:center;
 }
 
 
@@ -16084,7 +16085,7 @@ span.round-tab:hover {
 .wizard li.active:after {
     content: " ";
     position: absolute;
-    left: 18%;
+    /*left: 18%;  --  VDD: this is making the triangle in the center of circle*/
     opacity: 1;
     margin: 0 auto;
     bottom: 0;

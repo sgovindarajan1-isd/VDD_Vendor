@@ -1,12 +1,13 @@
 ﻿var vdd = vdd || {};
 $(document).ready(function () {
     $("#liNavigation").show();
-    $(".nav li").removeClass("active");
+    //$(".nav li").removeClass("active");
     $(".round-tab").css("border-color", "#e0e0e0");
     $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
     var vendorNumber = sessionStorage.getItem('vendorNumber');
     //var payeeId = sessionStorage.getItem('payeeId');
+    $('#lbl_header').html('Payment Information');
 
     $.ajax({
         contentType: 'application/json; charset=utf-8',
@@ -75,6 +76,7 @@ $(document).ready(function () {
                 paymentRows.push({
                     VendorNumber: this["VendorNumber"],
                     VendorName: this["VendorName"],
+                    LocationID: this["LocationID"],
                     VendorAddress: this["VendorAddress"],
                     RoutingNumber: this["RoutingNumber"],
                     AcccountNo: this["AcccountNo"],

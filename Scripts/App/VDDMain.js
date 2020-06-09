@@ -83,3 +83,67 @@ function isEmail(email) {
         return true;
     }
 }
+
+
+
+
+(function ($) {
+	$.fn.menumaker = function (options) {
+		var cssmenu = $(this), settings = $.extend({
+			format: "dropdown",
+			sticky: false
+		}, options);
+		return this.each(function () {
+			$(this).find(".menu-button").on('click', function () {
+				$(this).toggleClass('menu-opened');
+				var mainmenu = $(this).next('ul');
+				if (mainmenu.hasClass('open')) {
+					mainmenu.slideToggle().removeClass('open');
+				} else {
+					mainmenu.slideToggle().addClass('open');
+					if (settings.format === "dropdown") {
+						mainmenu.find('ul').show();
+					}
+				}
+			});
+			var $cssmenu = cssmenu.find('li ul').parent();
+			$cssmenu.addClass('has-sub');
+			$cssmenu.on('mouseenter', function () {
+				var doc_w = $(document).width();
+				var sub_pos = $(this).find('ul').offset();
+				var sub_width = $(this).find('ul').width();
+				if ((sub_pos.left + sub_width) > doc_w) {
+					$(this).find('ul').css('margin-left', '-' + ((sub_pos.left + sub_width) - doc_w) + 'px');
+				}
+			});
+			multiTg = function () {
+				cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
+				cssmenu.find('.submenu-button').on('click', function () {
+					$(this).toggleClass('submenu-opened');
+					$(this).parents('li').toggleClass('sub-active');//mobile fix//
+					if ($(this).siblings('ul').hasClass('open')) {
+						$(this).siblings('ul').removeClass('open').slideToggle();
+					} else {
+						$(this).siblings('ul').addClass('open').slideToggle();
+					}
+				});
+			};
+
+			if (settings.format === 'multitoggle') multiTg(); else cssmenu.addClass('dropdown');
+
+			if (settings.sticky === true) cssmenu.css('position', 'fixed');
+			resizeFix = function () {
+				var mediasize = 1180;
+				if ($(window).width() > mediasize) {
+					cssmenu.find('ul').show();
+				}
+				if ($(window).width() <= mediasize) {
+					cssmenu.find('ul').removeClass('open'); //.hide()
+					cssmenu.find('div.button').removeClass('menu-opened');
+				}
+			};
+			resizeFix();
+			return $(window).on('resize', resizeFix);
+		});
+	};
+})(jQuery);

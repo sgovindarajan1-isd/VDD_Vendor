@@ -1,4 +1,9 @@
 ﻿$(document).ready(function () {
+
+    var vendorDetails = {};
+    //var bankDetails = {};
+    var bankDetails = new Array();
+
     $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
     var vendorNumber = sessionStorage.getItem('vendorNumber');
@@ -6,13 +11,14 @@
     $("#liNavigation").show();
     $(".round-tab").css("border-color", "#e0e0e0");
 
-    $(".nav li").removeClass("active");
+    //$(".nav li").removeClass("active");
     if ($(location).attr('href').indexOf("_partialCertify") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_verify_step").attr('src', '/Content/Images/info_step.png');
         $("#img_certify_step").attr('src', '/Content/Images/certify_step_on.png');
         $("#img_certify_step").addClass("active");
         $("#img_certify_step").parent().css("border-color", "#7030A0");
+        $('#lbl_header').html('Certify');
     }
     else if ($(location).attr('href').indexOf("_partialSubmit") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -20,8 +26,19 @@
         $("#img_submit_step").attr('src', '/Content/Images/submit_step_on.png');
         $("#img_submit_step").addClass("active");
         $("#img_submit_step").parent().css("border-color", "#7030A0");
+        $('#lbl_header').html('Submit');
         getSubmitDetails();
     }
+    else if ($(location).attr('href').indexOf("_partialConfirmation") > -1) {
+        $("#img_info_step").attr('src', '/Content/Images/info_step.png');
+        $("#img_certify_step").attr('src', '/Content/Images/certify_step.png');
+        $("#img_submit_step").attr('src', '/Content/Images/submit_step.png');
+        $("#img_confirmation_step").attr('src', '/Content/Images/confirmation_step_on.png');
+        $("#img_confirmation_step").addClass("active");
+        $("#img_confirmation_step").parent().css("border-color", "#7030A0");
+        $('#lbl_header').html('Confirmation');
+    }
+
 
     $(".form-control").on('input', function (e) {
         $(".errmessage").html("");
@@ -115,16 +132,21 @@
             return false;
         }
         else {
-            //submitDetailstoDB();  // submit/ generate confirmation number
-            //window.location.href = '/deposit/_partialConfirmation';
+            submitDetailstoDB();  // submit/ generate confirmation number
+            window.location.href = '/deposit/_partialConfirmation';
         }
     });
     function getSubmitDetails() {
+        debugger;
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
 
         $("#vendorname").html(sessionStorage.getItem('vendorNumber'));
         $("#payeename").html(sessionStorage.getItem('userName'));
         $("#ssn").html(sessionStorage.getItem('tin'));
+        vendorDetails.vendorname = sessionStorage.getItem('vendorNumber');
+        vendorDetails.payeename = sessionStorage.getItem('userName');
+        vendorDetails.ssn = sessionStorage.getItem('tin');
+
 
         if (!(bankobj == null) || (bankobj == 'undefined')) {
             $("#typeofAccount").html(bankobj[0].AccountType);
@@ -132,6 +154,12 @@
             $("#routingNumber").html(bankobj[0].BankRoutingNo);
             $("#finInsName").html(bankobj[0].FinancialIns);
             $("#ddemail").html(bankobj[0].DDNotifiEmail);
+
+            vendorDetails.typeofAccount = bankobj[0].AccountType;
+            vendorDetails.accountNumber = bankobj[0].BankAccountNumber;
+            vendorDetails.routingNumber = bankobj[0].BankRoutingNo;
+            vendorDetails.finInsName = bankobj[0].FinancialIns;
+            vendorDetails.ddNotifiEmail = bankobj[0].DDNotifiEmail;
         }
         var paymentJsonObj = JSON.parse(sessionStorage.getItem("paymentJson"));
         $.each(paymentJsonObj, function (key, value) {
@@ -141,6 +169,12 @@
                 '</div >' +
                 '</div >';
             $('#banklocations').append(s);
+//            var bankDetl = [];
+            var bankDetl = {};
+            
+            bankDetl.address = value.VendorAddress;
+            //bankDetails.push(bankDetl);
+            bankDetails.push(value.LocationID);
         });
 
         var certifyobj = JSON.parse(sessionStorage.getItem("certifydetailsJson"));
@@ -149,44 +183,37 @@
             $("#signertitle").html(certifyobj[0].Signertitle);
             $("#signerphone").html(certifyobj[0].Signerphone);
             $("#signeremail").html(certifyobj[0].Signeremail);
+
+            vendorDetails.signername = certifyobj[0].Signername;
+            vendorDetails.signertitle = certifyobj[0].Signertitle;
+            vendorDetails.signerphone = certifyobj[0].Signerphone;
+            vendorDetails.signeremail = certifyobj[0].Signeremail;
         }
+
+        vendorDetails.locationIDs = bankDetails;
+        vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
     }
 
     function submitDetailstoDB() {
-        var testdata = {};
-        testdata.name = 'sdfgs';
-        testdata.age = 'sss';
-
-        var s1 = "{vmvendorDD:" + JSON.stringify(testdata) + "}";
-        var s = JSON.stringify(testdata);
-        var s2 = s1;
+        debugger;
+        var venDetails = JSON.stringify(vendorDetails);
 
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             type: "POST",
             url: hostdomainUrl + "api/values/SubmitVendorDD/",
             dataType: 'json',
-            //{ request: $.toJSON(testdata) },
-            //data: { request: $.toJSON(testdata) },
-            //data: { testdata },
-            data: s1,
-                //JSON.stringify({
-                //    'Company': company, 'FirstName': firstName, 'LastName': lastName, 'Phone': phone, 'Email': eMail, 'Subject': subject, 'Message': message
-                //}),
+            data: venDetails,
             headers: {
                 'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
             },
             success: function (data) {
-                //alert('success');
-                //debugger;
-            }
+                $("#confirmationNumber").html(data.data.Confirmation);
+                $("#SubmittedDate").html(data.data.SubmitDateTime);
+             }
             , complete: function (jqXHR) {
-                //alert('complete');
-                //debugger;
-
-            }
+             }
             , error: function (jqXHR, textStatus, errorThrown) {
-                //alert('error');
                 if (jqXHR.status == '401') {
                     window.location.href = "/Home/UnAuthorized";
                 }
