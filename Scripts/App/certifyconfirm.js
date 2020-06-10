@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     var vendorDetails = {};
     //var bankDetails = {};
     var bankDetails = new Array();
@@ -37,8 +36,10 @@
         $("#img_confirmation_step").addClass("active");
         $("#img_confirmation_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Confirmation');
-    }
 
+        $("#confirmationNumber").html(sessionStorage.getItem('confirmationNumber'));
+        $("#submittedDate").html(formatDateDisplay(sessionStorage.getItem('submittedDate')));
+    }
 
     $(".form-control").on('input', function (e) {
         $(".errmessage").html("");
@@ -104,7 +105,6 @@
         }
     });
 
-
     function storeDetails() {
         var certifydetailsRow = [];
         certifydetailsRow.push({
@@ -115,7 +115,6 @@
         });
         sessionStorage.setItem('certifydetailsJson', JSON.stringify(certifydetailsRow));
     }
-
     /*Submit Section */
 
     $("#btn_submit_back").on('click', function (e) {
@@ -133,7 +132,6 @@
         }
         else {
             submitDetailstoDB();  // submit/ generate confirmation number
-            window.location.href = '/deposit/_partialConfirmation';
         }
     });
     function getSubmitDetails() {
@@ -155,11 +153,11 @@
             $("#finInsName").html(bankobj[0].FinancialIns);
             $("#ddemail").html(bankobj[0].DDNotifiEmail);
 
-            vendorDetails.typeofAccount = bankobj[0].AccountType;
-            vendorDetails.accountNumber = bankobj[0].BankAccountNumber;
-            vendorDetails.routingNumber = bankobj[0].BankRoutingNo;
-            vendorDetails.finInsName = bankobj[0].FinancialIns;
-            vendorDetails.ddNotifiEmail = bankobj[0].DDNotifiEmail;
+            vendorDetails.AccountType = bankobj[0].AccountType;
+            vendorDetails.BankAccountNumber = bankobj[0].BankAccountNumber;
+            vendorDetails.BankRoutingNo = bankobj[0].BankRoutingNo;
+            vendorDetails.FinancialIns = bankobj[0].FinancialIns;
+            vendorDetails.DDNotifiEmail = bankobj[0].DDNotifiEmail;
         }
         var paymentJsonObj = JSON.parse(sessionStorage.getItem("paymentJson"));
         $.each(paymentJsonObj, function (key, value) {
@@ -184,20 +182,51 @@
             $("#signerphone").html(certifyobj[0].Signerphone);
             $("#signeremail").html(certifyobj[0].Signeremail);
 
-            vendorDetails.signername = certifyobj[0].Signername;
-            vendorDetails.signertitle = certifyobj[0].Signertitle;
-            vendorDetails.signerphone = certifyobj[0].Signerphone;
-            vendorDetails.signeremail = certifyobj[0].Signeremail;
+            vendorDetails.Signername = certifyobj[0].Signername;
+            vendorDetails.Signertitle = certifyobj[0].Signertitle;
+            vendorDetails.Signerphone = certifyobj[0].Signerphone;
+            vendorDetails.Signeremail = certifyobj[0].Signeremail;
         }
 
-        vendorDetails.locationIDs = bankDetails;
+        //vendorDetails.Confirmation = "";
+        //vendorDetails.SubmitDateTime = new Date();
         vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
+        //vendorDetails.AttachmentFileName2 = "";
+
+        vendorDetails.locationIDs = bankDetails;
+    }
+    function formatDateDisplay(dateVal) {
+        var newDate = new Date(dateVal);
+
+        var sMonth = padValue(newDate.getMonth() + 1);
+        var sDay = padValue(newDate.getDate());
+        var sYear = newDate.getFullYear();
+        var sHour = newDate.getHours();
+        var sMinute = padValue(newDate.getMinutes());
+        var sSecond = padValue(newDate.getSeconds());
+        var sAMPM = "AM";
+
+        var iHourCheck = parseInt(sHour);
+
+        if (iHourCheck > 12) {
+            sAMPM = "PM";
+            sHour = iHourCheck - 12;
+        }
+        else if (iHourCheck === 0) {
+            sHour = "12";
+        }
+
+        sHour = padValue(sHour);
+
+        return sMonth + "/" + sDay + "/" + sYear + " " + sHour + ":" + sMinute + ":" + sSecond + " "+ sAMPM;
+    }
+
+    function padValue(value) {
+        return (value < 10) ? "0" + value : value;
     }
 
     function submitDetailstoDB() {
-        debugger;
         var venDetails = JSON.stringify(vendorDetails);
-
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             type: "POST",
@@ -208,13 +237,19 @@
                 'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
             },
             success: function (data) {
-                $("#confirmationNumber").html(data.data.Confirmation);
-                $("#SubmittedDate").html(data.data.SubmitDateTime);
+                sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
+                sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);   
+                window.location.href = '/deposit/_partialConfirmation';
              }
             , complete: function (jqXHR) {
              }
             , error: function (jqXHR, textStatus, errorThrown) {
-                if (jqXHR.status == '401') {
+                debugger;
+                if (textStatus == 'error') {
+                    toastr.options.positionClass = "toast-bottom-right";
+                    toastr.warning("Error in submission, Please check the entry!");
+                }
+                else if (jqXHR.status == '401') {
                     window.location.href = "/Home/UnAuthorized";
                 }
             }

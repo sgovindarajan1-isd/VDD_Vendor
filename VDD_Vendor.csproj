@@ -620,6 +620,7 @@
     <Content Include="Views\Deposit\_partialCertify.cshtml" />
     <Content Include="Views\Deposit\_partialSubmit.cshtml" />
     <Content Include="Views\Deposit\_partialConfirmation.cshtml" />
+    <Content Include="Views\Deposit\_partialLogin.cshtml" />
     <None Include="Web References\ABAServices\abaservice.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
