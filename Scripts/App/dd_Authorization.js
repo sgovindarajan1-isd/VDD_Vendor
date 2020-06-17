@@ -1,7 +1,8 @@
 ﻿var vdd = vdd || {};
 $(document).ready(function () {
     $("#liNavigation").show();
-    //$(".nav li").removeClass("active");
+
+    $("#li_infostep").addClass("active");
     $(".round-tab").css("border-color", "#e0e0e0");
     $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));

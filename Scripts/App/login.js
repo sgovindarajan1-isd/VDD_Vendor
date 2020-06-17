@@ -1,6 +1,11 @@
 ﻿//var vdd = vdd || {};
 $(document).ready(function () {
     $("#liNavigation").hide();
+    
+    if ($(location).attr('href').indexOf("_partialLogin") > -1) {
+        $('#lbl_header').html('Vendor Login <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span> ');
+    }
+
     var isNumberKey = function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode != 46 && charCode > 31

@@ -2,23 +2,11 @@
     $("#liNavigation").show();
     $(".round-tab").css("border-color", "#e0e0e0");
 
-
-    //$(document).ready(function () {
-    //    $("#tab_sel35116 li a").on("click", moveArrow);
-    //});
-
-    //function moveArrow() {
-    //    var pos = $(this).position().left;
-    //    $("#down_blue_arr").css("left", pos + "px");
-    //}
-    //var pos = $("#img_bank_step").position().left;
-    //$(".wizard li.active").css("left", pos + "px");
-
-    //$(".nav li").removeClass("active");
     if ($(location).attr('href').indexOf("_partialBankDetails") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
         $("#img_bank_step").addClass("active");
+        $("#li_bankstep").addClass("active");
         $("#img_bank_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Enter Bank Information');
     }
@@ -28,6 +16,8 @@
         $("#img_bank_attachment_step").attr('src', '/Content/Images/attachment_step_on.png');
         $("#img_bank_attachment_step").parent().css("border-color", "#7030A0");
         $("#img_bank_attachment_step").addClass("active");
+        $("#li_attachmentstep").addClass("active");
+
         $('#lbl_header').html('Add Attachment');
     }
     else if ($(location).attr('href').indexOf("_partialBankVerify") > -1) {
@@ -36,6 +26,8 @@
         $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step_on.png');
         $("#img_bank_verify_step").parent().css("border-color", "#7030A0");
         $("#img_bank_verify_step").addClass("active");
+        $("#li_verify_step").addClass("active");
+        
         $('#lbl_header').html('Verify Bank Information');
 
         var bankdetailsJson = jQuery.parseJSON(sessionStorage.bankdetailsJson);

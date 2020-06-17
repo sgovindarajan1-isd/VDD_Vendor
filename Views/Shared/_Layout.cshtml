@@ -65,11 +65,11 @@
                     <div>
                         <div class="menu-button1"></div>
                         <ul id="menu-auditor-controller-main1" role="menubar">
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Welcome">HOME</a></li>
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/FileClaim">APPLY</a></li>
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Claim/Status">STATUS<span class="s"></span></a></li>
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/UserGuide">GUIDES<span class="s"></span></a></li>
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/ContactUs">CONTACT<span class="s"></span></a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home">HOME</a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/deposit/_partialLogin">APPLY</a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/deposit/_partialAppStatus">STATUS<span class="s"></span></a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home/GeneralInfo">GUIDES<span class="s"></span></a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home/Contact">CONTACT<span class="s"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="liselect active" style="text-align:center">
+                                <li role="presentation" id="li_infostep" class="liselect active" style="text-align:center">
                                     <span title="Payment Information" class="wizard-step" style="text-align:center">
                                         <span class="round-tab">
                                             <img id="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -94,7 +94,7 @@
                                     @*<div style="padding-bottom:10px; font-size:10px; text-align:center">Billing Information</div>*@
                                 </li>
 
-                                <li role="presentation" class="liselect ">
+                                <li role="presentation" id="li_bankstep" class="liselect">
                                     <span title="Enter Banking Information" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_bank_step" src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -104,7 +104,7 @@
 
                                 </li>
 
-                                <li role="presentation" class="">
+                                <li role="presentation" id="li_attachmentstep" class="liselect">
                                     <span title="Add Attachment" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_bank_attachment_step" src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -113,7 +113,7 @@
                                     @*<div style="font-size:10px; text-align:center">Add Attachment</div>*@
                                 </li>
 
-                                <li role="presentation" class="">
+                                <li role="presentation" id="li_verify_step" class="liselect">
                                     <span title="Verify Banking Information" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_bank_verify_step" src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -122,7 +122,7 @@
                                     @* <div style="font-size:10px; text-align:center">Verify Bank Information</div>*@
                                 </li>
 
-                                <li role="presentation" class="">
+                                <li role="presentation" id="li_certify_step" class="liselect">
                                     <span title="Certify" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_certify_step" src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -131,7 +131,7 @@
                                     @* <div style="font-size:10px; text-align:center">Certify</div>*@
                                 </li>
 
-                                <li role="presentation" class="">
+                                <li role="presentation" id="li_submit_step" class="liselect">
                                     <span title="Submit" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_submit_step" src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -140,7 +140,7 @@
                                     @*<div style="font-size:10px; text-align:center">Submit</div>*@
                                 </li>
 
-                                <li role="presentation" class="">
+                                <li role="presentation" id="li_confirmation_step" class="liselect">
                                     <span title="Confirmation" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_confirmation_step" src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -159,7 +159,11 @@
         <div id="grey-info-bar" class="content-font row-wrapper">
             <div class="logo-bar-wrapper1">
                 <div class="col-xs-12">
-                    <h3 id="lbl_header">Vendor Login</h3>
+                    <h3 id="lbl_header">
+                        Vendor Direct Deposit Portal
+                        <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span>
+                    </h3>
+                    
                     <div class="header-line header-line-purple"><span></span></div>
                 </div>
             </div>

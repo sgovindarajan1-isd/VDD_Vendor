@@ -16,6 +16,7 @@
         $("#img_bank_verify_step").attr('src', '/Content/Images/info_step.png');
         $("#img_certify_step").attr('src', '/Content/Images/certify_step_on.png');
         $("#img_certify_step").addClass("active");
+        $("#li_certify_step").addClass("active");
         $("#img_certify_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Certify');
     }
@@ -24,6 +25,7 @@
         $("#img_certify_step").attr('src', '/Content/Images/certify_step.png');
         $("#img_submit_step").attr('src', '/Content/Images/submit_step_on.png');
         $("#img_submit_step").addClass("active");
+        $("#li_submit_step").addClass("active");
         $("#img_submit_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Submit');
         getSubmitDetails();
@@ -34,6 +36,7 @@
         $("#img_submit_step").attr('src', '/Content/Images/submit_step.png');
         $("#img_confirmation_step").attr('src', '/Content/Images/confirmation_step_on.png');
         $("#img_confirmation_step").addClass("active");
+        $("#li_confirmation_step").addClass("active");
         $("#img_confirmation_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Confirmation');
 
@@ -131,6 +134,8 @@
             return false;
         }
         else {
+            debugger;
+            
             submitDetailstoDB();  // submit/ generate confirmation number
         }
     });
@@ -167,11 +172,8 @@
                 '</div >' +
                 '</div >';
             $('#banklocations').append(s);
-//            var bankDetl = [];
             var bankDetl = {};
-            
             bankDetl.address = value.VendorAddress;
-            //bankDetails.push(bankDetl);
             bankDetails.push(value.LocationID);
         });
 
@@ -191,10 +193,24 @@
         //vendorDetails.Confirmation = "";
         //vendorDetails.SubmitDateTime = new Date();
         vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
-        //vendorDetails.AttachmentFileName2 = "";
+//        vendorDetails.VendorReportFileName = vendorDetails.vendorname;
 
         vendorDetails.locationIDs = bankDetails;
+
+        vendorDetails.Source_ip = "Source_ip";//getSourceip();
+        vendorDetails.Source_device = "Source_device";
+        vendorDetails.User_agent = navigator.userAgent;
+        vendorDetails.Host_headers = "Host_headers";
     }
+
+    function getSourceip() {
+        $.getJSON("http://jsonip.appspot.com?callback=?",
+            function (data) {
+              //  alert(data.ip);
+                return(data.ip);
+            });
+    }
+
     function formatDateDisplay(dateVal) {
         var newDate = new Date(dateVal);
 
@@ -226,6 +242,8 @@
     }
 
     function submitDetailstoDB() {
+        debugger;
+        vendorDetails.VendorReportFileName = 'notyetdefined';
         var venDetails = JSON.stringify(vendorDetails);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -238,12 +256,17 @@
             },
             success: function (data) {
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
-                sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);   
+                sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);  
+                // generate the report and store in the upload folder
+                var rptFileName = createReportandGettheFielName(vendorDetails);
+
                 window.location.href = '/deposit/_partialConfirmation';
              }
             , complete: function (jqXHR) {
+                var rptFileName = createReportandGettheFielName(vendorDetails);
              }
             , error: function (jqXHR, textStatus, errorThrown) {
+                var rptFileName = createReportandGettheFielName(vendorDetails);
                 debugger;
                 if (textStatus == 'error') {
                     toastr.options.positionClass = "toast-bottom-right";
@@ -257,6 +280,29 @@
     };
     /*Submit Section end */
 
-    /*Confirmation Section begin */
+/*Confirmation Section begin */
+    function createReportandGettheFielName(venDetails) {
+        debugger;
+        $.ajax({
+            url: '/report/showreport/',
+            type: "POST",
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            //processData: false,
+            data: JSON.stringify(vendorDetails),  //{ 'Id': 0, 'IdText': ConfirmationNumber,'Text': vendorDetails.vendorname }),
+            success: function (result) {
+                debugger;
+              //  alert(result);
+                return result;
+            },
+            error: function (err) {
+              //  alert('report error' + err.statusText);
+            }
+        });  
+    }
+
+    $('#btn_viewReport').on('click', function (e) {
+       
+    });
     /*Confirmation Section end */
 });

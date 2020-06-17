@@ -1,16 +1,47 @@
 ﻿"use strict";
 //  Global variables
 var vdd = {};
+
+/* Intial settings */
+$(".nav li").removeClass("active");
+$("#btn_loginLock").hide();
+
 vdd.GlobalVariables = {
     IsValidUser: false,
     UserName: ''
 };
+
+
+/*Initial settings*/
 
 var Globaljqvar = {
 };
 window.__INITIAL_STATE__ = {
     IsValidUser: false
 };
+
+
+// testing begin 
+
+//var is_mobile = 'No';
+//if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+//	is_mobile = 'Yes';
+//}
+
+
+//debugger;
+//	$.getJSON("http://jsonip.appspot.com?callback=?",
+//		function (data) {
+//			return (data.ip);
+//		});
+
+//$.getJSON("http://smart-ip.net/geoip-json?callback=?", function (data) { }); 
+
+//$.get("https://ipinfo.io", function (response) {
+//}, "json") 
+
+// testing end
+
 
 $('#img_username').on('click', function (e) {
     //$('#logoutModal').modal('show');

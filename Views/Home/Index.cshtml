@@ -1,27 +1,126 @@
-﻿    @{
-    ViewBag.Title = "Home Page";
+﻿@{
+    ViewBag.Title = "DashBoard Page";
 }
 
+@section Scripts
+{
+    <script src="~/Scripts/App/dashboard.js"></script>
+}
 <div class="container">
-    @*<div class="row-wrapper row1 row-home-gray">
+    <div class="row-wrapper row1 row-home-gray">
         <div class="row-inner">
             <div class="col-xs-12">
                 <div class="wizard1">
                     <div class="wizard-inner1">
                         <div class="form-group1">
-                            <p class="para">This website allows Los Angeles vendors and payees to submit their Direct Deposit Authorization Form Online.</p>
-                            <p class="para">To get started, enter your County Vendor Number (Code) and Social Security Number or TaxPayer Identification Number.</p>
-                        </div>
-                        <div>
-                            <span id="fileError_or_Info" style="text-align: center" class="errmessage" />
+                            <div style="padding-top: 20px;">Welcome to the County of Los Angeles (County) official secure website for entry of your direct deposit information. Available 24/7, your company and banking information can be securely submitted with confirmation and print capability. The lock in your browser address bar shows that the site is secure.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>*@
+    </div>
 
-    <div class="login_container" style="padding-top: 30px">
+    <div class="row row-wrapper row-home row-home-gray" style="background-color: #f2f2f2 !important">
+        <div class="row-inner">
+            <div class="flex1">
+                <div class="topMargin col-sm-6 stretch">
+                    <div class="welcomeBox largeMarginBottom">
+                        <h4>You are a Registered Vendor</h4>
+                        <div class="header-line header-line-blue"><span></span></div>
+
+                        <div class="clearfix largeMarginBottom_top">
+                            <img src="/Content/Images/register.png" alt="" class="startClaimImage" />
+                            <p>You have been provided a unique vendor registration number by the County of Los Angeles.</p>
+
+                        </div>
+
+                        <div class="homePageButtonWrapper">
+                            <button id="btn_gotoLogin" style="margin-top: 120px!important" data-isCashed="false" class="btn btn-blue btn-block warrantTypeButton" type="submit" value="false" name="isCashed">
+                                Apply for Direct Deposit
+                                <span class="glyphicon glyphicon-arrow-right" style="margin-left:.5em;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topMargin col-sm-6 stretch">
+                    <div class="welcomeBox largeMarginBottom">
+                        <h4>Application Assistance</h4>
+                        <div class="header-line header-line-green"><span></span></div>
+
+                        <div class="clearfix largeMarginBottom_top">
+                            <img src="/Content/Images/instructions.png" alt="" class="startClaimImage" />
+                            <p>Use our User Guides to help you file your application.</p>
+
+                        </div>
+
+                        <div class="homePageButtonWrapper">
+                            <button id="btn_Guide" data-isCashed="true" class="btn btn-green btn-block warrantTypeButton" type="submit" value="true" name="isCashed">
+                                Review User Guides
+                                <span class="glyphicon glyphicon-arrow-right" style="margin-left:.5em;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row-wrapper row-home row-home-gray clearfix row" style="background-color: #f2f2f2 !important">
+        <div class="row-inner">
+            <div class="flex">
+                <div class="col-sm-6 stretch">
+                    <div class="welcomeBox largeMarginBottom">
+                        <h4>Application Status</h4>
+                        <div class="header-line header-line-purple"><span></span></div>
+
+                        <div class="clearfix ">
+                            <p>Enter your Application Confirmation Number below for a status of previously filed application.</p>
+                        </div>
+
+                        <div class="largeMarginBottom">
+                            <div class="clearfix">
+                                <div class="largeMarginBottom">
+                                    <label for="claimNumber" class="topMargin">Application Confirmation #:</label>
+                                    <input data-val="true" data-val-required="Required" id="txtConfirmationNum" name="txtConfirmationNum" type="text" value="" />
+                                    <span class="field-validation-valid error" data-valmsg-for="txtConfirmationNum" data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="homePageButtonWrapper">
+                                    <button id="btn_appStatus" class="btn btn-purple btn-block" style="margin-top:1em;">
+                                        <span class="fa fa-search fa-left"></span>
+                                        Lookup Application Status
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 stretch">
+                    <div class="form-group welcomeBox largeMarginBottom">
+                        <h4>Contact Us</h4>
+                        <div class="header-line header-line-purple"><span></span></div>
+
+                        <div class="clearfix largeMarginBottom ">
+                            <p>If you have questions about your application or any other related issue, please contact us by clicking below and using the online contact form.</p><p>Email addresses and phone numbers are also available.</p>
+                        </div>
+
+                        <div class="homePageButtonWrapper">
+                            <a href="/Home/Contact" class="btn btn-purple btn-block" style="margin-top:1em;">
+                                @*/ContactUs*@
+                                <span class="glyphicon glyphicon-envelope" style="margin-right:.5em;"></span>
+                                Contact Form &amp; Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="login_container" style="padding-top: 30px">
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="form-group">
@@ -57,6 +156,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
+
 

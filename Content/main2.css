@@ -1,3 +1,11 @@
+.homePageButtonWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 1em 1em 1em;
+}
+
 /*Vdd: to fix mobile view checkbox disappearance*/
 input[type=checkbox] {
     -webkit-appearance: checkbox !important;
@@ -12335,7 +12343,7 @@ div#logo-side-info-bar > div p {
 
 @media screen and (min-width:1181px) {
     #wp_header.menu-align-left #top-menu > div > div > ul > li:first-child > a {
-        margin-left: 51px
+        /*margin-left: 51px  VDD  to make the menu item left aligned*/
     }
 }
 
@@ -15496,6 +15504,10 @@ p {
     margin-bottom: 15px
 }
 
+.largeMarginBottom_top {
+    margin-bottom: 30px
+}
+
 .largeMarginLeft {
     margin-left: 15px
 }
@@ -16085,7 +16097,7 @@ span.round-tab:hover {
 .wizard li.active:after {
     content: " ";
     position: absolute;
-    /*left: 18%;  --  VDD: this is making the triangle in the center of circle*/
+    left: 43%; /* --  VDD: this is making the triangle in the center of circle*/
     opacity: 1;
     margin: 0 auto;
     bottom: 0;
