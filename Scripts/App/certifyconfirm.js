@@ -19,6 +19,25 @@
         $("#li_certify_step").addClass("active");
         $("#img_certify_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Certify');
+
+        $("#span_bankstep").removeClass("disabled");
+        $("#span_attachmentstep").removeClass("disabled");
+        $("#span_verify_step").removeClass("disabled");
+
+        ////testing values
+        //$('#txtSignerName').val('asdfg');
+        //$('#txtSignerTitle').val('sdfg');
+        //$('#txtSignerPhone').val('a@abc.com');
+        //$('#txtSignerEmail').val('a@abc.com');
+        ////testing values
+
+        var certifyobj = JSON.parse(sessionStorage.getItem("certifydetailsJson"));
+        if ((certifyobj != null) && (certifyobj != 'undefined')) {
+            $("#txtSignerName").val(certifyobj[0].Signername);
+            $("#txtSignerTitle").val(certifyobj[0].Signertitle);
+            $("#txtSignerPhone").val(certifyobj[0].Signerphone),
+            $("#txtSignerEmail").val(certifyobj[0].Signeremail);
+        }
     }
     else if ($(location).attr('href').indexOf("_partialSubmit") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -28,6 +47,14 @@
         $("#li_submit_step").addClass("active");
         $("#img_submit_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Submit');
+        $("#chk_submit").prop("checked", true);
+
+        $("#span_bankstep").removeClass("disabled");
+        $("#span_attachmentstep").removeClass("disabled");
+        $("#span_verify_step").removeClass("disabled");
+        $("#span_certify_step").removeClass("disabled");
+        $("#span_submit_step").removeClass("disabled");
+
         getSubmitDetails();
     }
     else if ($(location).attr('href').indexOf("_partialConfirmation") > -1) {
@@ -39,6 +66,12 @@
         $("#li_confirmation_step").addClass("active");
         $("#img_confirmation_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Confirmation');
+
+        $("#span_bankstep").removeClass("disabled");
+        $("#span_attachmentstep").removeClass("disabled");
+        $("#span_verify_step").removeClass("disabled");
+        $("#span_submit_step").removeClass("disabled");
+        $("#span_confirmation_step").removeClass("disabled");
 
         $("#confirmationNumber").html(sessionStorage.getItem('confirmationNumber'));
         $("#submittedDate").html(formatDateDisplay(sessionStorage.getItem('submittedDate')));
@@ -78,6 +111,9 @@
         if (signerPhone.length <= 0) {
             $("#signerPhone").html('Authorized Signer’s Phone # is required.');
             bool = false;
+        } else if (!validatePhone(signerPhone)) {
+            $("#signerPhone").html('Valid Authorized Signer’s Phone # is required.');
+            bool = false;
         } else {
             $("#signerPhone").html('');
         }
@@ -107,6 +143,17 @@
             window.location.href = '/deposit/_partialSubmit';
         }
     });
+
+    function validatePhone(txtPhone) {
+        debugger;
+        var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+        if (filter.test(txtPhone)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     function storeDetails() {
         var certifydetailsRow = [];
@@ -193,7 +240,7 @@
         //vendorDetails.Confirmation = "";
         //vendorDetails.SubmitDateTime = new Date();
         vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
-//        vendorDetails.VendorReportFileName = vendorDetails.vendorname;
+//        vendorDetails.VendorReportFileName = vendorDetails.vendorname;  
 
         vendorDetails.locationIDs = bankDetails;
 

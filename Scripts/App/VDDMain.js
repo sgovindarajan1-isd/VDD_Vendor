@@ -3,7 +3,7 @@
 var vdd = {};
 
 /* Intial settings */
-$(".nav li").removeClass("active");
+//$(".nav li").removeClass("active");
 $("#btn_loginLock").hide();
 
 vdd.GlobalVariables = {
@@ -47,9 +47,121 @@ $('#img_username').on('click', function (e) {
     //$('#logoutModal').modal('show');
 });
 
+
+//----------------------  click nav button
+//$("#ul").find("li span").click(function () {
+//	$('.selectedLi').removeClass('selectedLi');
+//	$(this).addClass('selectedLi');
+//});
+
+//$(".liselect").click(function () {
+//	BusinessLogic();
+//});
+
+//function BusinessLogic() {
+//	debugger;
+//	var text = $('#ul').find("li span span.selectedLi").text();
+//	//alert("selected Value112" + text);
+//} 
+
+////$("li").addClass("disabled");
+
+
 $('.liselect').on('click', function () {
-    //$(this).toggleClass('background_selected');
+	debugger;
+	var eId = $(this)[0].id;
+
+	var selectedValue = parseInt($(this).attr('value'));
+	//alert('selectd Value : ' + selectedValue);
+
+	var currentNavId = $('.liselect.active')[0].id;
+	//alert('current id ' + currentNavId);
+
+	//var s = $('#' + $('.liselect.active')[0].id + '[value=' + currentValue + "]");
+
+	var currentValue = parseInt($('#' + $('.liselect.active')[0].id).attr('value'));
+	//alert('currentValue' + currentValue);
+	//alert('currentValue' + $('#' + $('.liselect.active')[0].id).attr('value'));
+
+	if (currentValue > selectedValue) {
+		//alert('here you go ');
+
+		switch (selectedValue) {
+			case 1:
+				window.location.href = '/deposit/Index';   
+				break;
+			case 2:
+				window.location.href = '/deposit/_partialBankDetails';
+				break;
+			case 3:
+				window.location.href = '/deposit/_partialAttachment';
+				break;
+			case 4:
+				window.location.href = '/deposit/_partialBankVerify';
+				break;
+			case 5:
+				window.location.href = '/deposit/_partialCertify';
+				break;
+			case 6:
+				window.location.href = '/deposit/_partialSubmit';
+				break;
+			case 6:
+				window.location.href = '/deposit/_partialSubmit';
+				break;
+		}
+	}
+	
+
+	
+	//if ($(this).length > 0) {
+	//	alert($(this)[0].id);
+	//}
+
+	//var s = $('#' + eId + '[value=' + currentValue + "]");
+	//alert('here '+s.id);
+	////  if the li is not active  and value <= current value then 
+	////if (! ($("#" + eId).hasClass('active'))  and   {
+
+	////  if the li is not active  and value <= current value then 
+	
+
+	//if ($("#"+eId).hasClass('disabled')) {
+	//	var value = $(this).attr('value');
+	//	alert('Selected menu value : ' + value);
+	//	debugger;
+	//	if ($(this).length > 0) {
+	//		alert($(this)[0].id);
+	//	}
+
+	//	alert('current ' + $('.liselect.active')[0].id);
+
+	//	// disabled all nav button
+
+	////	$(this)[0].addClass('disabled');
+	//}
+	//else
+	//	alert('this donot has disabled');
+
+
 });
+
+
+//$('.liselect.active').on('click', function () {
+//	alert('.liselect.active');
+//	//debugger;
+
+//	//if ($(".liselect.active").find('span').hasClass("disabled")) {
+
+//	////if ($(".round-tab").hasClass("disabled")) {
+//	//	alert('it has disabled');
+//	//} else {
+//	//	alert('it has not disabled');
+//	//}
+	
+//	//window.history.back();
+//    //$(this).toggleClass('background_selected');
+//});
+//----------------------  click nav button
 
 //$(".nav li").on("click", function (e) {
 //   // e.preventDefault();

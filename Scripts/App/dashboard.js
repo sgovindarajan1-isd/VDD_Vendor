@@ -4,7 +4,7 @@
     });
 
     $('#btn_Guide').on('click', function (e) {
-        window.location.href = '/Home/GeneralInfo';
+      //  window.location.href = '/Home/GeneralInfo';
     });
 
 
@@ -26,13 +26,13 @@
             url: hostdomainUrl + "api/values/GetApplicationStatus/",
             success: function (data) {
                 debugger
-                alert('suceess');
+                //alert('suceess');
                 window.location.href = '/deposit/_partialAppStatus';
                 
                 sessionStorage.setItem('ConfirmationNum', $("#txtConfirmationNum").val());
             },
             error: function (_XMLHttpRequest, textStatus, errorThrown) {
-                alert('error');
+               // alert('error');
                 window.location.href = '/deposit/_partialAppStatus';
             }
         });

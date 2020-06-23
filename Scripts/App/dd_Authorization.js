@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#liNavigation").show();
 
     $("#li_infostep").addClass("active");
+    $("#li_infostep").removeClass("disabled");
     $(".round-tab").css("border-color", "#e0e0e0");
     $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));

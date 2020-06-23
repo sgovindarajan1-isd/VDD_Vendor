@@ -2,13 +2,41 @@
     $("#liNavigation").show();
     $(".round-tab").css("border-color", "#e0e0e0");
 
+
+    // testing values
+
+    //$('#txtAccountType').val('1');
+    //$('#txtAccountType').val('11223344');
+    //$('#txtBankAcNo').val('11223344');
+    //$('#txtRe-BankAcNo').val('11223344');
+    //$('#txtBankRoutingNo').val('122000661');
+    
+    //$('#txtDDNotifiEmail').val('a@abc.com');
+    //$('#txtReDDNotifiEmail').val('a@abc.com');
+
+    // testing values
+
+
     if ($(location).attr('href').indexOf("_partialBankDetails") > -1) {
+        debugger;
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
         $("#img_bank_step").addClass("active");
         $("#li_bankstep").addClass("active");
+        $("#li_bankstep").removeClass("disabled");
         $("#img_bank_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Enter Bank Information');
+
+        var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
+        if ((bankobj != null) && (bankobj != 'undefined')) {
+            $("#txtAccountType").val(bankobj[0].AccountType);
+            $("#txtBankAcNo").val(bankobj[0].BankAccountNumber);
+            $("#txtRe-BankAcNo").val(bankobj[0].ReBankAcNo),
+            $("#txtBankRoutingNo").val(bankobj[0].BankRoutingNo);
+            $("#txtFinancialIns").val(bankobj[0].FinancialIns);
+            $("#txtDDNotifiEmail").val(bankobj[0].DDNotifiEmail);
+            $("#txtReDDNotifiEmail").val(bankobj[0].ReDDNotifiEmail);
+        }
     }
     else if ($(location).attr('href').indexOf("_partialAttachment") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -19,6 +47,35 @@
         $("#li_attachmentstep").addClass("active");
 
         $('#lbl_header').html('Add Attachment');
+        var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
+
+        if (!(bankobj == null) || (bankobj == 'undefined')) {
+            if (bankobj[0].AccountType == 2)  // SAVING ACCOUNT
+            {
+                $("#btn_voidCheck").addClass('disabled_color');
+                $("#btn_voidCheck").prop('disabled', true);
+            }
+        }
+        $("#span_bankstep").removeClass("disabled");
+
+        debugger;
+
+        var attachobj = sessionStorage.getItem('uploadedfile');
+        if ((attachobj != null) && (attachobj != 'undefined')) {
+            $("#divmodifiedFileName").show();
+            $("#pnlAttachment").show();
+
+            $("#txtattachment").val(sessionStorage.getItem('originalfileName'));
+            $("#modifiedFileName").text(sessionStorage.getItem('uploadedfile'));
+            
+        }
+        else {
+            $("#pnlAttachment").hide();
+            $("#divmodifiedFileName").hide();
+        }
+
+
+        
     }
     else if ($(location).attr('href').indexOf("_partialBankVerify") > -1) {
         $("#img_bank_step").attr('src', '/Content/Images/bank_step.png');
@@ -27,7 +84,10 @@
         $("#img_bank_verify_step").parent().css("border-color", "#7030A0");
         $("#img_bank_verify_step").addClass("active");
         $("#li_verify_step").addClass("active");
-        
+
+        $("#span_bankstep").removeClass("disabled");
+        $("#span_attachmentstep").removeClass("disabled");
+
         $('#lbl_header').html('Verify Bank Information');
 
         var bankdetailsJson = jQuery.parseJSON(sessionStorage.bankdetailsJson);
@@ -73,8 +133,25 @@
         window.history.back();
     });
 
-    $("#pnlAttachment").hide();
-    $("#divmodifiedFileName").hide();
+    $('#txtAccountType').change(function (e) {
+        var accountType = $('#txtAccountType').val();
+        if (parseInt(accountType) == 2) {
+            $('#img_checkImage').hide();
+        }
+        else {
+            $('#img_checkImage').show();
+        }
+    });
+
+    $("#txtBankRoutingNo").focusout(function () {
+        verifyBank();
+    }).click(function (e) {
+        e.stopPropagation();
+        return true;
+    });
+
+    //$("#pnlAttachment").hide();
+    //$("#divmodifiedFileName").hide();
     var fileSelectytedtype = '';
 
     $('.buttonBig').on('click', function () {
@@ -148,6 +225,7 @@
                 sessionStorage.setItem('selectedFile', imagefile);  //  if sessionstorage 'uploadedfile'  works delete this key
 
                 $("#txtattachment").val(fileName);
+                sessionStorage.setItem('originalfileName', fileName);  //  original file name: we keep this in case coming back from  next screen 
                 var today = new Date();
                 var cHour = today.getHours();
                 var cMin = today.getMinutes();
@@ -188,7 +266,7 @@
         $(".errmessage").html("");
     });
 
-      $('#btn_bank_next').on('click', function (e) {
+    $('#btn_bank_next').on('click', function (e) {
         var accountType = $('#txtAccountType').val();
         var bankAcNo = $('#txtBankAcNo').val();
         var re_BankAcNo = $('#txtRe-BankAcNo').val();
@@ -225,7 +303,7 @@
 
         if (bankRoutingNo.length <= 0) {
             $("#bankRoutingNo").html('Bank Routing Number is required.');
-           // $("#txtFinancialIns").css({ "background-color": "#ccc" });
+            // $("#txtFinancialIns").css({ "background-color": "#ccc" });
             bool = false;
         } else {
             $("#bankRoutingNo").html('');
@@ -272,6 +350,10 @@
     });
 
     $('#btn_verifyBank').on('click', function (e) {
+        verifyBank();
+    });
+
+    function verifyBank() {
         var aba = 0;
         aba = $("#txtBankRoutingNo").val();
 
@@ -287,7 +369,7 @@
                 $("#txtFinancialIns").val("No banks found");
             }
         });
-    });
+    };
 
     function storeDetails() {
         var bankdetailsRow = [];
@@ -358,7 +440,7 @@
         window.location.href = '/deposit/_partialCertify';
     });
 
-    function uploadfile(filetoupload, modifiedFileName,ext) {
+    function uploadfile(filetoupload, modifiedFileName, ext) {
         if (window.FormData !== undefined) {
 
             //var fileUpload = filetoupload;
@@ -382,19 +464,19 @@
                 type: "POST",
                 contentType: false, // Not to set any content header  
                 processData: false, // Not to process data  
-                data:   fileData,
+                data: fileData,
                 success: function (result) {
-                    sessionStorage.setItem('uploadedfile', result);    
+                    sessionStorage.setItem('uploadedfile', result);
                     sessionStorage.setItem('uploadedfileExtenstion', ext);    //to do get from config file
                 },
                 error: function (err) {
-                   // alert(err.statusText);
+                    // alert(err.statusText);
                 }
             });
         } else {
             alert("Attachment File type is not supported.");
         }
-      };
+    };
 });
 
 

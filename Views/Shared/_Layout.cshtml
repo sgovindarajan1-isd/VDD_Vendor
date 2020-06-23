@@ -68,7 +68,7 @@
                             <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home">HOME</a></li>
                             <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/deposit/_partialLogin">APPLY</a></li>
                             <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/deposit/_partialAppStatus">STATUS<span class="s"></span></a></li>
-                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home/GeneralInfo">GUIDES<span class="s"></span></a></li>
+                            <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home">GUIDES<span class="s"></span></a></li>
                             <li role="menuitem" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/Home/Contact">CONTACT<span class="s"></span></a></li>
                         </ul>
                     </div>
@@ -84,8 +84,8 @@
                     <div class="wizard">
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" id="li_infostep" class="liselect active" style="text-align:center">
+                            <ul class="nav nav-tabs" role="tablist" id="ul">
+                                <li role="presentation" id="li_infostep" class="liselect" style="text-align:center" value="1" >
                                     <span title="Payment Information" class="wizard-step" style="text-align:center">
                                         <span class="round-tab">
                                             <img id="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -94,9 +94,9 @@
                                     @*<div style="padding-bottom:10px; font-size:10px; text-align:center">Billing Information</div>*@
                                 </li>
 
-                                <li role="presentation" id="li_bankstep" class="liselect">
+                                <li role="presentation" id="li_bankstep" class="liselect" value="2">
                                     <span title="Enter Banking Information" class="wizard-step">
-                                        <span class="round-tab disabled ">
+                                        <span id="span_bankstep" class="round-tab disabled ">
                                             <img id="img_bank_step" src="/Content/Images/bank_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                         </span>
                                     </span>
@@ -104,34 +104,34 @@
 
                                 </li>
 
-                                <li role="presentation" id="li_attachmentstep" class="liselect">
+                                <li role="presentation" id="li_attachmentstep" class="liselect" value="3">
                                     <span title="Add Attachment" class="wizard-step">
-                                        <span class="round-tab disabled ">
+                                        <span id="span_attachmentstep" class="round-tab disabled ">
                                             <img id="img_bank_attachment_step" src="/Content/Images/attachment_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                         </span>
                                     </span>
                                     @*<div style="font-size:10px; text-align:center">Add Attachment</div>*@
                                 </li>
 
-                                <li role="presentation" id="li_verify_step" class="liselect">
+                                <li role="presentation" id="li_verify_step" class="liselect" value="4">
                                     <span title="Verify Banking Information" class="wizard-step">
-                                        <span class="round-tab disabled ">
+                                        <span id="span_verify_step" class="round-tab disabled ">
                                             <img id="img_bank_verify_step" src="/Content/Images/verify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                         </span>
                                     </span>
                                     @* <div style="font-size:10px; text-align:center">Verify Bank Information</div>*@
                                 </li>
 
-                                <li role="presentation" id="li_certify_step" class="liselect">
+                                <li role="presentation" id="li_certify_step" class="liselect" value="5">
                                     <span title="Certify" class="wizard-step">
-                                        <span class="round-tab disabled ">
+                                        <span id="span_certify_step" class="round-tab disabled ">
                                             <img id="img_certify_step" src="/Content/Images/certify_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
                                         </span>
                                     </span>
                                     @* <div style="font-size:10px; text-align:center">Certify</div>*@
                                 </li>
 
-                                <li role="presentation" id="li_submit_step" class="liselect">
+                                <li role="presentation" id="li_submit_step" class="liselect" value="6">
                                     <span title="Submit" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_submit_step" src="/Content/Images/submit_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -140,7 +140,7 @@
                                     @*<div style="font-size:10px; text-align:center">Submit</div>*@
                                 </li>
 
-                                <li role="presentation" id="li_confirmation_step" class="liselect">
+                                <li role="presentation" id="li_confirmation_step" class="liselect" value="7">
                                     <span title="Confirmation" class="wizard-step">
                                         <span class="round-tab disabled ">
                                             <img id="img_confirmation_step" src="/Content/Images/confirmation_step.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -233,7 +233,7 @@
                             <h4 class="heading-font">ABOUT US</h4>
                             <div class="menu-about-us-container">
                                 <ul id="menu-about-us" class="menu">
-                                    <li id="menu-item-2428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="http://auditor.lacounty.gov/contact-page/">Contact Us</a></li>
+                                   @* <li id="menu-item-2428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="http://auditor.lacounty.gov/contact-page/">Contact Us</a></li>*@
                                     <li id="menu-item-3042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3042"><a href="http://auditor.lacounty.gov/john-naimo/">Auditor-Controller Bio</a></li>
                                     <li id="menu-item-3043" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3043"><a href="http://auditor.lacounty.gov/about-the-auditor/">Our Organization</a></li>
                                 </ul>
@@ -246,7 +246,7 @@
                             <div class="menu-site-info-container">
                                 <ul id="menu-site-info" class="menu">
 
-                                    <li id="menu-item-2655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2655"><a href="/UserGuide">User Guide</a></li>
+                                   @* <li id="menu-item-2655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2655"><a href="/UserGuide">User Guide</a></li>*@
                                     <li id="menu-item-2657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2657"><a href="http://auditor.lacounty.gov/accessibility/">Accessibility</a></li>
                                     <li id="menu-item-2658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2658"><a href="http://auditor.lacounty.gov/disclaimer/">Disclaimer</a></li>
                                     <li id="menu-item-2659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2659"><a href="http://auditor.lacounty.gov/privacy-policy/">Privacy Policy</a></li>
