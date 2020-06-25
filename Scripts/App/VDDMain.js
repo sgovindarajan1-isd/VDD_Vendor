@@ -11,7 +11,6 @@ vdd.GlobalVariables = {
     UserName: ''
 };
 
-
 /*Initial settings*/
 
 var Globaljqvar = {
@@ -20,14 +19,12 @@ window.__INITIAL_STATE__ = {
     IsValidUser: false
 };
 
-
 // testing begin 
 
 //var is_mobile = 'No';
 //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 //	is_mobile = 'Yes';
 //}
-
 
 //debugger;
 //	$.getJSON("http://jsonip.appspot.com?callback=?",
@@ -48,44 +45,17 @@ $('#img_username').on('click', function (e) {
 });
 
 
-//----------------------  click nav button
-//$("#ul").find("li span").click(function () {
-//	$('.selectedLi').removeClass('selectedLi');
-//	$(this).addClass('selectedLi');
-//});
-
-//$(".liselect").click(function () {
-//	BusinessLogic();
-//});
-
-//function BusinessLogic() {
-//	debugger;
-//	var text = $('#ul').find("li span span.selectedLi").text();
-//	//alert("selected Value112" + text);
-//} 
-
-////$("li").addClass("disabled");
-
 
 $('.liselect').on('click', function () {
-	debugger;
 	var eId = $(this)[0].id;
 
 	var selectedValue = parseInt($(this).attr('value'));
-	//alert('selectd Value : ' + selectedValue);
 
 	var currentNavId = $('.liselect.active')[0].id;
-	//alert('current id ' + currentNavId);
-
-	//var s = $('#' + $('.liselect.active')[0].id + '[value=' + currentValue + "]");
 
 	var currentValue = parseInt($('#' + $('.liselect.active')[0].id).attr('value'));
-	//alert('currentValue' + currentValue);
-	//alert('currentValue' + $('#' + $('.liselect.active')[0].id).attr('value'));
 
 	if (currentValue > selectedValue) {
-		//alert('here you go ');
-
 		switch (selectedValue) {
 			case 1:
 				window.location.href = '/deposit/Index';   
@@ -110,105 +80,16 @@ $('.liselect').on('click', function () {
 				break;
 		}
 	}
-	
-
-	
-	//if ($(this).length > 0) {
-	//	alert($(this)[0].id);
-	//}
-
-	//var s = $('#' + eId + '[value=' + currentValue + "]");
-	//alert('here '+s.id);
-	////  if the li is not active  and value <= current value then 
-	////if (! ($("#" + eId).hasClass('active'))  and   {
-
-	////  if the li is not active  and value <= current value then 
-	
-
-	//if ($("#"+eId).hasClass('disabled')) {
-	//	var value = $(this).attr('value');
-	//	alert('Selected menu value : ' + value);
-	//	debugger;
-	//	if ($(this).length > 0) {
-	//		alert($(this)[0].id);
-	//	}
-
-	//	alert('current ' + $('.liselect.active')[0].id);
-
-	//	// disabled all nav button
-
-	////	$(this)[0].addClass('disabled');
-	//}
-	//else
-	//	alert('this donot has disabled');
-
-
 });
 
-
-//$('.liselect.active').on('click', function () {
-//	alert('.liselect.active');
-//	//debugger;
-
-//	//if ($(".liselect.active").find('span').hasClass("disabled")) {
-
-//	////if ($(".round-tab").hasClass("disabled")) {
-//	//	alert('it has disabled');
-//	//} else {
-//	//	alert('it has not disabled');
-//	//}
-	
-//	//window.history.back();
-//    //$(this).toggleClass('background_selected');
-//});
-//----------------------  click nav button
-
-//$(".nav li").on("click", function (e) {
-//   // e.preventDefault();
-//});
-//    $(".nav li").removeClass("active");
-//    --$(".nav li span span").removeClass("disabled");
-//    $(this).addClass("active");
-//    --$(".nav li span span").removeClass("disabled");
-
-
-//$(".nav li span span img").on("click", function () {
-//    $("#img_confirmation_step").attr('src', '/Content/Images/confirmation_step.png');
-//    $("#img_submit_step").attr('src', '/Content/Images/submit_step.png');
-//    $("#img_certify_step_step").attr('src', '/Content/Images/certify_step.png');
-//    $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step.png');
-//    $("#img_bank_attachment_step").attr('src', '/Content/Images/attachment_step.png');
-//    $("#img_bank_step").attr('src', '/Content/Images/bank_step.png');
-//    $("#img_info_step").attr('src', '/Content/Images/info_step.png');
-
-//    if ($(this)[0].id == "img_confirmation_step") {
-//        $(this).attr('src', '/Content/Images/confirmation_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_submit_step_step") {
-//        $(this).attr('src', '/Content/Images/submit_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_certify_step_step") {
-//        $(this).attr('src', '/Content/Images/certify_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_bank_verify_step") {
-//        $(this).attr('src', '/Content/Images/verify_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_bank_attachment_step") {
-//        $(this).attr('src', '/Content/Images/attachment_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_info_step") {
-//        $(this).attr('src', '/Content/Images/info_step_on.png');
-//    }
-//    if ($(this)[0].id == "img_bank_step") {
-//        $(this).attr('src', '/Content/Images/bank_step_on.png');
-//    }
-//});
-
 $("#btn_logout").on('click', function () {
-    $('#logoutModal').modal('hide');
-    sessionStorage.setItem('userName', "");
-    sessionStorage.setItem('accessToken', "");
-    sessionStorage.setItem('vendorNumber', "");
+	$('#logoutModal').modal('hide');
+	debugger;
+	sessionStorage.clear();
+
+    //sessionStorage.setItem('userName', "");
+    //sessionStorage.setItem('accessToken', "");
+    //sessionStorage.setItem('vendorNumber', "");
     //sessionStorage.setItem('payeeId', "");
 
     window.location.href = "/Home/Index";
@@ -227,8 +108,16 @@ function isEmail(email) {
     }
 }
 
-
-
+function validatePhone(txtPhone) {
+	debugger;
+	var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+	if (filter.test(txtPhone)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 (function ($) {
 	$.fn.menumaker = function (options) {

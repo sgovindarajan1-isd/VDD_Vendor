@@ -18,7 +18,6 @@
 
 
     if ($(location).attr('href').indexOf("_partialBankDetails") > -1) {
-        debugger;
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
         $("#img_bank_step").addClass("active");
@@ -29,7 +28,9 @@
 
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
         if ((bankobj != null) && (bankobj != 'undefined')) {
-            $("#txtAccountType").val(bankobj[0].AccountType);
+            debugger;
+            $("#txtAccountType").prop('selectedIndex', bankobj[0].AccountType);
+            //$("#txtAccountType").val(bankobj[0].AccountType);
             $("#txtBankAcNo").val(bankobj[0].BankAccountNumber);
             $("#txtRe-BankAcNo").val(bankobj[0].ReBankAcNo),
             $("#txtBankRoutingNo").val(bankobj[0].BankRoutingNo);

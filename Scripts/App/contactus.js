@@ -47,7 +47,11 @@ function btn_contactus_click() {
     if (phone.length <= 0) {
         $("#phonespan").html('Phone required');
         bool = false;
-    } else {
+    } else if (!validatePhone(phone)) {
+        $("#phonespan").html('Valid Phone # required.');
+        bool = false;
+    }
+    else {
         $("#phonespan").html('');
     }
 
@@ -63,7 +67,7 @@ function btn_contactus_click() {
     }
     if (parseInt(subject) <= 0) {
         $("#subjectspan").html('Subject required');
-        bool =false;
+        bool = false;
     } else {
         $("#subjectspan").html('');
     }
@@ -90,9 +94,11 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
             'Company': company, 'FirstName': firstName, 'LastName': lastName, 'Phone': phone, 'Email': eMail, 'Subject': subject, 'Message': message
         }),
         headers: {
-            'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+            'Authorization': 'Basic ' + btoa('contactus')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
         },
         success: function (data) {
+            toastr.options.positionClass = "toast-bottom-right";
+            toastr.info("Successfully saving Contact Us Information...");
         }
         , complete: function (jqXHR) {
         }

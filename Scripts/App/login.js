@@ -28,14 +28,6 @@ $(document).ready(function () {
         
     $('#btn_login').click(clicklogin);
 
-
-    $('#btn_checkStatus').click(clickstatus);
-
-    //$('#btn_checkStatus').on('click', function (e) {
-    //    debugger;
-    //    abctest('sdfg');
-    //}
-
     $(".validate").on('input', function (e) {      
         //$("#lbl_invaliduserentry").text("");
         $("#fileError_or_Info").html("");
@@ -56,10 +48,6 @@ $(document).ready(function () {
     });
 });
 
-function clickstatus() {
-    abctest('sdfg')
-}
-
 function clicklogin() {
     var txt_employee_id = $('#txt_employee_id').val();
     var txt_Password_id = $('#txt_Password_id').val();
@@ -69,8 +57,12 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
-  //  var userid = 'SP8313';//'000076'; //'000593'; //'000339';
- //   var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
+    //var userid = 'SP8313';//'000076'; //'000593'; //'000339';
+    //var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
+
+    //var userid = '000076'; //'000593'; //'000339';
+    //var tin = '953765453'; //'232116774'; //'942647607'; 
+
 
     var SecuredToken = '';
 
@@ -129,30 +121,3 @@ function loginExternalVendor(userid, tin) {
         }
     });
 };
-
-function abctest(confi) {
-    //alert('abetest functino ');
-        var SecuredToken = '';
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            type: "POST",
-            url: hostdomainUrl + "api/values/checkStatus/",
-            dataType: 'json',
-            data: JSON.stringify({ 'UserId': 'a', 'Tin': 'tin' }),
-            beforeSend: function () {
-                $("#loaderDiv").show();
-            },
-            headers: {
-                'Authorization': 'Basic ' + btoa(SecuredToken + ":" + 'userid' + ':' + 'tin')
-            },
-
-            success: function (data) {
-                debugger
-
-            },
-            error: function (_XMLHttpRequest, textStatus, errorThrown) {
-            }
-});
-        };
-
- 
