@@ -18,6 +18,7 @@
 
 
     if ($(location).attr('href').indexOf("_partialBankDetails") > -1) {
+
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_step").attr('src', '/Content/Images/bank_step_on.png');
         $("#img_bank_step").addClass("active");
@@ -25,18 +26,26 @@
         $("#li_bankstep").removeClass("disabled");
         $("#img_bank_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Enter Bank Information');
+        $('#img_checkImage').hide();  //  by default img will be invisible
 
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
         if ((bankobj != null) && (bankobj != 'undefined')) {
             debugger;
             $("#txtAccountType").prop('selectedIndex', bankobj[0].AccountType);
-            //$("#txtAccountType").val(bankobj[0].AccountType);
             $("#txtBankAcNo").val(bankobj[0].BankAccountNumber);
             $("#txtRe-BankAcNo").val(bankobj[0].ReBankAcNo),
             $("#txtBankRoutingNo").val(bankobj[0].BankRoutingNo);
             $("#txtFinancialIns").val(bankobj[0].FinancialIns);
             $("#txtDDNotifiEmail").val(bankobj[0].DDNotifiEmail);
             $("#txtReDDNotifiEmail").val(bankobj[0].ReDDNotifiEmail);
+
+            var accountType = $('#txtAccountType').val();
+            if (parseInt(accountType) != 1) {
+                $('#img_checkImage').hide();
+            }
+            else {
+                $('#img_checkImage').show();
+            }
         }
     }
     else if ($(location).attr('href').indexOf("_partialAttachment") > -1) {
@@ -136,7 +145,7 @@
 
     $('#txtAccountType').change(function (e) {
         var accountType = $('#txtAccountType').val();
-        if (parseInt(accountType) == 2) {
+        if (parseInt(accountType) != 1) {
             $('#img_checkImage').hide();
         }
         else {

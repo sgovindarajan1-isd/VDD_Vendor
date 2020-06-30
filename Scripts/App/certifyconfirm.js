@@ -12,6 +12,9 @@
 
     //$(".nav li").removeClass("active");
     if ($(location).attr('href').indexOf("_partialCertify") > -1) {
+
+        $('#txtSignerPhone').mask('(000)000-0000');
+
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
         $("#img_bank_verify_step").attr('src', '/Content/Images/info_step.png');
         $("#img_certify_step").attr('src', '/Content/Images/certify_step_on.png');
@@ -27,7 +30,7 @@
         ////testing values
         //$('#txtSignerName').val('asdfg');
         //$('#txtSignerTitle').val('sdfg');
-        //$('#txtSignerPhone').val('a@abc.com');
+        //$('#txtSignerPhone').val('1233442345');
         //$('#txtSignerEmail').val('a@abc.com');
         ////testing values
 
@@ -36,7 +39,7 @@
             $("#txtSignerName").val(certifyobj[0].Signername);
             $("#txtSignerTitle").val(certifyobj[0].Signertitle);
             $("#txtSignerPhone").val(certifyobj[0].Signerphone),
-            $("#txtSignerEmail").val(certifyobj[0].Signeremail);
+                $("#txtSignerEmail").val(certifyobj[0].Signeremail);
         }
     }
     else if ($(location).attr('href').indexOf("_partialSubmit") > -1) {
@@ -107,7 +110,7 @@
         } else {
             $("#signerTitle").html('');
         }
-
+        debugger;
         if (signerPhone.length <= 0) {
             $("#signerPhone").html('Authorized Signer’s Phone # is required.');
             bool = false;
@@ -145,7 +148,6 @@
     });
 
     function validatePhone(txtPhone) {
-        debugger;
         var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
         if (filter.test(txtPhone)) {
             return true;
@@ -182,10 +184,15 @@
         }
         else {
             debugger;
-            
+
             submitDetailstoDB();  // submit/ generate confirmation number
         }
     });
+
+    $("#chk_submit").on('click', function (e) {
+        e.preventDefault();
+    });
+
     function getSubmitDetails() {
         debugger;
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));

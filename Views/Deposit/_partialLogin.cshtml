@@ -35,12 +35,12 @@
 
                 <div class="form-group">
                     <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
-                    <img data-toggle="popover" data-placement="top" data-content="Unique identification number assigned to you by the County. If you do not have this, you may inquire with the department you are doing business with." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                    <img data-toggle="popover"  data-popover="true"  data-placement="top" data-content="Unique identification number assigned to you by the County. If you do not have this, you may inquire with the department you are doing business with." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                     <input value="" id="txt_employee_id" type="password" class="form-control form-control123 validate" placeholder="Enter your Vendor Number" maxlength="10">
                 </div>
                 <div class="form-group">
                     <label class="active" for="txt_Password_id:">SSN or TIN</label>
-                    <img data-toggle="popover" data-placement="top" data-content="Enter your social security number or taxpayer identification number. Do not enter any dashes." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px  ; vertical-align: middle;">
+                    <img data-toggle="popover" data-placement="top"  data-popover=true data-content="Enter your social security number or taxpayer identification number. Do not enter any dashes." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px  ; vertical-align: middle;">
                     <input value="" onkeypress="return isNumberKey(event)" id="txt_Password_id" type="password" class="form-control validate" placeholder="Enter your SSN or TIN" maxlength="9">
                     <span id="errmsg" style="color: red"></span>
                 </div>
@@ -53,13 +53,6 @@
                     <div class="form-group">
                         <button id="btn_login" type="submit" name="action" class="btn btn-primary all-button" style="height: 50px !important">Sign In</button>
                     </div>
-
-                    @*<div class="form-group">
-                        <button id="btn_checkStatus" type="submit" name="action" class="btn btn-primary all-button" style="height: 50px !important">Test</button>
-                    </div>*@
-
-
-
 
                     <div id="loaderDiv" class="spinner-border text-primary" role="status">
                         <span class="sr-only">Loading...</span>

@@ -9,9 +9,9 @@
 
 
     $('#btn_appStatus').on('click', function (e) {
-        if ($("#txtConfirmationNum").val().length !== 0) {
-            sessionStorage.setItem('SessionConfirmationNum', $("#txtConfirmationNum").val());
+        //if ($("#txtConfirmationNum").val().length !== 0) {
+        //    sessionStorage.setItem('SessionConfirmationNum', $("#txtConfirmationNum").val());
             window.location.href = '/deposit/_partialAppStatus';
-        }
+        //}
     });
 });
