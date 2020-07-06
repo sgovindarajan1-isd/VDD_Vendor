@@ -338,3 +338,25 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Uploads
+/VDD_DataSet.xss
+/VDD_DataSet.xsd
+/VDD_DataSet.xsc
+/VDD_DataSet.Designer.cs
+/VDDDataSet123.xss
+/VDDDataSet123.xsd
+/VDDDataSet123.xsc
+/VDDDataSet123.Designer.cs
+/VDDDataSet.xss
+/VDDDataSet.xsd
+/VDDDataSet.xsc
+/VDDDataSet.Designer.cs
+/ReportViewerWebForm.aspx
+/AuthformVDDDataSet.xss
+/AuthformVDDDataSet.xsd
+/AuthformVDDDataSet.xsc
+/AuthformVDDDataSet.Designer.cs
+/AuthFormDataSet.xss
+/AuthFormDataSet.xsd
+/AuthFormDataSet.xsc
+/AuthFormDataSet.Designer.cs

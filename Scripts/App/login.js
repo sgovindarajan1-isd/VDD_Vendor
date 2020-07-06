@@ -1,6 +1,11 @@
 ﻿//var vdd = vdd || {};
 $(document).ready(function () {
     $("#liNavigation").hide();
+    
+    if ($(location).attr('href').indexOf("_partialLogin") > -1) {
+        $('#lbl_header').html('Vendor Login <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span> ');
+    }
+
     var isNumberKey = function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode != 46 && charCode > 31
@@ -24,7 +29,8 @@ $(document).ready(function () {
     $('#btn_login').click(clicklogin);
 
     $(".validate").on('input', function (e) {      
-        $("#lbl_invaliduserentry").text("");
+        //$("#lbl_invaliduserentry").text("");
+        $("#fileError_or_Info").html("");
     });
 
     $('[data-toggle="popover"]').popover(); 
@@ -51,8 +57,12 @@ function clicklogin() {
 
 function loginExternalVendor(userid, tin) {
     ////  To do :  test values for easy access,  remove later
+    var userid = 'SP8313';//'000076'; //'000593'; //'000339';
+    var tin = '474478313'; //'953765453'; //'232116774'; //'942647607'; 
+
     //var userid = '000076'; //'000593'; //'000339';
     //var tin = '953765453'; //'232116774'; //'942647607'; 
+
 
     var SecuredToken = '';
 
@@ -73,6 +83,7 @@ function loginExternalVendor(userid, tin) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
             sessionStorage.setItem('vendorNumber', userid);
+            sessionStorage.setItem('tin', tin);
             //sessionStorage.setItem('payeeId', data.data[0].PayeeId);
 
             if (data.data[0].IsValidUser == true) {
@@ -84,18 +95,25 @@ function loginExternalVendor(userid, tin) {
                 $("#loaderDiv").hide();
             }
             else {
-                $("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
                 $("#loaderDiv").hide();
             }
         }
         , complete: function (jqXHR) {
             
             if (jqXHR.status == '404') {
-                $("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
+                $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
             }
             $("#loaderDiv").hide();
         }
         , error: function (jqXHR, textStatus, errorThrown) {
+            debugger;
+            if (jqXHR.status == '404') {
+                $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
+            }
+
             if (jqXHR.status == '401') {
                 window.location.href = "/Home/UnAuthorized";
             }
@@ -103,4 +121,3 @@ function loginExternalVendor(userid, tin) {
         }
     });
 };
- 
