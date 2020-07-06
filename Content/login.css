@@ -24,6 +24,7 @@
     background: #fff;
     overflow: hidden;
     padding: 20px 55px 20px 55px;
+    min-width: 50%;
     /*width: 35%;*/
     /*box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -115,9 +116,9 @@
     border-bottom :solid;
 }
 
-.btn {
+/*.btn {
     background-color: rebeccapurple;
-}
+}*/
 
     #titleimage {
         background-image: url('images/DD01192016.jpg');
@@ -216,13 +217,15 @@ div.login-panel{
     right: 0;
 }
 
-.Absolute-Center.is-Responsive {
-    width: 50%;
-    height: 50%;
-    min-width: 200px;
-    max-width: 400px;
-    padding: 40px;
-}
+    .Absolute-Center.is-Responsive {
+        /*width: 50%;
+    height: 50%;*/
+        min-width: 200px;
+        max-width: 400px;
+        padding: 40px;
+        text-align: -webkit-center;
+        
+    }
 
 /* Landing page*/
 .border-this {

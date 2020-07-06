@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Submit";
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/App/certifyconfirm.js"></script>
+    <link href="~/Content/main2.css" rel="stylesheet" />
+}
+<div class="container" style="padding-top: 20px;">
+    <div class="col-lg-offset-3">
+        <span class="fontBold">Vendor information </span>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Vendor Name</span>
+            </div>
+            <div class="col-md-6">
+                <span id="vendorname" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Payee Name</span>
+            </div>
+            <div class="col-md-6">
+                <span id="payeename" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Social Security #/Taxpayer Identification #</span>
+            </div>
+            <div class="col-md-6">
+                <span id="ssn" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Direct Deposit Notification Email Address</span>
+            </div>
+            <div class="col-md-6">
+                <span id="ddemail" />
+            </div>
+        </div>
+        @* Bank Details start *@
+
+        <h10>
+            <span class="fontBold">Banking information </span>
+        </h10>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Type of Account</span>
+            </div>
+            <div class="col-md-6">
+                <span id="typeofAccount" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Bank Account Number</span>
+            </div>
+            <div class="col-md-6">
+                <span id="accountNumber" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Bank Routing Number</span>
+            </div>
+            <div class="col-md-6">
+                <span id="routingNumber" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Financial Institution Name</span>
+            </div>
+            <div class="col-md-6">
+                <span id="finInsName" />
+            </div>
+        </div>
+        @* Bank Details End*@
+
+        @* Address Details start*@
+        <div id="banklocations" style="padding-top:90px">
+            <span class="fontBold">
+                Direct Deposit Payment Option Selected
+            </span>
+
+            <div>
+                Assign this bank account to the following addresses:
+            </div>
+
+        </div>
+        @* Address Details End*@
+
+        @* Authorization*@
+        <div style="padding-top:20px">
+            <span class="fontBold">
+                Certifications
+            </span>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Authorized Signer’s Name</span>
+            </div>
+            <div class="col-md-6">
+                <span id="signername" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Authorized Signer’s Title</span>
+            </div>
+            <div class="col-md-6">
+                <span id="signertitle" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <span>Authorized Signer’s Phone Number</span>
+            </div>
+            <div class="col-md-6">
+                <span id="signerphone" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">
+                <span>Authorized Signer’s E-mail Address</span>
+            </div>
+            <div class="col-sm-6">
+                <span id="signeremail" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="fontBold" style="text-decoration: underline; padding-top :10pt; text-align: center"><input id="chk_submit" type="checkbox" style="height: 20px; width: 20px;" />I authorize this request for direct deposit.</label>
+        </div>
+
+        @*<div style="padding-top :10pt; text-align: center">
+                <button style="float: left" class="btn btn-back" id="btn_submit_back"> Back </button>
+                <button style="float: right" class="btn btn-continue" id="btn_submit_next"> Submit </button>
+            </div>*@
+        <div class="form-group">
+            <div class="col-sm-6">
+                <button style="float: left" class="btn btn-back" id="btn_submit_back"> Back </button>
+            </div>
+            <div class="col-sm-6">
+                <button style="float: left" class="btn btn-continue" id="btn_submit_next"> Submit </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

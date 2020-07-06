@@ -1,7 +1,39 @@
+.homePageButtonWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 1em 1em 1em;
+}
+
+/*Vdd: to fix mobile view checkbox disappearance*/
+input[type=checkbox] {
+    -webkit-appearance: checkbox !important;
+}
+
+/* Layout spacing */
+.layoutBody {
+    overflow: auto;
+    height: 100%;
+    min-height: 600px;
+    padding-bottom: 100px;
+    background-color: #f2f2f2 !important;
+}
+/* Layout spacing end */
+/*Start certify page*/
+.certify-text-spacing {
+    padding-right: 15px;
+    text-align: end;
+}
+
+.background_selected {
+    color: #7030A0 !important;
+    font-weight: bold !important;
+}
 /*Start attachment page*/
 .custom-file-input {
     display: inline-block;
-    overflow: hidden;
+    /*overflow: hidden; commented to align label with attachment textbox*/
     position: relative;
 }
 
@@ -18,29 +50,6 @@
 }
 
 /***********************************/
-/*input[type="file"] {
-    display: none;
-}
-
-.custom-file-upload {
-    background: #ddd;
-    border: 1px solid #aaa;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    color: #444;
-    display: inline-block;
-    font-size: 11px;
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 0 1px rgba(255, 255, 255, .75);
-    cursor: pointer;
-    margin-bottom: 20px;
-    line-height: normal;
-    padding: 8px 10px;
-}*/
 .attachment-header {
     text-align: center;
     padding: 20px 20px 20px 30px;
@@ -51,51 +60,28 @@
 }
 
 .disabled_color {
-    background-color: #aaa  !important;
+    background-color: #777 !important;
+    /*color: green !important;*/
 }
 
 .buttonBig {
     width: 260px !important;
     height: 130px !important;
-    background-color: #7030A0 !important;
+    background-color: #7030A0 /
     
 }
 
-    .buttonBig:hover {
-        background-color: #00B0F0 !important;
-        color: #ffffff;
-        border-color: #000000;
-        white-space: normal;
-        font-size: small;
-        white-space: normal;
-    }
-/*
-    .buttonBig_hover {
-        background-color: #00B0F0 !important;
-        color: #ffffff;
-        border-color: #000000;
-        white-space: normal;
-        font-size: small;
-    }*/
-
-
-/*#btn_voidCheck:hover::after {
-	content: "Voided Check must have the holder’s name." !important;
-	white-space: normal;
+.buttonBig:hover {
+    /*background-color: #00B0F0 !important;*/
+    color: #ffffff;
+    border-color: #000000;
+    white-space: normal;
+    font-size: small;
+    white-space: normal;
 }
-
-#btn_Statement:hover::after {
-	content: "Statement must include the full bank account number and holder’s name." !important;
-	white-space: normal;
-}
-#btn_verifyLetter:hover::after {
-	content: "Letter must include the bank account number, account type and account holder’s name. The letter must be printed on the financial institution’s letterhead which includes the authorized bank representative name, title, phone number and signature." !important;
-	white-space: normal;
-}*/
-
 /*end attachment page*/
 
-
+/* footer  div height*/
 #wrapper {
     display: block;
     width: 1000px;
@@ -104,26 +90,19 @@
 
 #first {
     display: inline-block;
-    /*border: 1px solid red;*/
 }
 
-#second {
-    width: 400px;
+#footerNavLink {
+    width: 100%;
     display: inline-block;
-    padding-left: 50px;
     overflow: hidden;
-    /*border: 1px solid green;*/
-    text-align: center;
+    text-align: -webkit-center;
     vertical-align: middle;
-}
-
-#second1 {
-    text-align: center;
-    vertical-align: middle;
+    text-align:center;
 }
 
 
-
+/* end footer  div height*/
 .errmessage {
     color: red !important;
 }
@@ -12364,7 +12343,7 @@ div#logo-side-info-bar > div p {
 
 @media screen and (min-width:1181px) {
     #wp_header.menu-align-left #top-menu > div > div > ul > li:first-child > a {
-        margin-left: 51px
+        /*margin-left: 51px  VDD  to make the menu item left aligned*/
     }
 }
 
@@ -12467,13 +12446,29 @@ form {
     margin: 0 0 6px 0
 }
 
+
+.appstatus_header_line {
+    height: 1px !important;
+    /*background-color: transparent;*/
+    /*#dfdfdf*/
+    margin-bottom: 15px;
+}
+
+    .appstatus_header_line > span {
+        display: block;
+        width: 210px;
+        height: 3px;
+        margin-top: -2px;
+        float: left;
+        background-color: red
+    }
+
 .header-line {
     height: 1px !important;
     background-color: #7030A0;
     /*#dfdfdf*/
     margin-bottom: 15px
 }
-
     .header-line > span {
         display: block;
         width: 210px;
@@ -15525,6 +15520,10 @@ p {
     margin-bottom: 15px
 }
 
+.largeMarginBottom_top {
+    margin-bottom: 30px
+}
+
 .largeMarginLeft {
     margin-left: 15px
 }
@@ -16028,11 +16027,11 @@ div.reviewShaded > div {
     height: 2px;
     background: #e0e0e0;
     position: absolute;
-    width: 85%;
+    width: 100%; /*vdd*/
     margin: 0 auto;
     left: 0;
     right: 5;
-    top: 50%;
+    top: 40%; /*vdd*/
     z-index: 1
 }
 
@@ -16114,7 +16113,7 @@ span.round-tab:hover {
 .wizard li.active:after {
     content: " ";
     position: absolute;
-    left: 18%;
+    left: 43%; /* --  VDD: this is making the triangle in the center of circle*/
     opacity: 1;
     margin: 0 auto;
     bottom: 0;
@@ -16124,6 +16123,7 @@ span.round-tab:hover {
 
 .wizard .nav-tabs > li a, .wizard-step {
     height: 70px;
+    width: 70px;
     margin: 20px auto;
     border-radius: 100%;
     padding: 0

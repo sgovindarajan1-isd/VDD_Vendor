@@ -12,6 +12,7 @@ namespace WebMaterialPOC
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/materialize.js"
                         ,"~/Scripts/App/login.js"
+                        , "~/Scripts/App/dashboard.js"
                         ));
 
    
