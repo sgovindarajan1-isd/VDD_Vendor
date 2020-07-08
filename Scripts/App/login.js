@@ -49,6 +49,7 @@ $(document).ready(function () {
 });
 
 function clicklogin() {
+    sessionStorage.clear();
     var txt_employee_id = $('#txt_employee_id').val();
     var txt_Password_id = $('#txt_Password_id').val();
     loginExternalVendor(txt_employee_id, txt_Password_id)

@@ -2,6 +2,7 @@
     var vendorDetails = {};
     //var bankDetails = {};
     var bankDetails = new Array();
+    var locationList = new Array();
 
     $("#img_info_step").parent().css("border-color", "#7030A0");
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
@@ -28,11 +29,11 @@
         $("#span_verify_step").removeClass("disabled");
 
         ////testing values
-        //$('#txtSignerName').val('asdfg');
-        //$('#txtSignerTitle').val('sdfg');
+        //$('#txtSignerName').val('Srini G');
+        //$('#txtSignerTitle').val('President/CEO');
         //$('#txtSignerPhone').val('1233442345');
-        //$('#txtSignerEmail').val('a@abc.com');
-        ////testing values
+        //$('#txtSignerEmail').val('srini@isd.com');
+        //////testing values
 
         var certifyobj = JSON.parse(sessionStorage.getItem("certifydetailsJson"));
         if ((certifyobj != null) && (certifyobj != 'undefined')) {
@@ -196,11 +197,12 @@
     function getSubmitDetails() {
         debugger;
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
+        var vendorNumber = sessionStorage.getItem('vendorNumber');
 
-        $("#vendorname").html(sessionStorage.getItem('vendorNumber'));
+        $("#vendorname").html(vendorNumber);
         $("#payeename").html(sessionStorage.getItem('userName'));
         $("#ssn").html(sessionStorage.getItem('tin'));
-        vendorDetails.vendorname = sessionStorage.getItem('vendorNumber');
+        vendorDetails.vendorname = vendorNumber;
         vendorDetails.payeename = sessionStorage.getItem('userName');
         vendorDetails.ssn = sessionStorage.getItem('tin');
 
@@ -228,6 +230,7 @@
             $('#banklocations').append(s);
             var bankDetl = {};
             bankDetl.address = value.VendorAddress;
+            locationList.push(value.VendorAddress);
             bankDetails.push(value.LocationID);
         });
 
@@ -247,9 +250,12 @@
         //vendorDetails.Confirmation = "";
         //vendorDetails.SubmitDateTime = new Date();
         vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
-//        vendorDetails.VendorReportFileName = vendorDetails.vendorname;  
+
+        //var uniqueFileName = getUniqueFileNameusingCurrentTime();
+        //vendorDetails.VendorReportFileName = uniqueFileName + "_" + vendorNumber + "_VendorReport.pdf";
 
         vendorDetails.locationIDs = bankDetails;
+        vendorDetails.locationAddressDescList = locationList;
 
         vendorDetails.Source_ip = "Source_ip";//getSourceip();
         vendorDetails.Source_device = "Source_device";
@@ -296,8 +302,6 @@
     }
 
     function submitDetailstoDB() {
-        debugger;
-        vendorDetails.VendorReportFileName = 'notyetdefined';
         var venDetails = JSON.stringify(vendorDetails);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -309,18 +313,21 @@
                 'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
             },
             success: function (data) {
+                debugger;
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
-                sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);  
+                sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);
+                vendorDetails.Confirmation = data.data.Confirmation;
+                vendorDetails.SubmitDateTime = data.data.SubmitDateTime;
                 // generate the report and store in the upload folder
-                var rptFileName = createReportandGettheFielName(vendorDetails);
 
-                window.location.href = '/deposit/_partialConfirmation';
+                var uniqueDatetime = getUniqueFileNameusingCurrentTime();
+                vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
+                createReportandGettheFielName(vendorDetails);
+                //window.location.href = '/deposit/_partialConfirmation';
              }
             , complete: function (jqXHR) {
-                var rptFileName = createReportandGettheFielName(vendorDetails);
              }
             , error: function (jqXHR, textStatus, errorThrown) {
-                var rptFileName = createReportandGettheFielName(vendorDetails);
                 debugger;
                 if (textStatus == 'error') {
                     toastr.options.positionClass = "toast-bottom-right";
@@ -335,7 +342,7 @@
     /*Submit Section end */
 
 /*Confirmation Section begin */
-    function createReportandGettheFielName(venDetails) {
+    function createReportandGettheFielName(vendorDetails) {
         debugger;
         $.ajax({
             url: '/report/showreport/',
@@ -343,20 +350,42 @@
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             //processData: false,
-            data: JSON.stringify(vendorDetails),  //{ 'Id': 0, 'IdText': ConfirmationNumber,'Text': vendorDetails.vendorname }),
+            data: JSON.stringify(vendorDetails),  
             success: function (result) {
                 debugger;
-              //  alert(result);
-                return result;
+                $.ajax({
+                    url: hostdomainUrl + "api/values/InsertVendorReportFileName/",
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(vendorDetails),  
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+                    },
+                    success: function (result) {
+                        debugger;
+                        sessionStorage.setItem('VendorReportFileName', vendorDetails.VendorReportFileName)
+                        window.location.href = '/deposit/_partialConfirmation';
+                        //return result;
+                    },
+                    error: function (err) {
+                          alert('Report Error' + err.statusText);
+                    }
+                });
+               // return result;
             },
             error: function (err) {
-              //  alert('report error' + err.statusText);
+                debugger;
+                alert('report error -' + err.statusText);
             }
         });  
     }
 
     $('#btn_viewReport').on('click', function (e) {
-       
+        //var url = '../Home/GetPDF?fileName=' + FileName;
+        var url = "/Uploads/" + sessionStorage.getItem('VendorReportFileName');
+       // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
+            window.open(url, '_blank');
     });
     /*Confirmation Section end */
 });

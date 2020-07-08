@@ -6,13 +6,12 @@
     // testing values
 
     //$('#txtAccountType').val('1');
-    //$('#txtAccountType').val('11223344');
-    //$('#txtBankAcNo').val('11223344');
-    //$('#txtRe-BankAcNo').val('11223344');
+    //$('#txtBankAcNo').val('66112342');
+    //$('#txtRe-BankAcNo').val('66112342');
     //$('#txtBankRoutingNo').val('122000661');
     
-    //$('#txtDDNotifiEmail').val('a@abc.com');
-    //$('#txtReDDNotifiEmail').val('a@abc.com');
+    //$('#txtDDNotifiEmail').val('ddnotify@isd.com');
+    //$('#txtReDDNotifiEmail').val('ddnotify@isd.com');
 
     // testing values
 
@@ -236,14 +235,15 @@
 
                 $("#txtattachment").val(fileName);
                 sessionStorage.setItem('originalfileName', fileName);  //  original file name: we keep this in case coming back from  next screen 
-                var today = new Date();
-                var cHour = today.getHours();
-                var cMin = today.getMinutes();
-                var cSec = today.getSeconds();
-                var d = new Date($.now());
-                var stmp = d.getDate() + '' + (d.getMonth() + 1) + '' + d.getFullYear() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
+                //var today = new Date();
+                //var cHour = today.getHours();
+                //var cMin = today.getMinutes();
+                //var cSec = today.getSeconds();
+                //var d = new Date($.now());
+                //var stmp = d.getDate() + '' + (d.getMonth() + 1) + '' + d.getFullYear() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
 
-                var modifiedFileName = stmp + "_" + vendorNumber + "_" + fileSelectytedtype + fileExtenstion.toLowerCase();
+                var uniqueFileName = getUniqueFileNameusingCurrentTime();
+                var modifiedFileName = uniqueFileName + "_" + vendorNumber + "_" + fileSelectytedtype + fileExtenstion.toLowerCase();
 
                 uploadfile(file, modifiedFileName, fileExtenstion.toLowerCase());
 
