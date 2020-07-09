@@ -113,7 +113,6 @@ $('.liselect').on('click', function () {
 
 $("#btn_logout").on('click', function () {
 	$('#logoutModal').modal('hide');
-	debugger;
 	sessionStorage.clear();
 
     //sessionStorage.setItem('userName', "");
@@ -127,6 +126,16 @@ $("#btn_logout").on('click', function () {
 $("#btn_generalInfo").on('click', function () {
     window.location.href = "/Home/UnAuthorized";
 });
+
+function getUniqueFileNameusingCurrentTime() {
+	var today = new Date();
+	var cHour = today.getHours();
+	var cMin = today.getMinutes();
+	var cSec = today.getSeconds();
+	var d = new Date($.now());
+	var sfilename = d.getDate() + '' + (d.getMonth() + 1) + '' + d.getFullYear() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
+	return sfilename;
+}
 
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
