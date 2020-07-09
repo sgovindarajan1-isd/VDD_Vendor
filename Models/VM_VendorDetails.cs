@@ -25,7 +25,10 @@ namespace WebMaterialPOC.Models
         public DateTime SubmitDateTime { get; set; }
         public string VendorAttachmentFileName { get; set; }
         public string AttachmentFileName2 { get; set; }
+        public string VendorReportFileName { get; set; }
+        
         public List<string> LocationIDs { get; set; }
+        public List<string> LocationAddressDescList { get; set; }
         public string Source_ip { get; set; }
         public string Source_device { get; set; }
         public string User_agent { get; set; }

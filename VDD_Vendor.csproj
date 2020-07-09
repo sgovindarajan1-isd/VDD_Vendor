@@ -180,20 +180,18 @@
     </Compile>
     <Compile Include="ReportServerCredentials_TEST.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="VDDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VDDDataSet.xsd</DependentUpon>
+    <Compile Include="VendorLocationsDataSet.cs">
+      <DependentUpon>VendorLocationsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="VDDDataSet123.Designer.cs">
+    <Compile Include="VendorLocationsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VDDDataSet123.xsd</DependentUpon>
+      <DependentUpon>VendorLocationsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="VDD_DataSet.Designer.cs">
+    <Compile Include="VendorReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VDD_DataSet.xsd</DependentUpon>
+      <DependentUpon>VendorReportDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Web References\ABAServices\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -708,40 +706,29 @@
     <Content Include="Views\Deposit\_partialReport.cshtml" />
     <Content Include="Views\Deposit\Report.cshtml" />
     <Content Include="Views\Report\_partialReport.cshtml" />
-    <Content Include="VDDDataSet.xsc">
-      <DependentUpon>VDDDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="VDDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VDDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="VDDDataSet.xss">
-      <DependentUpon>VDDDataSet.xsd</DependentUpon>
-    </Content>
-    <Content Include="VDD_DataSet.xsc">
-      <DependentUpon>VDD_DataSet.xsd</DependentUpon>
-    </Content>
-    <Content Include="VDDDataSet123.xsc">
-      <DependentUpon>VDDDataSet123.xsd</DependentUpon>
-    </Content>
-    <None Include="VDDDataSet123.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VDDDataSet123.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="VDDDataSet123.xss">
-      <DependentUpon>VDDDataSet123.xsd</DependentUpon>
-    </Content>
-    <None Include="VDD_DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VDD_DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="VDD_DataSet.xss">
-      <DependentUpon>VDD_DataSet.xsd</DependentUpon>
-    </Content>
     <Content Include="Views\Deposit\_partialAppStatus.cshtml" />
+    <Content Include="VendorReportDataSet.xsc">
+      <DependentUpon>VendorReportDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="VendorLocationsDataSet.xsc">
+      <DependentUpon>VendorLocationsDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="VendorLocationsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VendorLocationsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="VendorLocationsDataSet.xss">
+      <DependentUpon>VendorLocationsDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="VendorReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VendorReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="VendorReportDataSet.xss">
+      <DependentUpon>VendorReportDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web References\ABAServices\abaservice.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -809,7 +796,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="VendorAuthorizationForm.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
