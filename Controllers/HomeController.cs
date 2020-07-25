@@ -16,23 +16,19 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
-        //public ActionResult PartialViewExample()
-        //{
-        //    return PartialView();
-        //}
+        [HttpPost]
+        public JsonResult IsSessionAlive()
+        {
+            if (Session.Contents.Count == 0)
+            {
+                return this.Json(new { IsAlive = false }, JsonRequestBehavior.AllowGet);
+            }
+            return this.Json(new { IsAlive = true }, JsonRequestBehavior.AllowGet);
+}
+
         public ActionResult LoginExternalVendor()
         {
-            //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
-            //return View(@"~/views/Deposit/Index.cshtml");
-            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
-
-
-            return this.RedirectToAction("Index", "Deposit");
-            //return RedirectToAction("Index", "Deposit");
-            //return View("Index", "Deposit");
-            //return View("Deposit", "Index");
-            //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
-            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
+             return this.RedirectToAction("Index", "Deposit");
         }
 
         public ActionResult DDStatus()
@@ -84,18 +80,3 @@ namespace WebMaterialPOC.Controllers
 
     }
 }
-
-
-
-
-//LoginExternalVendor()
-    //call api
-    // if pass 
-    // newtonsoft -receive parse
-    // 
-    //return this.RedirectToAction("Index", "Deposit");
-    //return RedirectToAction("Index", "Deposit");
-    //return View("Index", "Deposit");
-    //return View("Deposit", "Index");
-    //return PartialView(@"~/views/Shared/_partialDDLanding.cshtml");
-            //return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
