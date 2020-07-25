@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
     $('#lbl_header').html('Contact Us');
     $('#btn_contactus_submit').click(btn_contactus_click);
+    $('#txtPhone').mask('(000)000-0000');
 });
 
 $(".form-control").on('input', function (e) {
