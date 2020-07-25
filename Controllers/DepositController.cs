@@ -106,7 +106,7 @@ namespace WebMaterialPOC.Controllers
         [HttpPost]
         public ActionResult UploadAttachmentFile()
         {
-            string testanddelete = GetIPAddress();
+            //string testanddelete = GetIPAddress();
 
             string fname = string.Empty;
             string Uploadpath = string.Empty;
@@ -122,7 +122,6 @@ namespace WebMaterialPOC.Controllers
                     {
                         HttpPostedFileBase file = files[i];
                         
-
                         // Checking for Internet Explorer  
                         if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
                         {
@@ -131,7 +130,7 @@ namespace WebMaterialPOC.Controllers
                         }
                         else
                         {
-                            fname = modifiedFilename;// file.FileName;
+                            fname = modifiedFilename;
                         }
 
                         Uploadpath = System.Configuration.ConfigurationManager.AppSettings["Uploadpath"];
@@ -139,7 +138,6 @@ namespace WebMaterialPOC.Controllers
                         file.SaveAs(fname);
                     }
                     // Returns message that successfully uploaded  
-                    //return Json("~/" + Uploadpath + "/ "+ fname);
                     return Json(modifiedFilename);
                 }
                 catch (Exception ex)
@@ -156,14 +154,11 @@ namespace WebMaterialPOC.Controllers
         [HttpPost]
         public ActionResult showReport()
         {
-            //string ssrsuri = ConfigurationManager.AppSettings["SSRSREportUrl"].ToString();
-
             ReportViewer viewer = new ReportViewer();
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.SizeToReportContent = true;
             viewer.SizeToReportContent = true;
             viewer.AsyncRendering = true;
-            // viewer.ServerReport.ReportServerUrl = new Uri(ssrsuri);
             viewer.LocalReport.ReportPath = "Report1.rdlc";
             viewer.LocalReport.Refresh();
             ViewBag.ReportViewer = viewer;
@@ -188,39 +183,5 @@ namespace WebMaterialPOC.Controllers
             }
             return ipaddress;
         }
-
- 
-        //public ActionResult Report()
-        //{
-        //    ReportViewer rptViewer = new ReportViewer();
-
-        //    // ProcessingMode will be Either Remote or Local  
-        //    rptViewer.ProcessingMode = ProcessingMode.Remote;
-        //    rptViewer.SizeToReportContent = true;
-        //    rptViewer.ZoomMode = ZoomMode.PageWidth;
-        //    //rptViewer.Width = Unit.Percentage(99);
-        //    //rptViewer.Height = Unit.Pixel(1000);
-        //    rptViewer.AsyncRendering = true;
-        //    rptViewer.ServerReport.ReportServerUrl = new Uri("http://localhost/ReportServer/");
-
-        //    rptViewer.ServerReport.ReportPath = this.SetReportPath();
-
-        //    ViewBag.ReportViewer = rptViewer;
-        //    return View();
-        //}
-
-
-        // report try     
-        //public ActionResult ActionReport(int Id)
-        //{
-        //    ReportingServicesReportViewModel model = new ReportingServicesReportViewModel(
-        //    "ReportPath",
-        //    new List<Microsoft.Reporting.WebForms.ReportParameter>()
-        //    {
-        //new Microsoft.Reporting.WebForms.ReportParameter("parameter1",Id.ToString(),false)
-        //              });
-        //    return View("ViewReport", model);
-        //}
-
     }
 }

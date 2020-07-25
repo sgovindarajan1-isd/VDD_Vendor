@@ -178,7 +178,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ReportServerCredentials_TEST.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VendorLocationsDataSet.cs">
       <DependentUpon>VendorLocationsDataSet.xsd</DependentUpon>
