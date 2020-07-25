@@ -376,7 +376,9 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\info_step.png" />
     <Content Include="Content\images\info_step_on.png" />
+    <Content Include="Content\images\instructions.png" />
     <Content Include="Content\images\LACountySeal.png" />
+    <Content Include="Content\images\register.png" />
     <Content Include="Content\images\submit_step.png" />
     <Content Include="Content\images\submit_step_on.png" />
     <Content Include="Content\images\verify_step.png" />
@@ -666,6 +668,7 @@
     <Content Include="packages\Newtonsoft.Json.12.0.2\Newtonsoft.Json.12.0.2.nupkg" />
     <Content Include="packages\WebGrease.1.6.0\.signature.p7s" />
     <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

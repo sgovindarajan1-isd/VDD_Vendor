@@ -44,11 +44,30 @@ $.fn.popover.Constructor.prototype.leave = function (obj) {
 };
 
 $('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: { show: 50, hide: 400 } });
+//  Popover on question mark on mouse hover  - Ending
 
-//  Pop over on question mark on mouse hover  - Ending
+//  session timeout begin
+function IsSessionAlive() {
+	$.post("/Home/IsSessionAlive", function (data) {
+		if (!data.IsAlive) {
+			////If you may need to logout current user first than:
+			//$.post('@Url.Action("LogOut","Account")', function (data) {
+			//	window.location.href = '@Url.Action("Login","Account")';
+			//});
 
+			////if you don't need the logout:
 
+			sessionStorage.clear();
+			window.location.href = "/Home/Index";
+		}
+	});
+}
 
+$(function () {
+	//set interval to 5 minutes
+	//window.setInterval(IsSessionAlive(), 300000);
+})
+//  session timeout end
 
 // testing begin //var is_mobile = 'No';
 //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -114,12 +133,6 @@ $('.liselect').on('click', function () {
 $("#btn_logout").on('click', function () {
 	$('#logoutModal').modal('hide');
 	sessionStorage.clear();
-
-    //sessionStorage.setItem('userName', "");
-    //sessionStorage.setItem('accessToken', "");
-    //sessionStorage.setItem('vendorNumber', "");
-    //sessionStorage.setItem('payeeId', "");
-
     window.location.href = "/Home/Index";
 });
 
@@ -147,7 +160,7 @@ function isEmail(email) {
 }
 
 function validatePhone(txtPhone) {
-	if (txtPhone.length() < 10) {
+	if (txtPhone.length < 13) {
 		return false;
 	}
 	var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;

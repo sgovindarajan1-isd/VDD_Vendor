@@ -18,8 +18,7 @@ namespace WebMaterialPOC.Controllers
         public ActionResult Index()
         {
             return View();
-            // return PartialView(@"~/views/Shared/_partialPaymentInformation.cshtml");
-        }
+         }
 
         public ActionResult _partialLogin()
         {
@@ -60,14 +59,12 @@ namespace WebMaterialPOC.Controllers
         public ActionResult _partialAppStatus()
         {
             return View();
-        }
-        
+        }        
 
         public ActionResult _partialReport()
         {
             return View();
         }
-
 
 
         public string ValidateRoughtingNumber(string aba)
@@ -123,9 +120,6 @@ namespace WebMaterialPOC.Controllers
                     HttpFileCollectionBase files = Request.Files;
                     for (int i = 0; i < files.Count; i++)
                     {
-                        //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";  
-                        //string filename = Path.GetFileName(Request.Files[i].FileName);  
-
                         HttpPostedFileBase file = files[i];
                         
 
@@ -195,7 +189,7 @@ namespace WebMaterialPOC.Controllers
             return ipaddress;
         }
 
-
+ 
         //public ActionResult Report()
         //{
         //    ReportViewer rptViewer = new ReportViewer();
