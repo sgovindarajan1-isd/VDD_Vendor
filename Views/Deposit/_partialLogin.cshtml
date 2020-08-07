@@ -24,7 +24,7 @@
 
     <div class="login_container" style="padding-top: 30px">
 
-        <div  style="text-align: center">
+        <div style="text-align: center">
             <span id="fileError_or_Info" style="text-align: center" class="errmessage" />
         </div>
 
@@ -35,12 +35,12 @@
 
                 <div class="form-group">
                     <label class="active" for="txt_employee_id:">Vendor Number (Code)</label>
-                    <img data-toggle="popover"  data-popover="true"  data-placement="top" data-content="Unique identification number assigned to you by the County. If you do not have this, you may inquire with the department you are doing business with." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
+                    <img data-toggle="popover" data-popover="true" data-placement="top" data-content="Unique identification number assigned to you by the County. If you do not have this, you may inquire with the department you are doing business with." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                     <input value="" id="txt_employee_id" type="password" class="form-control form-control123 validate" placeholder="Enter your Vendor Number" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label class="active" for="txt_Password_id:">SSN or TIN</label>
-                    <img data-toggle="popover" data-placement="top"  data-popover=true data-content="Enter your social security number or taxpayer identification number. Do not enter any dashes." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px  ; vertical-align: middle;">
+                    <img data-toggle="popover" data-placement="top" data-popover=true data-content="Enter your social security number or taxpayer identification number. Do not enter any dashes." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px  ; vertical-align: middle;">
                     <input value="" onkeypress="return isNumberKey(event)" id="txt_Password_id" type="password" class="form-control validate" placeholder="Enter your SSN or TIN" maxlength="9">
                     <span id="errmsg" style="color: red"></span>
                 </div>
@@ -67,4 +67,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script src="~/Scripts/App/login.js"></script>
+}
 

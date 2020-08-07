@@ -16,6 +16,7 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
+
         [HttpPost]
         public JsonResult IsSessionAlive()
         {

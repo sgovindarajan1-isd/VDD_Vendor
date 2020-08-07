@@ -150,16 +150,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="AuthFormDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AuthFormDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="AuthformVDDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AuthformVDDDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -169,7 +159,6 @@
     </Compile>
     <Compile Include="Models\IdTextClass.cs" />
     <Compile Include="Models\ReportInfo.cs" />
-    <Compile Include="Models\ReportingServicesReportViewModel_TEST.cs" />
     <Compile Include="Models\VM_Login.cs" />
     <Compile Include="Models\VM_VendorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -411,28 +400,6 @@
     <Content Include="packages\bootstrap.3.4.1\content\Scripts\bootstrap.js" />
     <Content Include="packages\bootstrap.3.4.1\content\Scripts\bootstrap.min.js" />
     <Content Include="packages\bootstrap.3.4.1\LICENSE.txt" />
-    <Content Include="AuthformVDDDataSet.xsc">
-      <DependentUpon>AuthformVDDDataSet.xsd</DependentUpon>
-    </Content>
-    <Content Include="AuthFormDataSet.xsc">
-      <DependentUpon>AuthFormDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="AuthFormDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AuthFormDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="AuthFormDataSet.xss">
-      <DependentUpon>AuthFormDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="AuthformVDDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AuthformVDDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="AuthformVDDDataSet.xss">
-      <DependentUpon>AuthformVDDDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.min.js" />
