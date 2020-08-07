@@ -2,6 +2,11 @@
 
 $(document).ready(function () {
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
+    if (sessionStorage.getItem('userName') == null) {
+        $("#img_username").hide();
+    }
+    $("#liNavigation").hide();
+
     $('#lbl_header').html('Contact Us');
     $('#btn_contactus_submit').click(btn_contactus_click);
     $('#txtPhone').mask('(000)000-0000');

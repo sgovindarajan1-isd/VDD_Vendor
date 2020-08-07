@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+    $("#img_username").hide();
+    $("#liNavigation").hide();
+
     $('#btn_gotoLogin').on('click', function (e) {
         window.location.href = '/deposit/_partialLogin';
     });
