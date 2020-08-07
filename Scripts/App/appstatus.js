@@ -1,13 +1,17 @@
 ﻿$(document).ready(function () {
     $("#div_statusPanel").hide();
-
     $('#lbl_userName').text(sessionStorage.getItem('userName'));
+    if (sessionStorage.getItem('userName') == null) {
+        $("#img_username").hide();
+    }
+    $("#liNavigation").hide();
+
+
     $('#lbl_header').html('Application Status Lookup');
 
     $('#txt_ConfirmationNum').val(sessionStorage.getItem('SessionConfirmationNum'));
     var confirmationNumber = $('#txt_ConfirmationNum').val();
 
-    debugger;
     // for prepopulated case
     if (confirmationNumber.length !== 0) {
         getStatus(confirmationNumber);

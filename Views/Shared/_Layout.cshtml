@@ -46,9 +46,42 @@
                 <div style="float:right">
                     <div>
                         <div data-toggle="modal" class="dropdown" style="z-index: 2000; cursor: pointer">
+
                             <span id="img_username" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
-                                <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
+                                <label data-toggle="dropdown" class="dropdown-toggle" id="lbl_userName" aria-label="Close" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
+                                @*<label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />*@
+
                             </span>
+
+                            <div class="dropdown1">
+                                @*  <button  id="lbl_userName" class="dropbtn"></button>*@
+                                <div class="dropdown-content dropdown-menu dropdown-bubble">
+                                    <a data-toggle="modal" data-target="#logoutModal" style="font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial">Logout</a>
+                                </div>
+                            </div>
+
+                            @*<ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <button type="button" class="btn btn-default">Action</button>
+                                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>*@
+
+
+                            @*<span id="img_username" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
+                                    <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
+                                </span>*@
                         </div>
                     </div>
                 </div>
@@ -86,7 +119,7 @@
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
                             <ul class="nav nav-tabs" role="tablist" id="ul">
-                                <li role="presentation" id="li_infostep" class="liselect" style="text-align:center" value="1" >
+                                <li role="presentation" id="li_infostep" class="liselect" style="text-align:center" value="1">
                                     <span title="Payment Information" class="wizard-step" style="text-align:center">
                                         <span class="round-tab">
                                             <img id="img_info_step" src="/Content/Images/info_step_on.png" style="position:relative; top:-5px; width: 25px; height: 25px;">
@@ -164,7 +197,7 @@
                         Vendor Direct Deposit Portal
                         <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span>
                     </h3>
-                    
+
                     <div class="header-line header-line-purple"><span></span></div>
                 </div>
             </div>
@@ -234,7 +267,7 @@
                             <h4 class="heading-font">ABOUT US</h4>
                             <div class="menu-about-us-container">
                                 <ul id="menu-about-us" class="menu">
-                                   @* <li id="menu-item-2428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="http://auditor.lacounty.gov/contact-page/">Contact Us</a></li>*@
+                                    @* <li id="menu-item-2428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="http://auditor.lacounty.gov/contact-page/">Contact Us</a></li>*@
                                     <li id="menu-item-3042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3042"><a href="http://auditor.lacounty.gov/john-naimo/">Auditor-Controller Bio</a></li>
                                     <li id="menu-item-3043" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3043"><a href="http://auditor.lacounty.gov/about-the-auditor/">Our Organization</a></li>
                                 </ul>
@@ -247,7 +280,7 @@
                             <div class="menu-site-info-container">
                                 <ul id="menu-site-info" class="menu">
 
-                                   @* <li id="menu-item-2655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2655"><a href="/UserGuide">User Guide</a></li>*@
+                                    @* <li id="menu-item-2655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2655"><a href="/UserGuide">User Guide</a></li>*@
                                     <li id="menu-item-2657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2657"><a href="http://auditor.lacounty.gov/accessibility/">Accessibility</a></li>
                                     <li id="menu-item-2658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2658"><a href="http://auditor.lacounty.gov/disclaimer/">Disclaimer</a></li>
                                     <li id="menu-item-2659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2659"><a href="http://auditor.lacounty.gov/privacy-policy/">Privacy Policy</a></li>
@@ -264,14 +297,23 @@
 
     </div>  @*wp_content*@
 
-        @Scripts.Render("~/jsbundles/jquery")
+    @Scripts.Render("~/jsbundles/jquery")
 
-        <script>
-        var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
-        </script>
+    <script>
+            @*var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
+            var sessoinTimeout = '@System.Configuration.ConfigurationManager.AppSettings["sessionTimeoutInterval"]'   //1 * 60 * 1000;
+            setTimeout('sessionEnd()', sessoinTimeout )
+        function sessionEnd() {
+            sessionStorage.clear();
+            window.location.href = '/deposit/_partialLogin';
 
-        @RenderSection("scripts", required: false)
-        @*<script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>*@
+            }*@
+
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+
 
 </body>
 </html>

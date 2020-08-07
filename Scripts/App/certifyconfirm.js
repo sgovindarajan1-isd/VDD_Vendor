@@ -29,10 +29,13 @@
         $("#span_verify_step").removeClass("disabled");
 
         ////testing values
-        $('#txtSignerName').val('Srini G');
-        $('#txtSignerTitle').val('President/CEO');
-        $('#txtSignerPhone').val('1233442345');
-        $('#txtSignerEmail').val('srini@isd.com');
+
+        if ($(location).attr('href').indexOf("local") > -1) {
+            $('#txtSignerName').val('Srini G');
+            $('#txtSignerTitle').val('President/CEO');
+            $('#txtSignerPhone').val('1233442345');
+            $('#txtSignerEmail').val('srini@isd.com');
+        }
         //////testing values
 
         var certifyobj = JSON.parse(sessionStorage.getItem("certifydetailsJson"));
@@ -148,18 +151,18 @@
         }
     });
 
-    //function validatePhone(txtPhone) {
-    //    debugger;
-    //    if (txtPhone.length() < 13)
-    //        return false;
-    //    var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-    //    if (filter.test(txtPhone)) {
-    //        return true;
-    //    }
-    //    else {
-    //        return false;
-    //    }
-    //}
+    function validatePhone(txtPhone) {
+        debugger;
+        if (txtPhone.length < 13)
+            return false;
+        var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+        if (filter.test(txtPhone)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     function storeDetails() {
         var certifydetailsRow = [];
