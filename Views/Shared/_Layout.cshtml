@@ -13,16 +13,11 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 
-    @*<link href="//cdn.datatables.net/responsive/2.2.3/css/dataTables.responsive.css" />*@
-    @*<script src="~/Scripts/App/dd_Authorization.js"></script>*@
-
     <meta name="theme-color" content="#ff0000">
     <meta name="theme-color" content="#ffffff">
-    @*<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">*@
 
     <title>Vendor Deposit Application </title>
 
-    @*<link href="./Content/print.css" rel="stylesheet" type="text/css" media="print" />*@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7COpen+Sans:100,200,300,400,500,600,700,800,900%7CArimo:100,200,300,400,500,600,700,800,900" type="text/css">
     <link href="/Content/main2.css" rel="stylesheet" />
 
@@ -59,29 +54,6 @@
                                     <a data-toggle="modal" data-target="#logoutModal" style="font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial">Logout</a>
                                 </div>
                             </div>
-
-                            @*<ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a data-toggle="modal" data-target="#logoutModal">Logout</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                                <button type="button" class="btn btn-default">Action</button>
-                                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>*@
-
-
-                            @*<span id="img_username" class="fa fa-user-circle" style="color:rgba(41,213,236,1)">
-                                    <label id="lbl_userName" aria-label="Close" data-toggle="modal" data-target="#logoutModal" style="color:rgba(41,213,236,1); font-family: Arial, Helvetica, sans-serif;  cursor: pointer; font-size:medium;font-weight:initial" />
-                                </span>*@
                         </div>
                     </div>
                 </div>
@@ -300,20 +272,15 @@
     @Scripts.Render("~/jsbundles/jquery")
 
     <script>
-            @*var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
-            var sessoinTimeout = '@System.Configuration.ConfigurationManager.AppSettings["sessionTimeoutInterval"]'   //1 * 60 * 1000;
-            setTimeout('sessionEnd()', sessoinTimeout )
-        function sessionEnd() {
-            sessionStorage.clear();
-            window.location.href = '/deposit/_partialLogin';
-
-            }*@
-
+        var hostdomainUrl = '@System.Configuration.ConfigurationManager.AppSettings["HostDomainUrl"]';
+        var sessoinTimeout = '@System.Configuration.ConfigurationManager.AppSettings["sessionTimeoutInterval"]'   //1 * 60 * 1000;
+        setTimeout('sessionEnd()', sessoinTimeout )
+            function sessionEnd() {
+        sessionStorage.clear();
+        window.location.href = '/deposit/_partialLogin';
+        }
     </script>
-
     @RenderSection("scripts", required: false)
-
-
 
 </body>
 </html>

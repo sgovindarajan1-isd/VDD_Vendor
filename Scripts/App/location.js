@@ -37,7 +37,8 @@ $(document).ready(function () {
 
                 columnDefs: [
                     {
-                    searchable: true,
+                        searchable: true,
+                        width: '50%',
                         targets: 0,
                         data: null,
                         defaultContent: '',
