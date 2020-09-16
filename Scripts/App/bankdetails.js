@@ -4,14 +4,15 @@
 
 
     // testing values
+    if ($(location).attr('href').indexOf("local") > -1) {
+        $('#txtAccountType').val('1');
+        $('#txtBankAcNo').val('66112342');
+        $('#txtRe-BankAcNo').val('66112342');
+        $('#txtBankRoutingNo').val('122000661');
 
-    $('#txtAccountType').val('1');
-    $('#txtBankAcNo').val('66112342');
-    $('#txtRe-BankAcNo').val('66112342');
-    $('#txtBankRoutingNo').val('122000661');
-    
-    $('#txtDDNotifiEmail').val('ddnotify@isd.com');
-    $('#txtReDDNotifiEmail').val('ddnotify@isd.com');
+        $('#txtDDNotifiEmail').val('ddnotify@isd.com');
+        $('#txtReDDNotifiEmail').val('ddnotify@isd.com');
+    }
 
     // testing values
 

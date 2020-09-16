@@ -38,7 +38,7 @@ $(document).ready(function () {
                 columnDefs: [
                     {
                         searchable: true,
-                        width: '50%',
+                        width: '3%',
                         targets: 0,
                         data: null,
                         defaultContent: '',
@@ -52,14 +52,14 @@ $(document).ready(function () {
                 }
             });
 
-            var table = $('#ddGrid').DataTable();
-            table.rows(function (idx, data, node) {
-                if (data.Status.toLowerCase() === 'pending') {  // direct deposit
-                    $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
-                    $('#btn_deposit_next').hide();
-                    return false;
-                }
-            });
+            //var table = $('#ddGrid').DataTable();
+            //table.rows(function (idx, data, node) {
+            //    if (data.Status.toLowerCase() === 'pending') {  // direct deposit
+            //        $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
+            //        $('#btn_deposit_next').hide();
+            //        return false;
+            //    }
+            //});
         },
         error: function (_XMLHttpRequest, textStatus, errorThrown) {
             if (_XMLHttpRequest.status == '401') {

@@ -214,7 +214,11 @@
 
 
         if (!(bankobj == null) || (bankobj == 'undefined')) {
-            $("#typeofAccount").html(bankobj[0].AccountType);
+            if (bankobj[0].AccountType == "1")
+                $("#typeofAccount").html("Checking");
+            else if (bankobj[0].AccountType == "2")
+                $("#typeofAccount").html("Saving");
+
             $("#accountNumber").html(bankobj[0].BankAccountNumber);
             $("#routingNumber").html(bankobj[0].BankRoutingNo);
             $("#finInsName").html(bankobj[0].FinancialIns);
@@ -224,7 +228,7 @@
             vendorDetails.BankAccountNumber = bankobj[0].BankAccountNumber;
             vendorDetails.BankRoutingNo = bankobj[0].BankRoutingNo;
             vendorDetails.FinancialIns = bankobj[0].FinancialIns;
-            vendorDetails.DDNotifiEmail = bankobj[0].DDNotifiEmail;
+            vendorDetails.DDNotifyEmail = bankobj[0].DDNotifiEmail;
         }
         var paymentJsonObj = JSON.parse(sessionStorage.getItem("paymentJson"));
         $.each(paymentJsonObj, function (key, value) {
@@ -267,12 +271,13 @@
         vendorDetails.Source_device = "Source_device";
         vendorDetails.User_agent = navigator.userAgent;
         vendorDetails.Host_headers = "Host_headers";
+
+        vendorDetails.RequestType = 'DDOL';
     }
 
     function getSourceip() {
         $.getJSON("http://jsonip.appspot.com?callback=?",
             function (data) {
-              //  alert(data.ip);
                 return(data.ip);
             });
     }

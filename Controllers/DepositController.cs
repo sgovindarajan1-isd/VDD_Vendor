@@ -80,7 +80,8 @@ namespace WebMaterialPOC.Controllers
                 string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(xml);
-                XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+                //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+                XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
 
                 if (nodeList.Count > 0)
                 {

@@ -160,7 +160,6 @@ function isEmail(email) {
 }
 
 function validatePhone(txtPhone) {
-	alert('testing validate phone');
 	if (txtPhone.length < 13) {
 		return false;
 	}
