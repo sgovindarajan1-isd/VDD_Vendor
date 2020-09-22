@@ -82,7 +82,7 @@ namespace WebMaterialPOC.Controllers
             else if (vendordetails.AccountType == 2)
                 dr["AccountType"] = "Saving";
             else
-                dr["BankAccountType"] = "Error";
+                dr["AccountType"] = "Error";
             dr["BankAccountNumber"] = vendordetails.BankAccountNumber;
             dr["BankRoutingNo"] = vendordetails.BankRoutingNo;
             dr["FinancialIns"] = vendordetails.FinancialIns;

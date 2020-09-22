@@ -25,15 +25,15 @@ $(document).ready(function () {
                 responsive: true,
                 data: data.data.vendorlst,
                 columns: [
-                    { 'data': ''},
-                    { 'data': 'VendorAddress'},
+                    { 'data': '' },
+                    { 'data': 'VendorAddress' },
                     { 'data': 'RoutingNumber' },
-                    { 'data': 'AcccountNo', "width": '12%'  },
+                    { 'data': 'AcccountNo', "width": '12%' },
                     { 'data': 'AccountType' },
                     { 'data': 'RemittanceEmail' },
-                   { 'data': 'Status', "width": '140px'  }
+                    { 'data': 'Status', "width": '140px' }
                 ],
-               //"order": [[1, "VendorNumber"]],
+                //"order": [[1, "VendorNumber"]],
 
                 columnDefs: [
                     {
@@ -49,17 +49,14 @@ $(document).ready(function () {
                 select: {
                     style: 'multi',
                     selector: 'td:first-child'
+                },
+                 "createdRow": function (row, data, dataIndex) {
+                     if (data.Status.toLowerCase() === 'pending')  {
+                         $(row).css('background-color', 'lightgrey');
+                         $('td', row).removeClass('select-checkbox');
+                    }
                 }
             });
-
-            //var table = $('#ddGrid').DataTable();
-            //table.rows(function (idx, data, node) {
-            //    if (data.Status.toLowerCase() === 'pending') {  // direct deposit
-            //        $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
-            //        $('#btn_deposit_next').hide();
-            //        return false;
-            //    }
-            //});
         },
         error: function (_XMLHttpRequest, textStatus, errorThrown) {
             if (_XMLHttpRequest.status == '401') {
@@ -94,10 +91,9 @@ $(document).ready(function () {
         }
         else {
             toastr.options.positionClass = "toast-bottom-right";
-            toastr.warning("Please select atleast one Address to Continue!");            
+            toastr.warning("Please select atleast one Address to Continue!");
         }
     });
 
 });
 
-   
