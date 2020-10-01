@@ -17,7 +17,7 @@
         $('#txtSignerPhone').mask('(000)000-0000');
 
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
-        $("#img_bank_verify_step").attr('src', '/Content/Images/info_step.png');
+        $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step.png');
         $("#img_certify_step").attr('src', '/Content/Images/certify_step_on.png');
         $("#img_certify_step").addClass("active");
         $("#li_certify_step").addClass("active");
@@ -63,6 +63,7 @@
         $("#span_submit_step").removeClass("disabled");
 
         getSubmitDetails();
+        getSourceIPlocationInfo();
     }
     else if ($(location).attr('href').indexOf("_partialConfirmation") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -266,21 +267,37 @@
 
         vendorDetails.locationIDs = bankDetails;
         vendorDetails.locationAddressDescList = locationList;
-
-        vendorDetails.Source_ip = "Source_ip";//getSourceip();
-        vendorDetails.Source_device = "Source_device";
-        vendorDetails.User_agent = navigator.userAgent;
-        vendorDetails.Host_headers = "Host_headers";
-
         vendorDetails.RequestType = 'DDOL';
+
+        //vendorDetails.Source_ip = "Source_ip";//getSourceip();
+        //vendorDetails.Source_device = "Source_device";
+        //vendorDetails.User_agent = navigator.userAgent;
+        //vendorDetails.Host_headers = "Host_headers";
     }
 
-    function getSourceip() {
-        $.getJSON("http://jsonip.appspot.com?callback=?",
-            function (data) {
-                return(data.ip);
-            });
-    }
+    function getSourceIPlocationInfo() {
+        debugger;
+        $.ajax({
+            contentType: "application/json; charset=utf-8",
+            type: "POST",
+            url: hostdomainUrl + "api/values/RetrieveSourceIPInfo/",
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+            },
+            success: function (data) {
+                debugger;
+                vendorDetails.Source_IP = data.data.source_IP;
+                vendorDetails.Source_Location = data.data.source_Location;
+                vendorDetails.Source_Device = data.data.source_Device;
+                vendorDetails.Source_Host_Headers = data.data.source_Host_Headers;
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debugger;
+                alert('error');
+            }
+        });
+    };
 
     function formatDateDisplay(dateVal) {
         var newDate = new Date(dateVal);
@@ -305,7 +322,7 @@
 
         sHour = padValue(sHour);
 
-        return sMonth + "/" + sDay + "/" + sYear + " " + sHour + ":" + sMinute + ":" + sSecond + " "+ sAMPM;
+        return sMonth + "/" + sDay + "/" + sYear + " " + sHour + ":" + sMinute + ":" + sSecond + " " + sAMPM;
     }
 
     function padValue(value) {
@@ -335,9 +352,9 @@
                 vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
                 createReportandGettheFielName(vendorDetails);
                 //window.location.href = '/deposit/_partialConfirmation';
-             }
+            }
             , complete: function (jqXHR) {
-             }
+            }
             , error: function (jqXHR, textStatus, errorThrown) {
                 debugger;
                 if (textStatus == 'error') {
@@ -352,7 +369,7 @@
     };
     /*Submit Section end */
 
-/*Confirmation Section begin */
+    /*Confirmation Section begin */
     function createReportandGettheFielName(vendorDetails) {
         debugger;
         $.ajax({
@@ -361,7 +378,7 @@
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             //processData: false,
-            data: JSON.stringify(vendorDetails),  
+            data: JSON.stringify(vendorDetails),
             success: function (result) {
                 debugger;
                 $.ajax({
@@ -369,7 +386,7 @@
                     type: "POST",
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify(vendorDetails),  
+                    data: JSON.stringify(vendorDetails),
                     headers: {
                         'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
                     },
@@ -380,23 +397,23 @@
                         //return result;
                     },
                     error: function (err) {
-                          alert('Report Error' + err.statusText);
+                        alert('Report Error' + err.statusText);
                     }
                 });
-               // return result;
+                // return result;
             },
             error: function (err) {
                 debugger;
                 alert('report error -' + err.statusText);
             }
-        });  
+        });
     }
 
     $('#btn_viewReport').on('click', function (e) {
         //var url = '../Home/GetPDF?fileName=' + FileName;
         var url = "/Uploads/" + sessionStorage.getItem('VendorReportFileName');
-       // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
-            window.open(url, '_blank');
+        // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
+        window.open(url, '_blank');
     });
     /*Confirmation Section end */
 });

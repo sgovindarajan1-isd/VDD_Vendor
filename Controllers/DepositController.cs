@@ -66,7 +66,6 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
-
         public string ValidateRoughtingNumber(string aba)
         {
             string bankName = string.Empty;
@@ -75,7 +74,6 @@ namespace WebMaterialPOC.Controllers
                 ABAServices.ABAService abaWebService = new ABAServices.ABAService();
                 string token = abaWebService.Logon(3387, "lacounty".Trim(), "RXdqmYHg".Trim());
                 bool validRouting = abaWebService.VerifyABA(token, aba);
-
 
                 string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
                 XmlDocument xmlDoc = new XmlDocument();
@@ -107,8 +105,6 @@ namespace WebMaterialPOC.Controllers
         [HttpPost]
         public ActionResult UploadAttachmentFile()
         {
-            //string testanddelete = GetIPAddress();
-
             string fname = string.Empty;
             string Uploadpath = string.Empty;
             // Checking no of files injected in Request object  
@@ -164,25 +160,6 @@ namespace WebMaterialPOC.Controllers
             viewer.LocalReport.Refresh();
             ViewBag.ReportViewer = viewer;
             return View();
-        }
-
-
-
-        public string GetIPAddress()
-        {
-            string ipaddress = string.Empty;
-            IPHostEntry Host = default(IPHostEntry);
-            string Hostname = null;
-            Hostname = System.Environment.MachineName;
-            Host = Dns.GetHostEntry(Hostname);
-            foreach (IPAddress IP in Host.AddressList)
-            {
-                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    ipaddress = Convert.ToString(IP);
-                }
-            }
-            return ipaddress;
         }
     }
 }

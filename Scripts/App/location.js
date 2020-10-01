@@ -31,7 +31,7 @@ $(document).ready(function () {
                     { 'data': 'AcccountNo', "width": '12%' },
                     { 'data': 'AccountType' },
                     { 'data': 'RemittanceEmail' },
-                    { 'data': 'Status', "width": '140px' }
+                    { 'data': 'Status', "width": '140px', 'className': 'payment-status-color' }
                 ],
                 //"order": [[1, "VendorNumber"]],
 
@@ -50,13 +50,27 @@ $(document).ready(function () {
                     style: 'multi',
                     selector: 'td:first-child'
                 },
-                 "createdRow": function (row, data, dataIndex) {
-                     if (data.Status.toLowerCase() === 'pending')  {
-                         $(row).css('background-color', 'lightgrey');
-                         $('td', row).removeClass('select-checkbox');
+                "createdRow": function (row, data, dataIndex) {
+                    if (data.Status.toLowerCase() === 'pending') {
+                        $(row).css('background-color', 'lightgrey');
+                        $('td', row).removeClass('select-checkbox');
                     }
                 }
             });
+
+            var table = $('#ddGrid').DataTable();
+            var allRowsArePending = true;
+            table.rows(function (idx, data, node) {
+                if (data.Status.toLowerCase() !== 'pending') {  // direct deposit
+                    allRowsArePending = false;
+                    return true;
+                }
+            });
+
+            if (allRowsArePending) {
+                $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
+                $('#btn_deposit_next').hide();
+            }
         },
         error: function (_XMLHttpRequest, textStatus, errorThrown) {
             if (_XMLHttpRequest.status == '401') {

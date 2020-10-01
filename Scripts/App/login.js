@@ -6,15 +6,7 @@ $(document).ready(function () {
     if ($(location).attr('href').indexOf("_partialLogin") > -1) {
         $('#lbl_header').html('Vendor Login <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span> ');
     }
-
-    var isNumberKey = function (evt) {
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode != 46 && charCode > 31
-            && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    };
-
+  
     $("#txt_Password_id").keypress(function (e) {
         //if the letter is not digit then display error and don't type anything
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -53,19 +45,35 @@ function clicklogin() {
     sessionStorage.clear();
     var txt_employee_id = $('#txt_employee_id').val();
     var txt_Password_id = $('#txt_Password_id').val();
+
+
+    if (!$.isNumeric(txt_Password_id)) {
+        if (txt_Password_id.indexOf("-") > 0) {
+            $("#errmsg").html("Please re-enter your Social Security Number or Taxpayer Identification Number without any dashes.").show();
+            return false;
+        } else {
+            $("#errmsg").html("Invalid Social Security Number or Taxpayer Identification Number.").show();
+            return false;
+        }
+    }
+    else {
+        $("#errmsg").hide();
+    }
+
     loginExternalVendor(txt_employee_id, txt_Password_id)
 }
-
 
 function loginExternalVendor(userid, tin) {
     ////testing values
     if ($(location).attr('href').indexOf("local") > -1) {
         ////  To do :  test values for easy access,  remove later
-     //   var userid = 'SP8313';//'000076'; //'000593'; //'000339';
-     //   var tin = '474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
+        //var userid = '505653'; // 'SP8313';//'000076'; //'000593'; //'000339';
+        //var tin = '951644052'; //'474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
+
+        //var userid = '000076'; //----HAS ONE ROW
+        //var tin = '953765453';
     }
     ////testing values
-
 
     var SecuredToken = '';
 
@@ -74,20 +82,19 @@ function loginExternalVendor(userid, tin) {
         type: "POST",
         url: hostdomainUrl + "api/values/LoginExternalVendor_authen/",
         dataType: 'json',
-        data: JSON.stringify({ 'UserId': userid, 'Tin': tin }),
+        data: JSON.stringify({ 'UserId': userid, 'Tin': tin }), 
         beforeSend: function () {
             $("#loaderDiv").show();
         },
         headers: {
             'Authorization': 'Basic ' + btoa(SecuredToken + ":" + userid + ':' + tin)
-        },
-       
+        },       
         success: function (data) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
+            sessionStorage.setItem('sourceIP', data.data[0].SourceIP);
             sessionStorage.setItem('vendorNumber', userid);
             sessionStorage.setItem('tin', tin);
-            //sessionStorage.setItem('payeeId', data.data[0].PayeeId);
 
             if (data.data[0].IsValidUser == true) {
                 var UserName = data.data[0].UserName;
@@ -98,7 +105,6 @@ function loginExternalVendor(userid, tin) {
                 $("#loaderDiv").hide();
             }
             else {
-                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
                 $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
                 $("#loaderDiv").hide();
             }
@@ -106,7 +112,6 @@ function loginExternalVendor(userid, tin) {
         , complete: function (jqXHR) {
             
             if (jqXHR.status == '404') {
-                //$("#lbl_invaliduserentry").text("Invalid Username and Password!")
                 $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
             }
             $("#loaderDiv").hide();
