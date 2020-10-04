@@ -68,7 +68,7 @@ $(document).ready(function () {
             });
 
             if (allRowsArePending) {
-                $("#pendingMessage").text("Your request is currently pending review. Please allow up to 15 days to process the request.")
+                $("#pendingMessage").text("Your request is currently pending review. Please allow up to 20 days to process the request.")
                 $('#btn_deposit_next').hide();
             }
         },

@@ -444,19 +444,12 @@
 
     function uploadfile(filetoupload, modifiedFileName, ext) {
         if (window.FormData !== undefined) {
-
-            //var fileUpload = filetoupload;
-            var files = filetoupload;//fileUpload;//.files;
-
+            var files = filetoupload;
             // Create FormData object  
             var fileData = new FormData();
 
             // Looping over all files and add it to FormData object  
             fileData.append(files.name, files);
-
-            //for (var i = 0; i < files.length; i++) {
-            //    //fileData.append(files[i].name, files[i]);
-            //}
 
             // Adding one more key to FormData object for modified file name 
             fileData.append('modifiedFilename', modifiedFileName);
@@ -464,15 +457,16 @@
             $.ajax({
                 url: '/deposit/UploadAttachmentFile',
                 type: "POST",
-                contentType: false, // Not to set any content header  
-                processData: false, // Not to process data  
+                contentType: false, 
+                processData: false, 
                 data: fileData,
                 success: function (result) {
                     sessionStorage.setItem('uploadedfile', result);
-                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to do get from config file
+                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
                 },
                 error: function (err) {
-                    // alert(err.statusText);
+                    toastr.options.positionClass = "toast-bottom-right";
+                    toastr.warning("Error in uploading Attachment, Please check the entry!");
                 }
             });
         } else {

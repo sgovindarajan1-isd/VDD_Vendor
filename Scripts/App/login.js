@@ -67,8 +67,8 @@ function loginExternalVendor(userid, tin) {
     ////testing values
     if ($(location).attr('href').indexOf("local") > -1) {
         ////  To do :  test values for easy access,  remove later
-        //var userid = '505653'; // 'SP8313';//'000076'; //'000593'; //'000339';
-        //var tin = '951644052'; //'474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
+        var userid = '505653'; // 'SP8313';//'000076'; //'000593'; //'000339';
+        var tin = '951644052'; //'474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
 
         //var userid = '000076'; //----HAS ONE ROW
         //var tin = '953765453';
