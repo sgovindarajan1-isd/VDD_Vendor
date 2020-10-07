@@ -102,6 +102,14 @@ namespace WebMaterialPOC.Controllers
             return bankName;
         }
 
+
+        [HttpPost]
+        public FileResult openPDF(){
+            string path = @"C:\test\vddtest.pdf";
+            return File(path, "application/pdf", "pdf_download_name.pdf");
+        }
+    
+
         [HttpPost]
         public ActionResult UploadAttachmentFile()
         {
@@ -131,7 +139,7 @@ namespace WebMaterialPOC.Controllers
                         }
 
                         Uploadpath = System.Configuration.ConfigurationManager.AppSettings["Uploadpath"];
-                        fname = Path.Combine(Server.MapPath("~/"+ Uploadpath +"/ "), fname);
+                        fname = Path.Combine(Server.MapPath("~/"+ Uploadpath +"/"), fname);
                         file.SaveAs(fname);
                     }
                     // Returns message that successfully uploaded  

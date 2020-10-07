@@ -33,7 +33,7 @@
         if ($(location).attr('href').indexOf("local") > -1) {
             $('#txtSignerName').val('Srini G');
             $('#txtSignerTitle').val('President/CEO');
-            $('#txtSignerPhone').val('1233442345');
+            $('#txtSignerPhone').val('(123)344-2345');
             $('#txtSignerEmail').val('srini@isd.com');
         }
         //////testing values
@@ -344,14 +344,16 @@
                 debugger;
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
                 sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);
-                vendorDetails.Confirmation = data.data.Confirmation;
-                vendorDetails.SubmitDateTime = data.data.SubmitDateTime;
-                // generate the report and store in the upload folder
+                sessionStorage.setItem('VendorReportFileName', data.data.VendorReportFileName);
+                window.location.href = '/deposit/_partialConfirmation';
 
-                var uniqueDatetime = getUniqueFileNameusingCurrentTime();
-                vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
-                createReportandGettheFielName(vendorDetails);
-                //window.location.href = '/deposit/_partialConfirmation';
+                
+                //// generate the report and store in the upload folder
+                //vendorDetails.Confirmation = data.data.Confirmation;
+                //vendorDetails.SubmitDateTime = data.data.SubmitDateTime;
+                //var uniqueDatetime = getUniqueFileNameusingCurrentTime();
+                //vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
+                //createReportandGettheFielName(vendorDetails);
             }
             , complete: function (jqXHR) {
             }
@@ -411,7 +413,7 @@
 
     $('#btn_viewReport').on('click', function (e) {
         //var url = '../Home/GetPDF?fileName=' + FileName;
-        var url = "/Uploads/" + sessionStorage.getItem('VendorReportFileName');
+        var url = "http://vddadmin.lacounty.gov/Uploads/" + sessionStorage.getItem('VendorReportFileName');
         // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
         window.open(url, '_blank');
     });

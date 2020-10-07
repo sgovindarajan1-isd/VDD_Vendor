@@ -134,6 +134,9 @@ namespace WebMaterialPOC.Controllers
             string uploadPath = System.Configuration.ConfigurationManager.AppSettings["Uploadpath"];  //  here is the path where  vendorreport file will be saved
             string uploadFileName = Path.Combine(Server.MapPath("~/" + uploadPath + "/ "), vendordetails.VendorReportFileName);
 
+           // string Uploadpath_api = System.Configuration.ConfigurationManager.AppSettings["Uploadpath_api"];
+           //string uploadFileName = Path.Combine(Uploadpath_api, vendordetails.VendorReportFileName);
+
             ReportViewer viewer = new ReportViewer();
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.SizeToReportContent = true;

@@ -469,6 +469,29 @@
                     toastr.warning("Error in uploading Attachment, Please check the entry!");
                 }
             });
+
+            //  
+            $.ajax({
+                url: hostdomainUrl + "api/values/UploadAttachmentFile",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: fileData,
+                headers: {
+                    'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+                },
+                success: function (result) {
+                    debugger;
+                    sessionStorage.setItem('uploadedfile', result);
+                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
+                },
+                error: function (err) {
+                    toastr.options.positionClass = "toast-bottom-right";
+                    toastr.warning("Error in uploading Attachment, Please check the entry!");
+                }
+            });
+
+
         } else {
             alert("Attachment File type is not supported.");
         }
