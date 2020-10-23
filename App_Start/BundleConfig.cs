@@ -11,8 +11,6 @@ namespace WebMaterialPOC
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/materialize.js"
-                        //,"~/Scripts/App/login.js"
-                        //, "~/Scripts/App/dashboard.js"
                         ));
 
    
@@ -33,14 +31,10 @@ namespace WebMaterialPOC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      //DataTable and Material
-           //           "~/Content/DataTable/dataTables.material.min.css",
                       "~/Content/DataTable/jquery.dataTables.min.css",
-               //       "~/Content/DataTable/material.min.css",
                       "~/Content/DataTable/select.dataTables.min.css",
                       //
                       "~/Content/site.css",
-                    //  "~/Content/materialize.css",
                       "~/Content/landing-page.css",
                       "~/Content/login.css",
                       "~/Content/main2.css"

@@ -160,6 +160,7 @@
     <Compile Include="Models\IdTextClass.cs" />
     <Compile Include="Models\ReportInfo.cs" />
     <Compile Include="Models\VM_Login.cs" />
+    <Compile Include="Models\VM_SourceIPInfo.cs" />
     <Compile Include="Models\VM_VendorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -528,7 +529,7 @@
     <Content Include="Scripts\App\DataTable\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\App\DataTable\dataTables.select.min.js" />
     <Content Include="Scripts\App\DataTable\jquery.dataTables.min.js" />
-    <Content Include="Scripts\App\dd_Authorization.js" />
+    <Content Include="Scripts\App\location.js" />
     <Content Include="Scripts\App\generalinfo.js" />
     <Content Include="Scripts\App\jquery.json.js" />
     <Content Include="Scripts\App\login.js" />
@@ -714,12 +715,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Deposit\Index.cshtml" />
-    <Content Include="Views\Shared\_partialDDLanding.cshtml" />
-    <Content Include="Views\Shared\_partialDDStatus.cshtml" />
-    <Content Include="Views\Shared\_partialNewDeposit.cshtml" />
     <Content Include="Views\Home\UnAuthorized.cshtml" />
     <Content Include="Views\Home\GeneralInfo.cshtml" />
-    <Content Include="Views\Shared\_partialPaymentInformation.cshtml" />
     <Content Include="Views\Deposit\_partialBankDetails.cshtml" />
     <Content Include="Views\Deposit\_partialAttachment.cshtml" />
     <None Include="Web References\ABAServices\abaservice.wsdl" />

@@ -4,14 +4,15 @@
 
 
     // testing values
+    if ($(location).attr('href').indexOf("local") > -1) {
+        $('#txtAccountType').val('1');
+        $('#txtBankAcNo').val('66112342');
+        $('#txtRe-BankAcNo').val('66112342');
+        $('#txtBankRoutingNo').val('122000661');
 
-    $('#txtAccountType').val('1');
-    $('#txtBankAcNo').val('66112342');
-    $('#txtRe-BankAcNo').val('66112342');
-    $('#txtBankRoutingNo').val('122000661');
-    
-    $('#txtDDNotifiEmail').val('ddnotify@isd.com');
-    $('#txtReDDNotifiEmail').val('ddnotify@isd.com');
+        $('#txtDDNotifiEmail').val('ddnotify@isd.com');
+        $('#txtReDDNotifiEmail').val('ddnotify@isd.com');
+    }
 
     // testing values
 
@@ -65,9 +66,7 @@
                 $("#btn_voidCheck").prop('disabled', true);
             }
         }
-        $("#span_bankstep").removeClass("disabled");
-
-        debugger;
+        $("#span_bankstep").removeClass("disabled");       
 
         var attachobj = sessionStorage.getItem('uploadedfile');
         if ((attachobj != null) && (attachobj != 'undefined')) {
@@ -75,16 +74,12 @@
             $("#pnlAttachment").show();
 
             $("#txtattachment").val(sessionStorage.getItem('originalfileName'));
-            $("#modifiedFileName").text(sessionStorage.getItem('uploadedfile'));
-            
+            $("#modifiedFileName").text(sessionStorage.getItem('uploadedfile'));            
         }
         else {
             $("#pnlAttachment").hide();
             $("#divmodifiedFileName").hide();
-        }
-
-
-        
+        }        
     }
     else if ($(location).attr('href').indexOf("_partialBankVerify") > -1) {
         $("#img_bank_step").attr('src', '/Content/Images/bank_step.png');
@@ -235,12 +230,6 @@
 
                 $("#txtattachment").val(fileName);
                 sessionStorage.setItem('originalfileName', fileName);  //  original file name: we keep this in case coming back from  next screen 
-                //var today = new Date();
-                //var cHour = today.getHours();
-                //var cMin = today.getMinutes();
-                //var cSec = today.getSeconds();
-                //var d = new Date($.now());
-                //var stmp = d.getDate() + '' + (d.getMonth() + 1) + '' + d.getFullYear() + '' + d.getHours() + '' + d.getMinutes() + '' + d.getSeconds();
 
                 var uniqueFileName = getUniqueFileNameusingCurrentTime();
                 var modifiedFileName = uniqueFileName + "_" + vendorNumber + "_" + fileSelectytedtype + fileExtenstion.toLowerCase();
@@ -254,8 +243,12 @@
     });
 
     $("#btn_FileAttachmentDelete").on('click', function () {
-        sessionStorage.setItem('selectedFile', null);
-        sessionStorage.setItem('imagefile-selectedFile', null);
+        sessionStorage.removeItem('selectedFile');
+        sessionStorage.removeItem('imagefile-selectedFile');
+        sessionStorage.removeItem('originalfileName');
+        sessionStorage.removeItem('uploadedfile');
+        sessionStorage.removeItem('uploadedfileExtension');
+
         $("#modifiedFileName").text("");
         $("#fileError_or_Info").html("");
         $("#divmodifiedFileName").hide();
@@ -321,7 +314,7 @@
         }
 
         if ((financialIns.length <= 0) || (financialIns === ("no banks found"))) {
-            $("#financialIns").html('Financial Institution Name is required, Click on Verify Bank button.');
+            $("#financialIns").html('Financial Institution Name is required.');
             bool = false;
         } else {
             $("#financialIns").html('');
@@ -451,19 +444,12 @@
 
     function uploadfile(filetoupload, modifiedFileName, ext) {
         if (window.FormData !== undefined) {
-
-            //var fileUpload = filetoupload;
-            var files = filetoupload;//fileUpload;//.files;
-
+            var files = filetoupload;
             // Create FormData object  
             var fileData = new FormData();
 
             // Looping over all files and add it to FormData object  
             fileData.append(files.name, files);
-
-            //for (var i = 0; i < files.length; i++) {
-            //    //fileData.append(files[i].name, files[i]);
-            //}
 
             // Adding one more key to FormData object for modified file name 
             fileData.append('modifiedFilename', modifiedFileName);
@@ -471,17 +457,41 @@
             $.ajax({
                 url: '/deposit/UploadAttachmentFile',
                 type: "POST",
-                contentType: false, // Not to set any content header  
-                processData: false, // Not to process data  
+                contentType: false, 
+                processData: false, 
                 data: fileData,
                 success: function (result) {
                     sessionStorage.setItem('uploadedfile', result);
-                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to do get from config file
+                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
                 },
                 error: function (err) {
-                    // alert(err.statusText);
+                    toastr.options.positionClass = "toast-bottom-right";
+                    toastr.warning("Error in uploading Attachment, Please check the entry!");
                 }
             });
+
+            //  
+            $.ajax({
+                url: hostdomainUrl + "api/values/UploadAttachmentFile",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: fileData,
+                headers: {
+                    'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+                },
+                success: function (result) {
+                    debugger;
+                    sessionStorage.setItem('uploadedfile', result);
+                    sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
+                },
+                error: function (err) {
+                    toastr.options.positionClass = "toast-bottom-right";
+                    toastr.warning("Error in uploading Attachment, Please check the entry!");
+                }
+            });
+
+
         } else {
             alert("Attachment File type is not supported.");
         }

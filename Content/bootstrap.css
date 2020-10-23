@@ -6309,6 +6309,7 @@ button.close {
 }
 .popover-content {
   padding: 9px 14px;
+  color: #000;
 }
 .carousel {
   position: relative;

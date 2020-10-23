@@ -17,7 +17,7 @@
         $('#txtSignerPhone').mask('(000)000-0000');
 
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
-        $("#img_bank_verify_step").attr('src', '/Content/Images/info_step.png');
+        $("#img_bank_verify_step").attr('src', '/Content/Images/verify_step.png');
         $("#img_certify_step").attr('src', '/Content/Images/certify_step_on.png');
         $("#img_certify_step").addClass("active");
         $("#li_certify_step").addClass("active");
@@ -33,7 +33,7 @@
         if ($(location).attr('href').indexOf("local") > -1) {
             $('#txtSignerName').val('Srini G');
             $('#txtSignerTitle').val('President/CEO');
-            $('#txtSignerPhone').val('1233442345');
+            $('#txtSignerPhone').val('(123)344-2345');
             $('#txtSignerEmail').val('srini@isd.com');
         }
         //////testing values
@@ -63,6 +63,7 @@
         $("#span_submit_step").removeClass("disabled");
 
         getSubmitDetails();
+        getSourceIPlocationInfo();
     }
     else if ($(location).attr('href').indexOf("_partialConfirmation") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -214,7 +215,11 @@
 
 
         if (!(bankobj == null) || (bankobj == 'undefined')) {
-            $("#typeofAccount").html(bankobj[0].AccountType);
+            if (bankobj[0].AccountType == "1")
+                $("#typeofAccount").html("Checking");
+            else if (bankobj[0].AccountType == "2")
+                $("#typeofAccount").html("Saving");
+
             $("#accountNumber").html(bankobj[0].BankAccountNumber);
             $("#routingNumber").html(bankobj[0].BankRoutingNo);
             $("#finInsName").html(bankobj[0].FinancialIns);
@@ -224,7 +229,7 @@
             vendorDetails.BankAccountNumber = bankobj[0].BankAccountNumber;
             vendorDetails.BankRoutingNo = bankobj[0].BankRoutingNo;
             vendorDetails.FinancialIns = bankobj[0].FinancialIns;
-            vendorDetails.DDNotifiEmail = bankobj[0].DDNotifiEmail;
+            vendorDetails.DDNotifyEmail = bankobj[0].DDNotifiEmail;
         }
         var paymentJsonObj = JSON.parse(sessionStorage.getItem("paymentJson"));
         $.each(paymentJsonObj, function (key, value) {
@@ -262,20 +267,37 @@
 
         vendorDetails.locationIDs = bankDetails;
         vendorDetails.locationAddressDescList = locationList;
+        vendorDetails.RequestType = 'DDOL';
 
-        vendorDetails.Source_ip = "Source_ip";//getSourceip();
-        vendorDetails.Source_device = "Source_device";
-        vendorDetails.User_agent = navigator.userAgent;
-        vendorDetails.Host_headers = "Host_headers";
+        //vendorDetails.Source_ip = "Source_ip";//getSourceip();
+        //vendorDetails.Source_device = "Source_device";
+        //vendorDetails.User_agent = navigator.userAgent;
+        //vendorDetails.Host_headers = "Host_headers";
     }
 
-    function getSourceip() {
-        $.getJSON("http://jsonip.appspot.com?callback=?",
-            function (data) {
-              //  alert(data.ip);
-                return(data.ip);
-            });
-    }
+    function getSourceIPlocationInfo() {
+        debugger;
+        $.ajax({
+            contentType: "application/json; charset=utf-8",
+            type: "POST",
+            url: hostdomainUrl + "api/values/RetrieveSourceIPInfo/",
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+            },
+            success: function (data) {
+                debugger;
+                vendorDetails.Source_IP = data.data.source_IP;
+                vendorDetails.Source_Location = data.data.source_Location;
+                vendorDetails.Source_Device = data.data.source_Device;
+                vendorDetails.Source_Host_Headers = data.data.source_Host_Headers;
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debugger;
+                alert('error');
+            }
+        });
+    };
 
     function formatDateDisplay(dateVal) {
         var newDate = new Date(dateVal);
@@ -300,7 +322,7 @@
 
         sHour = padValue(sHour);
 
-        return sMonth + "/" + sDay + "/" + sYear + " " + sHour + ":" + sMinute + ":" + sSecond + " "+ sAMPM;
+        return sMonth + "/" + sDay + "/" + sYear + " " + sHour + ":" + sMinute + ":" + sSecond + " " + sAMPM;
     }
 
     function padValue(value) {
@@ -322,17 +344,19 @@
                 debugger;
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
                 sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);
-                vendorDetails.Confirmation = data.data.Confirmation;
-                vendorDetails.SubmitDateTime = data.data.SubmitDateTime;
-                // generate the report and store in the upload folder
+                sessionStorage.setItem('VendorReportFileName', data.data.VendorReportFileName);
+                window.location.href = '/deposit/_partialConfirmation';
 
-                var uniqueDatetime = getUniqueFileNameusingCurrentTime();
-                vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
-                createReportandGettheFielName(vendorDetails);
-                //window.location.href = '/deposit/_partialConfirmation';
-             }
+                
+                //// generate the report and store in the upload folder
+                //vendorDetails.Confirmation = data.data.Confirmation;
+                //vendorDetails.SubmitDateTime = data.data.SubmitDateTime;
+                //var uniqueDatetime = getUniqueFileNameusingCurrentTime();
+                //vendorDetails.VendorReportFileName = "VCM_" + vendorDetails.Confirmation + "_" + uniqueDatetime + ".pdf";
+                //createReportandGettheFielName(vendorDetails);
+            }
             , complete: function (jqXHR) {
-             }
+            }
             , error: function (jqXHR, textStatus, errorThrown) {
                 debugger;
                 if (textStatus == 'error') {
@@ -347,7 +371,7 @@
     };
     /*Submit Section end */
 
-/*Confirmation Section begin */
+    /*Confirmation Section begin */
     function createReportandGettheFielName(vendorDetails) {
         debugger;
         $.ajax({
@@ -356,7 +380,7 @@
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             //processData: false,
-            data: JSON.stringify(vendorDetails),  
+            data: JSON.stringify(vendorDetails),
             success: function (result) {
                 debugger;
                 $.ajax({
@@ -364,7 +388,7 @@
                     type: "POST",
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify(vendorDetails),  
+                    data: JSON.stringify(vendorDetails),
                     headers: {
                         'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
                     },
@@ -375,23 +399,23 @@
                         //return result;
                     },
                     error: function (err) {
-                          alert('Report Error' + err.statusText);
+                        alert('Report Error' + err.statusText);
                     }
                 });
-               // return result;
+                // return result;
             },
             error: function (err) {
                 debugger;
                 alert('report error -' + err.statusText);
             }
-        });  
+        });
     }
 
     $('#btn_viewReport').on('click', function (e) {
         //var url = '../Home/GetPDF?fileName=' + FileName;
-        var url = "/Uploads/" + sessionStorage.getItem('VendorReportFileName');
-       // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
-            window.open(url, '_blank');
+        var url = "http://vddadmin.lacounty.gov/Uploads/" + sessionStorage.getItem('VendorReportFileName');
+        // $("#filelink").attr("href", "/Uploads/" + sessionStorage.getItem('VendorReportFileName'));
+        window.open(url, '_blank');
     });
     /*Confirmation Section end */
 });
