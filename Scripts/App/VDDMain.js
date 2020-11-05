@@ -42,7 +42,9 @@ $.fn.popover.Constructor.prototype.leave = function (obj) {
 	}
 };
 
-$('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: { show: 50, hide: 400 } });
+//$('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: { show: 50, hide: 400 } });
+
+$('body').popover({ selector: '[data-popover]', trigger: 'hover', placement: 'auto', delay: { show: 50, hide: 400 } });
 //  Popover on question mark on mouse hover  - Ending
 
 //  session timeout begin

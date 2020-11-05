@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     var vendorDetails = {};
-    //var bankDetails = {};
     var bankDetails = new Array();
     var locationList = new Array();
 
@@ -11,7 +10,6 @@
     $("#liNavigation").show();
     $(".round-tab").css("border-color", "#e0e0e0");
 
-    //$(".nav li").removeClass("active");
     if ($(location).attr('href').indexOf("_partialCertify") > -1) {
 
         $('#txtSignerPhone').mask('(000)000-0000');
@@ -63,7 +61,6 @@
         $("#span_submit_step").removeClass("disabled");
 
         getSubmitDetails();
-        getSourceIPlocationInfo();
     }
     else if ($(location).attr('href').indexOf("_partialConfirmation") > -1) {
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -258,46 +255,15 @@
             vendorDetails.Signeremail = certifyobj[0].Signeremail;
         }
 
-        //vendorDetails.Confirmation = "";
-        //vendorDetails.SubmitDateTime = new Date();
         vendorDetails.VendorAttachmentFileName = sessionStorage.getItem('uploadedfile')
-
-        //var uniqueFileName = getUniqueFileNameusingCurrentTime();
-        //vendorDetails.VendorReportFileName = uniqueFileName + "_" + vendorNumber + "_VendorReport.pdf";
 
         vendorDetails.locationIDs = bankDetails;
         vendorDetails.locationAddressDescList = locationList;
         vendorDetails.RequestType = 'DDOL';
 
-        //vendorDetails.Source_ip = "Source_ip";//getSourceip();
-        //vendorDetails.Source_device = "Source_device";
-        //vendorDetails.User_agent = navigator.userAgent;
-        //vendorDetails.Host_headers = "Host_headers";
+        vendorDetails.User_agent = sessionStorage.getItem('userName');  // used to enter the "Entered by column in summary page"
     }
-
-    function getSourceIPlocationInfo() {
-        debugger;
-        $.ajax({
-            contentType: "application/json; charset=utf-8",
-            type: "POST",
-            url: hostdomainUrl + "api/values/RetrieveSourceIPInfo/",
-            dataType: 'json',
-            headers: {
-                'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
-            },
-            success: function (data) {
-                debugger;
-                vendorDetails.Source_IP = data.data.source_IP;
-                vendorDetails.Source_Location = data.data.source_Location;
-                vendorDetails.Source_Device = data.data.source_Device;
-                vendorDetails.Source_Host_Headers = data.data.source_Host_Headers;
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                debugger;
-                alert('error');
-            }
-        });
-    };
+      
 
     function formatDateDisplay(dateVal) {
         var newDate = new Date(dateVal);
