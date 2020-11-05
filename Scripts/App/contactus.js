@@ -10,6 +10,29 @@ $(document).ready(function () {
     $('#lbl_header').html('Contact Us');
     $('#btn_contactus_submit').click(btn_contactus_click);
     $('#txtPhone').mask('(000)000-0000');
+    
+
+    //function getContactUs() {
+    //    $.ajax({
+    //        contentType: 'application/json; charset=utf-8',
+    //        type: "POST",
+           
+    //        dataType: 'json',
+    //        headers: {
+    //            'Authorization': 'Basic ' + btoa('contactus')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
+    //        },
+    //        success: function (data) {
+    //        }
+    //        , complete: function (jqXHR) {
+    //        }
+    //        , error: function (jqXHR, textStatus, errorThrown) {
+    //            if (jqXHR.status == '401') {
+    //                window.location.href = "/Home/UnAuthorized";
+    //            }
+    //        }
+    //    });
+    //};
+
 });
 
 $(".form-control").on('input', function (e) {
@@ -103,13 +126,40 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
             'Authorization': 'Basic ' + btoa('contactus')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
         },
         success: function (data) {
-            toastr.options.positionClass = "toast-bottom-right";
-            toastr.info("Successfully saving Contact Us Information...");
+            debugger;
         }
         , complete: function (jqXHR) {
         }
         , error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status == '401') {
+                window.location.href = "/Home/UnAuthorized";
+            }
+        }
+    });
+};
+
+GetGetGeneralContent_ContactUs();
+function GetGetGeneralContent_ContactUs() {
+    debugger;
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        type: "POST",
+        url: hostdomainUrl + "api/values/RetrieveGeneralContent_ContactUs/",
+        dataType: 'json',
+
+        headers: {
+            'Authorization': 'Basic ' + btoa('admin')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
+
+        },
+        success: function (data) {
+            debugger;
+            $("#lbl_email").html(data.data.generalContent_ContactUs.Email);
+            $("#lbl_mailingaddress").html(data.data.generalContent_ContactUs.MailingAddress);
+            $("#lbl_phoneNumber").html(data.data.generalContent_ContactUs.Phone);
+            $("#lbl_officeHours").html(data.data.generalContent_ContactUs.OfficeHours);
+        },
+        error: function (_XMLHttpRequest, textStatus, errorThrown) {
+            if (_XMLHttpRequest.status == '401') {
                 window.location.href = "/Home/UnAuthorized";
             }
         }

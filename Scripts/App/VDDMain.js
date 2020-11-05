@@ -3,7 +3,6 @@
 var vdd = {};
 
 /* Intial settings */
-//$(".nav li").removeClass("active");
 $("#btn_loginLock").hide();
 
 vdd.GlobalVariables = {
@@ -43,7 +42,9 @@ $.fn.popover.Constructor.prototype.leave = function (obj) {
 	}
 };
 
-$('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: { show: 50, hide: 400 } });
+//$('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: { show: 50, hide: 400 } });
+
+$('body').popover({ selector: '[data-popover]', trigger: 'hover', placement: 'auto', delay: { show: 50, hide: 400 } });
 //  Popover on question mark on mouse hover  - Ending
 
 //  session timeout begin
@@ -68,25 +69,6 @@ $(function () {
 	//window.setInterval(IsSessionAlive(), 300000);
 })
 //  session timeout end
-
-// testing begin //var is_mobile = 'No';
-//if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-//	is_mobile = 'Yes';
-//}
-
-//debugger;
-//	$.getJSON("http://jsonip.appspot.com?callback=?",
-//		function (data) {
-//			return (data.ip);
-//		});
-
-//$.getJSON("http://smart-ip.net/geoip-json?callback=?", function (data) { }); 
-
-//$.get("https://ipinfo.io", function (response) {
-//}, "json") 
-
-// testing end
-
 
 $('#img_username').on('click', function (e) {
     //$('#logoutModal').modal('show');
@@ -160,7 +142,6 @@ function isEmail(email) {
 }
 
 function validatePhone(txtPhone) {
-	alert('testing validate phone');
 	if (txtPhone.length < 13) {
 		return false;
 	}

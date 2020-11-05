@@ -66,7 +66,6 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
-
         public string ValidateRoughtingNumber(string aba)
         {
             string bankName = string.Empty;
@@ -76,11 +75,11 @@ namespace WebMaterialPOC.Controllers
                 string token = abaWebService.Logon(3387, "lacounty".Trim(), "RXdqmYHg".Trim());
                 bool validRouting = abaWebService.VerifyABA(token, aba);
 
-
                 string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(xml);
-                XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+                //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+                XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
 
                 if (nodeList.Count > 0)
                 {
@@ -103,11 +102,17 @@ namespace WebMaterialPOC.Controllers
             return bankName;
         }
 
+
+        [HttpPost]
+        public FileResult openPDF(){
+            string path = @"C:\test\vddtest.pdf";
+            return File(path, "application/pdf", "pdf_download_name.pdf");
+        }
+    
+
         [HttpPost]
         public ActionResult UploadAttachmentFile()
         {
-            //string testanddelete = GetIPAddress();
-
             string fname = string.Empty;
             string Uploadpath = string.Empty;
             // Checking no of files injected in Request object  
@@ -134,7 +139,7 @@ namespace WebMaterialPOC.Controllers
                         }
 
                         Uploadpath = System.Configuration.ConfigurationManager.AppSettings["Uploadpath"];
-                        fname = Path.Combine(Server.MapPath("~/"+ Uploadpath +"/ "), fname);
+                        fname = Path.Combine(Server.MapPath("~/"+ Uploadpath +"/"), fname);
                         file.SaveAs(fname);
                     }
                     // Returns message that successfully uploaded  
@@ -163,25 +168,6 @@ namespace WebMaterialPOC.Controllers
             viewer.LocalReport.Refresh();
             ViewBag.ReportViewer = viewer;
             return View();
-        }
-
-
-
-        public string GetIPAddress()
-        {
-            string ipaddress = string.Empty;
-            IPHostEntry Host = default(IPHostEntry);
-            string Hostname = null;
-            Hostname = System.Environment.MachineName;
-            Host = Dns.GetHostEntry(Hostname);
-            foreach (IPAddress IP in Host.AddressList)
-            {
-                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    ipaddress = Convert.ToString(IP);
-                }
-            }
-            return ipaddress;
         }
     }
 }
