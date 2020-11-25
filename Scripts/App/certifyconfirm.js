@@ -296,6 +296,7 @@
     }
 
     function submitDetailstoDB() {
+        debugger;
         var venDetails = JSON.stringify(vendorDetails);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
