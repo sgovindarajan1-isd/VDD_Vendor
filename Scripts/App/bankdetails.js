@@ -25,7 +25,7 @@
         $("#li_bankstep").addClass("active");
         $("#li_bankstep").removeClass("disabled");
         $("#img_bank_step").parent().css("border-color", "#7030A0");
-        $('#lbl_header').html('Enter Bank Information');
+        $('#lbl_header').html('Enter Banking Information');
         $('#img_checkImage').hide();  //  by default img will be invisible
 
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
@@ -212,6 +212,7 @@
     };
 
     $('input[type="file"]').change(function (e) {
+        debugger;
         var ext = ['.PDF', '.JPG', '.JPEG', '.GIF', '.PNG'];  // '.DOC', '.DOCX',
         $("#fileError_or_Info").html("");
         var fileName = e.target.files[0].name;
@@ -243,6 +244,7 @@
                 $("#modifiedFileName").text(modifiedFileName);
             }
         }
+        e.target.value = '';
     });
 
     $("#btn_FileAttachmentDelete").on('click', function () {

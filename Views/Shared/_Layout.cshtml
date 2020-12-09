@@ -11,8 +11,6 @@
     <link rel="manifest" href="./Content/Images/FavIcons/manifest.json">
     <link rel="mask-icon" href="./Content/Images/FavIcons/safari-pinned-tab.svg" color="#5bbad5">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-
     <meta name="theme-color" content="#ff0000">
     <meta name="theme-color" content="#ffffff">
 
@@ -29,7 +27,6 @@
     @*vdd move this down*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 </head>
 <body>
@@ -84,6 +81,10 @@
     </div>
 
     <div id="wp_content">
+
+        <div id="div_spinnerpanel" class="loading1">
+            <div id="div_spinner" class="loader1"></div>
+        </div>
         <div id="liNavigation" class="row-wrapper row  row-home-gray">
             <div class="row-inner ">
                 <div class="col-xs-12">

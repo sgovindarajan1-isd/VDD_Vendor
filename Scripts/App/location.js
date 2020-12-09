@@ -10,7 +10,7 @@ $(document).ready(function () {
     var vendorNumber = sessionStorage.getItem('vendorNumber');
     //var payeeId = sessionStorage.getItem('payeeId');
     $('#lbl_header').html('Payment Information');
-
+    $("#div_spinner").addClass('loader');
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
@@ -21,14 +21,33 @@ $(document).ready(function () {
         },
         url: hostdomainUrl + "api/values/GetVendorDetailsByName/",
         success: function (data) {
+            $("#div_spinner").removeClass('loader');
             $('#ddGrid').dataTable({
                 responsive: true,
                 data: data.data.vendorlst,
                 columns: [
                     { 'data': '' },
                     { 'data': 'VendorAddress' },
-                    { 'data': 'RoutingNumber' },
-                    { 'data': 'AcccountNo', "width": '12%' },
+                    {
+                        'data': 'RoutingNumber',
+                        "render": function (data, type, row, meta) {
+                            if (row.Status === 'Approved') {
+                                // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                                data = '******' + data.substr(data.length - 4);  //'Masked';
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        'data': 'AcccountNo',
+                        "render": function (data, type, row, meta) {
+                            if (row.Status === 'Approved') {
+                                // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                                data = '******' + data.substr(data.length - 4);  //'Masked';
+                            }
+                            return data;
+                        }, "width": '12%'
+                    },
                     { 'data': 'AccountType' },
                     { 'data': 'RemittanceEmail' },
                     { 'data': 'Status', "width": '140px', 'className': 'payment-status-color' }
@@ -51,7 +70,8 @@ $(document).ready(function () {
                     selector: 'td:first-child'
                 },
                 "createdRow": function (row, data, dataIndex) {
-                    if (data.Status.toLowerCase() === 'pending') {
+                   // if (data.Status.toLowerCase() === 'pending') {
+                    if (data.Status.toLowerCase() === 'new') {
                         $(row).css('background-color', 'lightgrey');
                         $('td', row).removeClass('select-checkbox');
                     }
@@ -61,7 +81,7 @@ $(document).ready(function () {
             var table = $('#ddGrid').DataTable();
             var allRowsArePending = true;
             table.rows(function (idx, data, node) {
-                if (data.Status.toLowerCase() !== 'pending') {  // direct deposit
+                if (data.Status.toLowerCase() !== 'new') {  // direct deposit    "pending" replaced as new
                     allRowsArePending = false;
                     return true;
                 }
