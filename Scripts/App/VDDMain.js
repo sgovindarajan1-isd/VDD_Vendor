@@ -2,6 +2,30 @@
 //  Global variables
 var vdd = {};
 
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+
+//STICKY HEADER
+//window.onscroll = function () { myFunction() };
+
+//var header = $("#liNavigation");
+//var sticky = header.offsetTop;
+
+//function stickyHeaderFunc() {
+//	if (window.pageYOffset > sticky) {
+//		header.classList.add("sticky");
+//	} else {
+//		header.classList.remove("sticky");
+//	}
+//}
+//STICKY HEADER
+
 /* Intial settings */
 $("#btn_loginLock").hide();
 

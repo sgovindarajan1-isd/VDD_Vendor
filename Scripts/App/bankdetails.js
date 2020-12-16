@@ -30,7 +30,6 @@
 
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
         if ((bankobj != null) && (bankobj != 'undefined')) {
-            debugger;
             $("#txtAccountType").prop('selectedIndex', bankobj[0].AccountType);
             $("#txtBankAcNo").val(bankobj[0].BankAccountNumber);
             $("#txtRe-BankAcNo").val(bankobj[0].ReBankAcNo),
@@ -212,7 +211,6 @@
     };
 
     $('input[type="file"]').change(function (e) {
-        debugger;
         var ext = ['.PDF', '.JPG', '.JPEG', '.GIF', '.PNG'];  // '.DOC', '.DOCX',
         $("#fileError_or_Info").html("");
         var fileName = e.target.files[0].name;
@@ -489,7 +487,6 @@
                     'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
                 },
                 success: function (result) {
-                    debugger;
                     sessionStorage.setItem('uploadedfile', result);
                     sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
                 },
