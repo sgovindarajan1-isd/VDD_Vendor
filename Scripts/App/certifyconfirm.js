@@ -11,7 +11,6 @@
     $(".round-tab").css("border-color", "#e0e0e0");
 
     if ($(location).attr('href').indexOf("_partialCertify") > -1) {
-
         $('#txtSignerPhone').mask('(000)000-0000');
 
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');

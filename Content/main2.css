@@ -16,10 +16,6 @@
 /*Sticky header*/
 
 
-
-
-
-
 /*Responsive Menu item  */
 .topnav {
     overflow: hidden;
@@ -51,12 +47,6 @@
     }
 
 @media screen and (max-width: 600px) {
-    /*.imagearea1 {
-        height: 500px;
-        width: 500px;
-    }*/
-
-
     .topnav a:not(:first-child) {
         display: none;
     }
@@ -84,8 +74,6 @@
             text-align: left;
         }
 }
-
-
 
 @media screen and (max-width: 600px) {
     .top-menu li:not(:first-child) {
@@ -121,6 +109,10 @@
 
 /* Data table  Payment info screeninfo */
 @media only screen and (max-width: 760px), (max-device-width: 1024px) and (min-device-width: 768px) {
+
+    .btn-continue {
+    margin-bottom : 10pt !important;
+    }
 
     /*attachment*/
     .matchAttachment {
