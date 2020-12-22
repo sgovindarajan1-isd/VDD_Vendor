@@ -298,7 +298,7 @@
         }
 
         if (re_BankAcNo.length <= 0) {
-            $("#re_BankAcNo").html('Re Enter Bank Account Number is required.');
+            $("#re_BankAcNo").html('Re-enter Bank Account Number.');
             bool = false;
         } else if (bankAcNo !== re_BankAcNo) {
             $("#re_BankAcNo").html('Bank Account Numbers do not match.');
@@ -334,7 +334,7 @@
         }
 
         if (reDDNotifiEmail.length <= 0) {
-            $("#reDDNotifiEmail").html('Re Enter Email Address is required.');
+            $("#reDDNotifiEmail").html('Re-enter Email Address.');
             bool = false;
         } else if (!isEmail(reDDNotifiEmail)) {
             $("#reDDNotifiEmail").html('Please enter valid Email Address.');
