@@ -365,10 +365,14 @@
         $.ajax({
             contentType: "application/json; charset=utf-8",
             type: "post",
+            headers: {
+                'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+            },
 
-            url: "/deposit/validateRoughtingNumber?aba=" + aba,
+            //url: "/deposit/validateRoughtingNumber?aba=" + aba,
+            url: hostdomainUrl + "api/values/ValidateRoughtingNumberFromAPI?aba=" + aba,
             success: function (data) {
-                $("#txtFinancialIns").val(data);
+                $("#txtFinancialIns").val(data.data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $("#txtFinancialIns").val("No banks found");
