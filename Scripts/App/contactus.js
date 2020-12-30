@@ -126,7 +126,6 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
             'Authorization': 'Basic ' + btoa('contactus')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
         },
         success: function (data) {
-            debugger;
         }
         , complete: function (jqXHR) {
         }
@@ -140,7 +139,6 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
 
 GetGetGeneralContent_ContactUs();
 function GetGetGeneralContent_ContactUs() {
-    debugger;
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
@@ -152,7 +150,6 @@ function GetGetGeneralContent_ContactUs() {
 
         },
         success: function (data) {
-            debugger;
             $("#lbl_email").html(data.data.generalContent_ContactUs.Email);
             $("#lbl_mailingaddress").html(data.data.generalContent_ContactUs.MailingAddress);
             $("#lbl_phoneNumber").html(data.data.generalContent_ContactUs.Phone);

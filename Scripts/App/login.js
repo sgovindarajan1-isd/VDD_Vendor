@@ -67,8 +67,13 @@ function loginExternalVendor(userid, tin) {
     ////testing values
     if ($(location).attr('href').indexOf("local") > -1) {
         ////  To do :  test values for easy access,  remove later
-        var userid = '505653'; // 'SP8313';//'000076'; //'000593'; //'000339';
-        var tin = '951644052'; //'474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
+        //var userid = '505653'; // 'SP8313';//'000076'; //'000593'; //'000339';
+        //var tin = '951644052'; //'474478313'; //'953765453'; //'232116774'; //'942647607';    [  '026726' 521471842]
+        //var userid = '000057';	
+        //var tin = '952295473';
+
+        var userid = '000020';
+        var tin = '941631996';
 
         //var userid = '000076'; //----HAS ONE ROW
         //var tin = '953765453';
@@ -117,7 +122,6 @@ function loginExternalVendor(userid, tin) {
             $("#loaderDiv").hide();
         }
         , error: function (jqXHR, textStatus, errorThrown) {
-            debugger;
             if (jqXHR.status == '404') {
                 $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
             }

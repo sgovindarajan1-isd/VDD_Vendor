@@ -11,7 +11,6 @@
     $(".round-tab").css("border-color", "#e0e0e0");
 
     if ($(location).attr('href').indexOf("_partialCertify") > -1) {
-
         $('#txtSignerPhone').mask('(000)000-0000');
 
         $("#img_info_step").attr('src', '/Content/Images/info_step.png');
@@ -72,14 +71,26 @@
         $("#img_confirmation_step").parent().css("border-color", "#7030A0");
         $('#lbl_header').html('Confirmation');
 
-        $("#span_bankstep").removeClass("disabled");
-        $("#span_attachmentstep").removeClass("disabled");
-        $("#span_verify_step").removeClass("disabled");
-        $("#span_submit_step").removeClass("disabled");
-        $("#span_confirmation_step").removeClass("disabled");
+        $("#span_bankstep").addClass("disabled");
+        $("#span_attachmentstep").addClass("disabled");
+        $("#span_verify_step").addClass("disabled");
+        $("#span_submit_step").addClass("disabled");
+        $("#span_confirmation_step").addClass("disabled");
 
         $("#confirmationNumber").html(sessionStorage.getItem('confirmationNumber'));
         $("#submittedDate").html(formatDateDisplay(sessionStorage.getItem('submittedDate')));
+
+
+        //clear all other sessions since  the application is already submitted.  Otherwise, when click the "Enter application" Menu second time old information will be available.
+        sessionStorage.removeItem('selectedFile');
+        sessionStorage.removeItem('imagefile-selectedFile');
+        sessionStorage.removeItem('originalfileName');
+        sessionStorage.removeItem('uploadedfile');
+        sessionStorage.removeItem('uploadedfileExtension');
+        sessionStorage.removeItem("bankdetailsJson");
+        sessionStorage.removeItem('certifydetailsJson');
+        sessionStorage.removeItem("vendordetailsJson");
+        sessionStorage.removeItem("paymentJson");
     }
 
     $(".form-control").on('input', function (e) {
@@ -112,7 +123,6 @@
         } else {
             $("#signerTitle").html('');
         }
-        debugger;
         if (signerPhone.length <= 0) {
             $("#signerPhone").html('Authorized Signer’s Phone # is required.');
             bool = false;
@@ -150,7 +160,6 @@
     });
 
     function validatePhone(txtPhone) {
-        debugger;
         if (txtPhone.length < 13)
             return false;
         var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
@@ -188,8 +197,6 @@
             return false;
         }
         else {
-            debugger;
-
             submitDetailstoDB();  // submit/ generate confirmation number
         }
     });
@@ -199,7 +206,6 @@
     });
 
     function getSubmitDetails() {
-        debugger;
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
         var vendorNumber = sessionStorage.getItem('vendorNumber');
 
@@ -307,7 +313,6 @@
                 'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
             },
             success: function (data) {
-                debugger;
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
                 sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);
                 sessionStorage.setItem('VendorReportFileName', data.data.VendorReportFileName);
@@ -324,7 +329,6 @@
             , complete: function (jqXHR) {
             }
             , error: function (jqXHR, textStatus, errorThrown) {
-                debugger;
                 if (textStatus == 'error') {
                     toastr.options.positionClass = "toast-bottom-right";
                     toastr.warning("Error in submission, Please check the entry!");
@@ -339,7 +343,6 @@
 
     /*Confirmation Section begin */
     function createReportandGettheFielName(vendorDetails) {
-        debugger;
         $.ajax({
             url: '/report/showreport/',
             type: "POST",
@@ -348,7 +351,6 @@
             //processData: false,
             data: JSON.stringify(vendorDetails),
             success: function (result) {
-                debugger;
                 $.ajax({
                     url: hostdomainUrl + "api/values/InsertVendorReportFileName/",
                     type: "POST",
@@ -359,7 +361,6 @@
                         'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
                     },
                     success: function (result) {
-                        debugger;
                         sessionStorage.setItem('VendorReportFileName', vendorDetails.VendorReportFileName)
                         window.location.href = '/deposit/_partialConfirmation';
                         //return result;
@@ -371,7 +372,6 @@
                 // return result;
             },
             error: function (err) {
-                debugger;
                 alert('report error -' + err.statusText);
             }
         });

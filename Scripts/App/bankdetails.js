@@ -25,12 +25,11 @@
         $("#li_bankstep").addClass("active");
         $("#li_bankstep").removeClass("disabled");
         $("#img_bank_step").parent().css("border-color", "#7030A0");
-        $('#lbl_header').html('Enter Bank Information');
+        $('#lbl_header').html('Enter Banking Information');
         $('#img_checkImage').hide();  //  by default img will be invisible
 
         var bankobj = JSON.parse(sessionStorage.getItem("bankdetailsJson"));
         if ((bankobj != null) && (bankobj != 'undefined')) {
-            debugger;
             $("#txtAccountType").prop('selectedIndex', bankobj[0].AccountType);
             $("#txtBankAcNo").val(bankobj[0].BankAccountNumber);
             $("#txtRe-BankAcNo").val(bankobj[0].ReBankAcNo),
@@ -92,7 +91,7 @@
         $("#span_bankstep").removeClass("disabled");
         $("#span_attachmentstep").removeClass("disabled");
 
-        $('#lbl_header').html('Verify Bank Information');
+        $('#lbl_header').html('Verify Banking Information');
 
         var bankdetailsJson = jQuery.parseJSON(sessionStorage.bankdetailsJson);
         var acType = "Error";
@@ -212,7 +211,7 @@
     };
 
     $('input[type="file"]').change(function (e) {
-        var ext = ['.PDF', '.DOC', '.DOCX', '.JPG', '.JPEG', '.GIF', '.PNG'];
+        var ext = ['.PDF', '.JPG', '.JPEG', '.GIF', '.PNG'];  // '.DOC', '.DOCX',
         $("#fileError_or_Info").html("");
         var fileName = e.target.files[0].name;
         var file = e.target.files[0];
@@ -222,9 +221,12 @@
         if (file) {
             if (file.size >= 10485760) {
                 $("#fileError_or_Info").html('The file size is too large. Please choose another file.');
+                return;
             }
-            else if (fileExtenstion == null)
-                $("#fileError_or_Info").html('The acceptable file types are .pdf, .doc, .docx, .jpg, .jpeg, .gif, .png. Please choose another file.');
+            else if (fileExtenstion == null) {
+                $("#fileError_or_Info").html('The acceptable file types are .pdf, .jpg, .jpeg, .gif, .png. Please choose another file.');  //  .doc, .docx, 
+                return;
+            }
             else {
                 sessionStorage.setItem('selectedFile', imagefile);  //  if sessionstorage 'uploadedfile'  works delete this key
 
@@ -240,6 +242,7 @@
                 $("#modifiedFileName").text(modifiedFileName);
             }
         }
+        e.target.value = '';
     });
 
     $("#btn_FileAttachmentDelete").on('click', function () {
@@ -295,7 +298,7 @@
         }
 
         if (re_BankAcNo.length <= 0) {
-            $("#re_BankAcNo").html('Re Enter Bank Account Number is required.');
+            $("#re_BankAcNo").html('Re-enter Bank Account Number.');
             bool = false;
         } else if (bankAcNo !== re_BankAcNo) {
             $("#re_BankAcNo").html('Bank Account Numbers do not match.');
@@ -331,7 +334,7 @@
         }
 
         if (reDDNotifiEmail.length <= 0) {
-            $("#reDDNotifiEmail").html('Re Enter Email Address is required.');
+            $("#reDDNotifiEmail").html('Re-enter Email Address.');
             bool = false;
         } else if (!isEmail(reDDNotifiEmail)) {
             $("#reDDNotifiEmail").html('Please enter valid Email Address.');
@@ -362,10 +365,14 @@
         $.ajax({
             contentType: "application/json; charset=utf-8",
             type: "post",
+            headers: {
+                'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
+            },
 
-            url: "/deposit/validateRoughtingNumber?aba=" + aba,
+            //url: "/deposit/validateRoughtingNumber?aba=" + aba,
+            url: hostdomainUrl + "api/values/ValidateRoughtingNumberFromAPI?aba=" + aba,
             success: function (data) {
-                $("#txtFinancialIns").val(data);
+                $("#txtFinancialIns").val(data.data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $("#txtFinancialIns").val("No banks found");
@@ -394,13 +401,15 @@
     });
 
     $('#btn_Statement').hover(function () {
-        $(this).text('Statement must include the full bank account number and holder’s name.');
+        $(this).text('Statement must include the full bank account number, holder’s name and must be dated within 3 months.');
     }, function () {
         $(this).text('First page of Bank Statement');
     });
 
     $('#btn_verifyLetter').hover(function () {
-        $(this).text('Letter must include the bank account number, account type and account holder’s name. The letter must be printed on the financial institution’s letterhead which includes the authorized bank representative name, title, phone number and signature.');
+        $(this).text('Letter must include the bank account number, account type and account holder’s name. The letter must be printed on the financial institution’s letterhead which includes the authorized bank representative name, title, phone number, signature, and must be dated within 3 months.');
+
+             
     }, function () {
         $(this).text('Bank Verification Letter');
     });
@@ -435,7 +444,8 @@
     $("#btn_verify_no").on('click', function (e) {
         sessionStorage.setItem('selectedFile', null);
         sessionStorage.setItem('imagefile-selectedFile', null);
-        window.history.back();
+        //window.history.back();
+        window.location.href = "/deposit/_partialBankDetails";
     });
 
     $("#btn_verify_yes").on('click', function (e) {
@@ -481,7 +491,6 @@
                     'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
                 },
                 success: function (result) {
-                    debugger;
                     sessionStorage.setItem('uploadedfile', result);
                     sessionStorage.setItem('uploadedfileExtenstion', ext);    //to-do get from config file
                 },
