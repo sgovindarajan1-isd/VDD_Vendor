@@ -10,7 +10,7 @@ using Microsoft.Reporting.WebForms;
 using System.IO;
 using System.Data;
 
-namespace WebMaterialPOC.Controllers
+namespace VDDVendor.Controllers
 {
     public class ReportController : Controller
     {

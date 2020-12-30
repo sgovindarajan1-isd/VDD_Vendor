@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using WebMaterialPOC.Models;
 
-namespace WebMaterialPOC.Controllers
+namespace VDDVendor.Controllers
 {
     public class DepositController : Controller
     {
@@ -66,57 +66,57 @@ namespace WebMaterialPOC.Controllers
             return View();
         }
 
-        public string ValidateRoughtingNumber(string aba)
-        {
-            string bankName = string.Empty;
-            try
-            {
-                ABAServices.ABAService abaWebService = new ABAServices.ABAService();
-                string token = abaWebService.Logon(3387, "lacounty".Trim(), "RXdqmYHg".Trim());
-                bool validRouting = abaWebService.VerifyABA(token, aba);
+        //public string ValidateRoughtingNumber(string aba)
+        //{
+        //    string bankName = string.Empty;
+        //    try
+        //    {
+        //        ABAServices.ABAService abaWebService = new ABAServices.ABAService();
+        //        string token = abaWebService.Logon(3387, "lacounty".Trim(), "RXdqmYHg".Trim());
+        //        bool validRouting = abaWebService.VerifyABA(token, aba);
 
-                string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.LoadXml(xml);
+        //        string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
+        //        XmlDocument xmlDoc = new XmlDocument();
+        //        xmlDoc.LoadXml(xml);
 
-                XmlNodeList iNodeList = xmlDoc.SelectNodes("//Institutions");
+        //        XmlNodeList iNodeList = xmlDoc.SelectNodes("//Institutions");
 
-                if (iNodeList.Count > 0)
-                {
-                    XmlNode node = iNodeList[0];
-                    bankName = node.InnerText;
-                }
+        //        if (iNodeList.Count > 0)
+        //        {
+        //            XmlNode node = iNodeList[0];
+        //            bankName = node.InnerText;
+        //        }
 
-                ////XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
-                //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
+        //        ////XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+        //        //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
 
-                //if (nodeList.Count > 0)
-                //{
-                //    XmlNode node = nodeList[0];
-                //    if (node.InnerText.Length > 40)
-                //    {
-                //        bankName = node.InnerText.Substring(0, 40);
-                //    }
-                //    else
-                //    {
-                //        bankName = node.InnerText;
-                //    }
-                //}
-            }
-            catch (Exception ex){
-                //if (ex.Message == "No banks found!")
-                bankName = "No banks found";  
-            }
+        //        //if (nodeList.Count > 0)
+        //        //{
+        //        //    XmlNode node = nodeList[0];
+        //        //    if (node.InnerText.Length > 40)
+        //        //    {
+        //        //        bankName = node.InnerText.Substring(0, 40);
+        //        //    }
+        //        //    else
+        //        //    {
+        //        //        bankName = node.InnerText;
+        //        //    }
+        //        //}
+        //    }
+        //    catch (Exception ex){
+        //        //if (ex.Message == "No banks found!")
+        //        bankName = "No banks found";  
+        //    }
 
-            return bankName;
-        }
+        //    return bankName;
+        //}
 
 
-        [HttpPost]
-        public FileResult openPDF(){
-            string path = @"C:\test\vddtest.pdf";
-            return File(path, "application/pdf", "pdf_download_name.pdf");
-        }
+        //[HttpPost]
+        //public FileResult openPDF(){
+        //    string path = @"C:\test\vddtest.pdf";
+        //    return File(path, "application/pdf", "pdf_download_name.pdf");
+        //}
     
 
         [HttpPost]

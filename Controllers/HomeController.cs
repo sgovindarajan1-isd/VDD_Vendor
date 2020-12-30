@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebMaterialPOC.Models;
 
-namespace WebMaterialPOC.Controllers
+namespace VDDVendor.Controllers
 {
 
     public class HomeController : Controller
