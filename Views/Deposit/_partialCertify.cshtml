@@ -5,7 +5,7 @@
 @section Scripts
 {
     <script src="~/Scripts/App/certifyconfirm.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="~/Scripts/mask.js"></script>
     <link href="~/Content/main2.css" rel="stylesheet" />
 }
 <div class="container" style="padding-top: 20px;">
@@ -33,7 +33,7 @@
                                         <img data-toggle="popover" data-popover="true" data-placement="top" data-content="If you are the payee, enter your name. If the payee is an organization, enter the authorized representative’s name." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                                     </label>
                                     <div class="col-sm-6">
-                                        <div style="float:left">
+                                        <div class="div_certify_authorize"style="float:left">
                                             <input type="text" class="form-control" id="txtSignerName" maxlength="50" placeholder="Authorized Signer’s Name" value="" required>
                                             <span id="signerName" class="errmessage" />
                                         </div>
@@ -46,7 +46,7 @@
                                         <img data-toggle="popover" data-popover="true" data-placement="top" data-content="If you are the payee, enter your title. If the payee is an organization, enter the authorized representative’s title." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                                     </label>
                                     <div class="col-sm-6">
-                                        <div style="float:left">
+                                        <div class="div_certify_authorize" style="float:left">
                                             <input type="text" class="form-control" id="txtSignerTitle" maxlength="50" placeholder="Authorized Signer’s Title" value="" required>
                                             <span id="signerTitle" class="errmessage" />
                                         </div>
@@ -59,8 +59,8 @@
                                         <img data-toggle="popover" data-popover="true" data-placement="top" data-content="Enter authorized signer’s phone number." id="Image2" border="0" hspace="0" vspace="0" align="bottom" src="/content/App_Themes/Images/question_icon.png" style="width: 15px; height: 15px; margin-top: -10px; vertical-align: middle;">
                                     </label>
                                     <div class="col-sm-6">
-                                        <div style="float:left">
-                                            <input type="text" class="form-control item" id="txtSignerPhone" maxlength="15" placeholder="(___)___-____"  required>
+                                        <div class="div_certify_authorize" style="float:left">
+                                            <input type="text" class="form-control item" id="txtSignerPhone" maxlength="15" placeholder="(___)___-____" required>
                                             <span id="signerPhone" class="errmessage" />
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                     </label>
 
                                     <div class="col-sm-6">
-                                        <div style="float:left">
+                                        <div class="div_certify_authorize" style="float:left">
                                             <input type="text" class="form-control" id="txtSignerEmail" maxlength="100" placeholder=" Authorized Signer’s Email" @*value="a@a.com*@ required>
                                             <span id="signerEmail" class="errmessage" />
                                         </div>
@@ -84,7 +84,8 @@
                                     <label class="fontBold" style="text-decoration: underline"><input id="chk_certify" type="checkbox" style="height: 20px; width: 20px;" />I authorize this request for direct deposit.</label>
                                 </div>
 
-                                <div style="padding-top :10pt; text-align: center" class="row-wrapper">
+                                <div style="text-align: center" class="row-wrapper">
+                                    @*padding-top :10pt;*@
                                     <button style="float: left" class="btn btn-back" id="btn_certify_back"> Back </button>
                                     <button style="float: right" class="btn btn-continue" id="btn_certify_next"> Continue </button>
                                 </div>

@@ -2,6 +2,31 @@
 //  Global variables
 var vdd = {};
 
+function myFunction() {
+	var x = document.getElementById("myTopnav");  // to do change this
+	//var x = $("#myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+
+//STICKY HEADER
+//window.onscroll = function () { myFunction() };
+
+//var header = $("#liNavigation");
+//var sticky = header.offsetTop;
+
+//function stickyHeaderFunc() {
+//	if (window.pageYOffset > sticky) {
+//		header.classList.add("sticky");
+//	} else {
+//		header.classList.remove("sticky");
+//	}
+//}
+//STICKY HEADER
+
 /* Intial settings */
 $("#btn_loginLock").hide();
 
@@ -77,6 +102,11 @@ $('#img_username').on('click', function (e) {
 
 
 $('.liselect').on('click', function () {
+	// paymentSelectedcheck Means, once  submited then until select the next payment location item , user not allowed to go back and click round item
+	var paymentSelected = sessionStorage.getItem('paymentJson');
+	if ((paymentSelected == null || paymentSelected == 'undefined')) {
+		return;
+	}
 	var eId = $(this)[0].id;
 
 	var selectedValue = parseInt($(this).attr('value'));
@@ -85,7 +115,7 @@ $('.liselect').on('click', function () {
 
 	var currentValue = parseInt($('#' + $('.liselect.active')[0].id).attr('value'));
 
-	if (currentValue > selectedValue) {
+	if (currentValue > selectedValue){
 		switch (selectedValue) {
 			case 1:
 				window.location.href = '/deposit/Index';   

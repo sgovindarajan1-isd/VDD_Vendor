@@ -78,25 +78,34 @@ namespace WebMaterialPOC.Controllers
                 string xml = abaWebService.GetBanksPrimarySortXML(token, aba);
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(xml);
-                //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
-                XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
 
-                if (nodeList.Count > 0)
+                XmlNodeList iNodeList = xmlDoc.SelectNodes("//Institutions");
+
+                if (iNodeList.Count > 0)
                 {
-                    XmlNode node = nodeList[0];
-                    if (node.InnerText.Length > 40)
-                    {
-                        bankName = node.InnerText.Substring(0, 40);
-                    }
-                    else
-                    {
-                        bankName = node.InnerText;
-                    }
+                    XmlNode node = iNodeList[0];
+                    bankName = node.InnerText;
                 }
+
+                ////XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='M']");
+                //XmlNodeList nodeList = xmlDoc.SelectNodes("//InstitutionName[@type='B']");
+
+                //if (nodeList.Count > 0)
+                //{
+                //    XmlNode node = nodeList[0];
+                //    if (node.InnerText.Length > 40)
+                //    {
+                //        bankName = node.InnerText.Substring(0, 40);
+                //    }
+                //    else
+                //    {
+                //        bankName = node.InnerText;
+                //    }
+                //}
             }
             catch (Exception ex){
                 //if (ex.Message == "No banks found!")
-                bankName = "No banks found";
+                bankName = "No banks found";  
             }
 
             return bankName;

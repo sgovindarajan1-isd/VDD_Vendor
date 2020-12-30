@@ -1,5 +1,232 @@
+/*Sticky header*/
+/*.row-home-gray {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    .sticky + .content {
+        padding-top: 102px;
+    }*/
+/*Sticky header*/
+
+
+/*Responsive Menu item  */
+.topnav {
+    overflow: hidden;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 13px;
+        font-family: "Raleway";
+    }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .topnav .icon {
+        display: none;
+    }
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+}
+
+@media screen and (max-width: 600px) {
+    .top-menu li:not(:first-child) {
+        display: none;
+    }
+
+    .top-menu li.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .top-menu.responsive {
+        position: relative;
+    }
+
+        .top-menu.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .top-menu.responsive li {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+}
+
+/*Responsive Menu item  */
+
+
+/* Data table  Payment info screeninfo */
+@media only screen and (max-width: 760px), (max-device-width: 1024px) and (min-device-width: 768px) {
+
+    .btn-continue {
+    margin-bottom : 10pt !important;
+    }
+
+    /*attachment*/
+    .matchAttachment {
+        font-size: initial !important;
+    }
+    .div_bankverify_yesno {
+        text-align: center !important;
+        padding: initial !important;
+    }
+
+    /*bank verify*/
+    .imagearea1 {
+        height: initial !important;
+        width: initial !important;
+    }
+
+    .rowtwo {
+        padding-top: initial !important;
+        padding-left: 15px!important;
+    }
+      /*ceritify*/
+    .div_certify_authorize {
+      float:none !important;
+    }
+
+    /*submit*/
+    .div_submit_banklocations {
+        padding-top: initial !important;
+    }
+
+
+    .welcomeBox {
+        background-color: initial !important;
+    }
+
+    /*minimize the padding under login text  in login screen*/
+    .layoutBody {
+        min-height: initial !important;
+        padding-bottom: initial !important;
+    }
+
+    /* Header text above grid*/
+    #wp_content, #wp_footer-widget-bar, #wp_footer, #woocommerce-lightbox-cart {
+        font-size: 12px !important;
+        /*font-weight: bold !important;*/
+    }
+
+    table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+        height: 12px !important;
+    }
+
+    table, thead, tbody, th, td, tr {
+        font-size: 12px !important;
+    }
+
+
+    #wp_content, #wp_footer-widget-bar, #wp_footer, #woocommerce-lightbox-cart {
+        line-height: 1.7em;
+        /*line-height: .9em !important;*/
+    }
+
+    /*to line field title and field horizontaly*/
+    td:before {
+        /*top: 6px;*/
+        top: 1px;
+    }
+
+    table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+        height: auto !important
+    }
+
+    /*First card not having any horizontal lines: below is the fix */
+
+    table.dataTable.cell-border tbody tr:first-child td {
+        border-top: 1px solid #ddd !important;
+        margin-bottom: 10px;
+    }
+
+    table.dataTable.cell-border tbody tr th:first-child, table.dataTable.cell-border tbody tr td:first-child {
+        border-left: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Data table  Payment info screeninfo */
+/* submit page alignment*/
+.submitinput {
+    border-color: transparent;
+    background-color: transparent;
+    border-width: 0px;
+    cursor: default;
+    padding: 2px 0px 0px 0px;
+    outline: none;
+    height: 20px;
+}
+
+.submitSpan {
+    font-weight: bold;
+}
+
+.submitHeading {
+    text-decoration: underline;
+    display: inline-block;
+    padding-top: 20px;
+    color: #7030A0;
+    margin: 0px;
+}
+
+/* submit page alignment*/
+
+
 .payment-status-color {
-color: crimson;
+    color: crimson;
 }
 
 .homePageButtonWrapper {
@@ -24,6 +251,14 @@ input[type=checkbox] {
     background-color: #f2f2f2 !important;
 }
 /* Layout spacing end */
+
+
+/**/
+
+/*.matchAttachment {
+    font-size: 20px;
+}*/
+
 /*Start certify page*/
 .certify-text-spacing {
     padding-right: 15px;
@@ -41,17 +276,17 @@ input[type=checkbox] {
     position: relative;
 }
 
-.custom-file-input input[type="file"] {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    zoom: 1; /* Fix for IE7 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
+    .custom-file-input input[type="file"] {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        zoom: 1; /* Fix for IE7 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
 
 /***********************************/
 .attachment-header {
@@ -72,17 +307,16 @@ input[type=checkbox] {
     width: 260px !important;
     height: 130px !important;
     background-color: #7030A0 /
-    
 }
 
-.buttonBig:hover {
-    /*background-color: #00B0F0 !important;*/
-    color: #ffffff;
-    border-color: #000000;
-    white-space: normal;
-    font-size: small;
-    white-space: normal;
-}
+    .buttonBig:hover {
+        /*background-color: #00B0F0 !important;*/
+        color: #ffffff;
+        border-color: #000000;
+        white-space: normal;
+        font-size: small;
+        white-space: normal;
+    }
 /*end attachment page*/
 
 /* footer  div height*/
@@ -102,7 +336,7 @@ input[type=checkbox] {
     overflow: hidden;
     text-align: -webkit-center;
     vertical-align: middle;
-    text-align:center;
+    text-align: center;
 }
 
 
@@ -12473,6 +12707,7 @@ form {
     /*#dfdfdf*/
     margin-bottom: 15px
 }
+
     .header-line > span {
         display: block;
         width: 210px;
@@ -16154,8 +16389,8 @@ span.round-tab:hover {
 
     span.round-tab {
         font-size: 16px;
-        width: 50px;
-        height: 50px;
+        width: 46px; /*vdd mobile iphone  round was over laping*/
+        height: 46px;
         line-height: 50px
     }
 
