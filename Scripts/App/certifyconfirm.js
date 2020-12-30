@@ -302,6 +302,7 @@
     }
 
     function submitDetailstoDB() {
+        $("#div_spinner").addClass('loader');
         var venDetails = JSON.stringify(vendorDetails);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -313,6 +314,7 @@
                 'Authorization': 'Basic ' + btoa(sessionStorage.getItem('accessToken'))
             },
             success: function (data) {
+                $("#div_spinner").removeClass('loader');
                 sessionStorage.setItem('confirmationNumber', data.data.Confirmation);
                 sessionStorage.setItem('submittedDate', data.data.SubmitDateTime);
                 sessionStorage.setItem('VendorReportFileName', data.data.VendorReportFileName);
