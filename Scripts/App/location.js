@@ -82,8 +82,8 @@ $(document).ready(function () {
                     selector: 'td:first-child'
                 },
                 "createdRow": function (row, data, dataIndex) {
-                   // if (data.Status.toLowerCase() === 'pending') {
-                    if (data.Status.toLowerCase() === 'new') {
+                    if (data.Status.toLowerCase() === 'pending') {
+                   // if (data.Status.toLowerCase() === 'new') {
                         $(row).css('background-color', 'lightgrey');
                         $('td', row).removeClass('select-checkbox');
                     }
@@ -91,15 +91,15 @@ $(document).ready(function () {
             });
 
             var table = $('#ddGrid').DataTable();
-            var allRowsArePending = true;
+            var someRowsArePending = false;
             table.rows(function (idx, data, node) {
-                if (data.Status.toLowerCase() !== 'new') {  // direct deposit    "pending" replaced as new
-                    allRowsArePending = false;
+                if (data.Status.toLowerCase() === 'pending') {  // direct deposit    "pending" replaced as new
+                    someRowsArePending = true;
                     return true;
                 }
             });
 
-            if (allRowsArePending) {
+            if (someRowsArePending) {
                 $("#pendingMessage").text("Your request is currently pending review. Please allow up to 20 days to process the request.")
                 $('#btn_deposit_next').hide();
             }
