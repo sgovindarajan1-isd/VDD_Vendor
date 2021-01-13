@@ -58,7 +58,8 @@ $(document).ready(function () {
                             else if (row.AccountType === '2') {
                                 data = 'Savings';
                             }
-                            return 'Not Available';
+                            else data = 'Not Available'
+                            return  data;
                         }
                     },
                     { 'data': 'RemittanceEmail' },
@@ -92,15 +93,22 @@ $(document).ready(function () {
 
             var table = $('#ddGrid').DataTable();
             var someRowsArePending = false;
+            var allRowsArePending = true;
             table.rows(function (idx, data, node) {
                 if (data.Status.toLowerCase() === 'pending') {  // direct deposit    "pending" replaced as new
                     someRowsArePending = true;
-                    return true;
+                }
+                else {
+                    allRowsArePending = false;
                 }
             });
 
             if (someRowsArePending) {
                 $("#pendingMessage").text("Your request is currently pending review. Please allow up to 20 days to process the request.")
+                
+            }
+
+            if (allRowsArePending) {
                 $('#btn_deposit_next').hide();
             }
         },
