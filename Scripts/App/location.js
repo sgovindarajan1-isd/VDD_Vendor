@@ -31,20 +31,20 @@ $(document).ready(function () {
                     {
                         'data': 'RoutingNumber',
                         "render": function (data, type, row, meta) {
-                            if (row.Status === 'Approved') {
+                            //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
                                 // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
-                            }
+                            //}
                             return data;
                         }
                     },
                     {
                         'data': 'AcccountNo',
                         "render": function (data, type, row, meta) {
-                            if (row.Status === 'Approved') {
+                            //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
                                 // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
-                            }
+                            //}
                             return data;
                         }, "width": '12%'
                     },
@@ -104,8 +104,8 @@ $(document).ready(function () {
             });
 
             if (someRowsArePending) {
-                $("#pendingMessage").text("Your request is currently pending review. Please allow up to 20 days to process the request.")
-                
+                $("#pendingMessage").text("You currently have a request that is pending review. Please allow up to 20 days to process the request.")
+                //Your request is currently pending review.Please allow up to 20 days to process the request.")
             }
 
             if (allRowsArePending) {
