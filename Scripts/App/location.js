@@ -33,6 +33,7 @@ $(document).ready(function () {
                         "render": function (data, type, row, meta) {
                             //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
                                 // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                            if ((data != null) && (data != ''))
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
                             //}
                             return data;
@@ -43,6 +44,7 @@ $(document).ready(function () {
                         "render": function (data, type, row, meta) {
                             //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
                                 // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                            if ((data != null) && (data != ''))
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
                             //}
                             return data;
