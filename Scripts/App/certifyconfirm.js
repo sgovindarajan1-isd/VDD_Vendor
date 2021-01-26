@@ -197,6 +197,7 @@
             return false;
         }
         else {
+            $(this).attr("disabled", "disabled");
             submitDetailstoDB();  // submit/ generate confirmation number
         }
     });
