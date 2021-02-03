@@ -111,6 +111,7 @@ function btn_contactus_click() {
     if (!bool) {
         return false;
     }
+    $(this).attr("disabled", "disabled");
     postContactUs(company, firstName, lastName, phone, eMail, subjectText, message);
 }
 function postContactUs(company, firstName, lastName, phone, eMail, subject, message) {
@@ -126,6 +127,8 @@ function postContactUs(company, firstName, lastName, phone, eMail, subject, mess
             'Authorization': 'Basic ' + btoa('contactus')  // This method can be called before login,  so there wont be any security token created,  hense this by pass
         },
         success: function (data) {
+            toastr.options.positionClass = "toast-bottom-right";
+            toastr.warning("Successfully Contacted!");
         }
         , complete: function (jqXHR) {
         }
