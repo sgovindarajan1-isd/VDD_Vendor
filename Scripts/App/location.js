@@ -11,6 +11,9 @@ $(document).ready(function () {
     //var payeeId = sessionStorage.getItem('payeeId');
     $('#lbl_header').html('Payment Information');
     $("#div_spinner").addClass('loader');
+
+    $(".select-checkbox").prop('checked', false);
+
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         type: "POST",
@@ -32,7 +35,7 @@ $(document).ready(function () {
                         'data': 'RoutingNumber',
                         "render": function (data, type, row, meta) {
                             //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
-                                // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                            // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
                             if ((data != null) && (data != ''))
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
                             //}
@@ -43,7 +46,7 @@ $(document).ready(function () {
                         'data': 'AcccountNo',
                         "render": function (data, type, row, meta) {
                             //if ((row.Status === 'Approved') || (row.Status === 'Direct Deposit')) {
-                                // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
+                            // data = '******' + row.AcccountNo.substr(row.AcccountNo.length - 4);  //'Masked';
                             if ((data != null) && (data != ''))
                                 data = '******' + data.substr(data.length - 4);  //'Masked';
                             //}
@@ -60,12 +63,26 @@ $(document).ready(function () {
                             else if (row.AccountType === '2') {
                                 data = 'Savings';
                             }
+                            else if (row.Status == null || row.Status.toLowerCase() === 'check' || row.Status == '') {
+                                data = ''
+                            }
                             else data = 'Not Available'
                             return  data;
                         }
                     },
                     { 'data': 'RemittanceEmail' },
-                    { 'data': 'Status', "width": '140px', 'className': 'payment-status-color' }
+                    {
+                        'data': 'Status', "width": '140px', 'className': 'payment-status-color',
+                        "render": function (data, type, row, meta) {
+                            if (data.toUpperCase().indexOf('EFT ELIGIBLE') >= 0) {
+                                data = 'Direct Deposit';
+                            }
+                            else if (data == null || data == '') {
+                                data = 'Check'
+                            }
+                            return data;
+                        }
+                    }
                 ],
                 //"order": [[1, "VendorNumber"]],
 
@@ -74,7 +91,7 @@ $(document).ready(function () {
                         searchable: true,
                         width: '3%',
                         targets: 0,
-                        data: null,
+                        //data: null,
                         defaultContent: '',
                         orderable: false,
                         className: 'select-checkbox',
@@ -86,7 +103,7 @@ $(document).ready(function () {
                 },
                 "createdRow": function (row, data, dataIndex) {
                     if (data.Status.toLowerCase() === 'pending') {
-                   // if (data.Status.toLowerCase() === 'new') {
+                        // if (data.Status.toLowerCase() === 'new') {
                         $(row).css('background-color', 'lightgrey');
                         $('td', row).removeClass('select-checkbox');
                     }
@@ -151,5 +168,16 @@ $(document).ready(function () {
         }
     });
 
+
+    $("#chk_selectall").change(function () {
+        debugger;
+        if ($("th.select-checkbox").hasClass("selected")) {
+            $('#ddGrid').DataTable().rows().deselect();
+            $("th.select-checkbox").removeClass("selected");
+        } else {
+            $('#ddGrid').DataTable().rows().select();
+            $("th.select-checkbox").addClass("selected");
+        }
+    });
 });
 
