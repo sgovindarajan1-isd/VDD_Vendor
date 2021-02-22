@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using System.Windows.Forms;
 using System.Xml;
 using WebMaterialPOC.Models;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace VDDVendor.Controllers
 {
@@ -18,7 +20,7 @@ namespace VDDVendor.Controllers
         public ActionResult Index()
         {
             return View();
-         }
+        }
 
         public ActionResult _partialLogin()
         {
@@ -59,7 +61,7 @@ namespace VDDVendor.Controllers
         public ActionResult _partialAppStatus()
         {
             return View();
-        }        
+        }
 
         public ActionResult _partialReport()
         {
@@ -117,7 +119,7 @@ namespace VDDVendor.Controllers
         //    string path = @"C:\test\vddtest.pdf";
         //    return File(path, "application/pdf", "pdf_download_name.pdf");
         //}
-    
+
 
         [HttpPost]
         public ActionResult UploadAttachmentFile()
@@ -135,7 +137,7 @@ namespace VDDVendor.Controllers
                     for (int i = 0; i < files.Count; i++)
                     {
                         HttpPostedFileBase file = files[i];
-                        
+
                         // Checking for Internet Explorer  
                         if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
                         {
@@ -148,7 +150,7 @@ namespace VDDVendor.Controllers
                         }
 
                         Uploadpath = System.Configuration.ConfigurationManager.AppSettings["Uploadpath"];
-                        fname = Path.Combine(Server.MapPath("~/"+ Uploadpath +"/"), fname);
+                        fname = Path.Combine(Server.MapPath("~/" + Uploadpath + "/"), fname);
                         file.SaveAs(fname);
                     }
                     // Returns message that successfully uploaded  
@@ -178,5 +180,34 @@ namespace VDDVendor.Controllers
             ViewBag.ReportViewer = viewer;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult check_applicationinUATMode(VM_VendorDetails vendordetails)
+        {
+            string json = string.Empty;
+            string localPath = AppDomain.CurrentDomain.BaseDirectory;
+                        
+            if (System.Configuration.ConfigurationManager.AppSettings["ProductionUserAndEmailList"] != null)
+            {
+                string ProductionUserAndEmailList = System.Configuration.ConfigurationManager.AppSettings["ProductionUserAndEmailList"];
+                string jsonFilePath = localPath + ProductionUserAndEmailList;
+
+                if (System.IO.File.Exists(jsonFilePath))
+                {
+                    json = System.IO.File.ReadAllText(jsonFilePath);
+                }
+            }
+            return Json(json);
+        }
+
+        //public VM_VendorDetails check_applicationinUATMode(VM_VendorDetails vendordetails)
+        //{
+        //    string localPath = AppDomain.CurrentDomain.BaseDirectory;
+        //    string jsonFilePath = localPath + "ProductionUserAndEmailList.json";
+
+        //    string json = System.IO.File.ReadAllText(jsonFilePath);
+        //    VM_VendorDetails v = JsonConvert.DeserializeObject<VM_VendorDetails>(json);
+        //    return v;// Json(json);
+        //}
     }
 }

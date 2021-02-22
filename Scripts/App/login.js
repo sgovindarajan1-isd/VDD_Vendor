@@ -2,11 +2,11 @@
 $(document).ready(function () {
     $("#img_username").hide();
     $("#liNavigation").hide();
-    
+
     if ($(location).attr('href').indexOf("_partialLogin") > -1) {
         $('#lbl_header').html('Vendor Login <span id="btn_loginLock" class="fa fa-expeditedssl fa-right" style="font-size: 22px;"></span> ');
     }
-  
+
     $("#txt_Password_id").keypress(function (e) {
         //if the letter is not digit then display error and don't type anything
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -18,15 +18,15 @@ $(document).ready(function () {
             $("#errmsg").hide();
         }
     });
-        
+
     $('#btn_login').click(clicklogin);
 
-    $(".validate").on('input', function (e) {      
+    $(".validate").on('input', function (e) {
         //$("#lbl_invaliduserentry").text("");
         $("#fileError_or_Info").html("");
     });
 
-    $('[data-toggle="popover"]').popover(); 
+    $('[data-toggle="popover"]').popover();
 
     $('[data-toggle="popover"]').on('click', function (e) {
         $('[data-toggle="popover"]').not(this).popover('hide');
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     $('body').on('click', function (e) {
         if ($(e.target).data('toggle') !== 'popover'
-            
+
             && $(e.target).parents('.popover.in').length === 0) {
             $('[data-toggle="popover"]').popover('hide');
         }
@@ -60,8 +60,43 @@ function clicklogin() {
         $("#errmsg").hide();
     }
 
-    loginExternalVendor(txt_employee_id, txt_Password_id)
+    check_applicationinUATMode(txt_employee_id, txt_Password_id);
+    //loginExternalVendor(txt_employee_id, txt_Password_id)
 }
+
+function check_applicationinUATMode(txt_employee_id, txt_Password_id) {
+    debugger;
+
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        type: "POST",
+        url: '/deposit/check_applicationinUATMode',
+        dataType: 'json',
+        success: function (data) {
+            debugger;
+
+            if (data == "" || data == 'undefined') {
+                loginExternalVendor(txt_employee_id, txt_Password_id);
+            }
+            else {
+                var jsonobj = JSON.parse(data);
+
+                if (jsonobj.vendornumber != "" && jsonobj.ssn != "") {
+                    loginExternalVendor(jsonobj.vendornumber, jsonobj.ssn);
+                    sessionStorage.setItem('UATTestingSignerEmail', jsonobj.signeremail);
+                }
+                else {
+                    loginExternalVendor(txt_employee_id, txt_Password_id);
+                }
+            }
+        }
+        , complete: function (jqXHR) {
+        }
+        , error: function (jqXHR, textStatus, errorThrown) {
+        }
+    });
+}
+
 
 function loginExternalVendor(userid, tin) {
     ////testing values
@@ -72,9 +107,8 @@ function loginExternalVendor(userid, tin) {
         //var userid = '000057';	
         //var tin = '952295473';
 
-        var userid = '000020';
-        var tin = '941631996';
-
+        //var userid = '000020';
+        //var tin = '941631996';
         //var userid = '000076'; //----HAS ONE ROW
         //var tin = '953765453';
     }
@@ -87,13 +121,13 @@ function loginExternalVendor(userid, tin) {
         type: "POST",
         url: hostdomainUrl + "api/values/LoginExternalVendor_authen/",
         dataType: 'json',
-        data: JSON.stringify({ 'UserId': userid, 'Tin': tin }), 
+        data: JSON.stringify({ 'UserId': userid, 'Tin': tin }),
         beforeSend: function () {
             $("#loaderDiv").show();
         },
         headers: {
             'Authorization': 'Basic ' + btoa(SecuredToken + ":" + userid + ':' + tin)
-        },       
+        },
         success: function (data) {
             sessionStorage.setItem('userName', data.data[0].UserName);
             sessionStorage.setItem('accessToken', data.data[0].ValidateToken);
@@ -105,7 +139,7 @@ function loginExternalVendor(userid, tin) {
                 var UserName = data.data[0].UserName;
                 // Setting global variable to authendicate the user
                 //vdd.GlobalVariables.IsValidUser = true;
-                window.location.href = '/deposit/Index';   
+                window.location.href = '/deposit/Index';
                 vdd.GlobalVariables.UserName = UserName;
                 $("#loaderDiv").hide();
             }
@@ -115,7 +149,7 @@ function loginExternalVendor(userid, tin) {
             }
         }
         , complete: function (jqXHR) {
-            
+
             if (jqXHR.status == '404') {
                 $("#fileError_or_Info").html('Your login attempt was not successful or you don’t have the right credentials. Please try again or contact Los Angeles County.');
             }

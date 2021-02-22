@@ -173,11 +173,20 @@
 
     function storeDetails() {
         var certifydetailsRow = [];
+        var sEmail = '';
+
+        var uatTestingSignerEmail = sessionStorage.getItem('UATTestingSignerEmail');
+        if (uatTestingSignerEmail != null && uatTestingSignerEmail != undefined && uatTestingSignerEmail != '')
+            sEmail = uatTestingSignerEmail;
+        else
+            sEmail = $("#txtSignerEmail").val();
+
+
         certifydetailsRow.push({
             Signername: $("#txtSignerName").val(),
             Signertitle: $("#txtSignerTitle").val(),
             Signerphone: $("#txtSignerPhone").val(),
-            Signeremail: $("#txtSignerEmail").val(),
+            Signeremail: sEmail
         });
         sessionStorage.setItem('certifydetailsJson', JSON.stringify(certifydetailsRow));
     }

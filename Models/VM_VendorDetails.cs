@@ -8,6 +8,7 @@ namespace WebMaterialPOC.Models
     public class VM_VendorDetails
     {
         public string Vendorname { get; set; }
+        public string Vendornumber { get; set; }
         public string Payeename { get; set; }
         public string Ssn { get; set; }
 

@@ -382,14 +382,24 @@
 
     function storeDetails() {
         var bankdetailsRow = [];
+
+        var sEmail = '';
+
+        var uatTestingSignerEmail = sessionStorage.getItem('UATTestingSignerEmail');
+        if (uatTestingSignerEmail != null && uatTestingSignerEmail != undefined && uatTestingSignerEmail != '')
+            sEmail = uatTestingSignerEmail;
+        else
+            sEmail = $("#txtDDNotifiEmail").val();
+
+
         bankdetailsRow.push({
             AccountType: $("#txtAccountType").val(),
             BankAccountNumber: $("#txtBankAcNo").val(),
             ReBankAcNo: $("#txtRe-BankAcNo").val(),
             BankRoutingNo: $("#txtBankRoutingNo").val(),
             FinancialIns: $("#txtFinancialIns").val(),
-            DDNotifiEmail: $("#txtDDNotifiEmail").val(),
-            ReDDNotifiEmail: $("#txtReDDNotifiEmail").val(),
+            DDNotifiEmail: sEmail,  //$("#txtDDNotifiEmail").val(),
+            ReDDNotifiEmail: sEmail,   //$("#txtReDDNotifiEmail").val(),
         });
         sessionStorage.setItem('bankdetailsJson', JSON.stringify(bankdetailsRow));
     }
