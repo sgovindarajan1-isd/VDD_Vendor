@@ -11,6 +11,7 @@ using System.Xml;
 using WebMaterialPOC.Models;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace VDDVendor.Controllers
 {
@@ -184,21 +185,83 @@ namespace VDDVendor.Controllers
         [HttpPost]
         public ActionResult check_applicationinUATMode(VM_VendorDetails vendordetails)
         {
-            string json = string.Empty;
             string localPath = AppDomain.CurrentDomain.BaseDirectory;
-                        
-            if (System.Configuration.ConfigurationManager.AppSettings["ProductionUserAndEmailList"] != null)
-            {
-                string ProductionUserAndEmailList = System.Configuration.ConfigurationManager.AppSettings["ProductionUserAndEmailList"];
-                string jsonFilePath = localPath + ProductionUserAndEmailList;
 
-                if (System.IO.File.Exists(jsonFilePath))
+            bool goProductionBool = true;
+            bool userExistsinEligibilityList = false;
+            string returnEmailValue = "";
+
+            if (System.Configuration.ConfigurationManager.AppSettings["ProductionVDDUserList"] != null)
+            {
+                //string ProductionUserAndEmailList = System.Configuration.ConfigurationManager.AppSettings["ProductionUserAndEmailList"];
+
+
+                string ProductionVDDUserList = System.Configuration.ConfigurationManager.AppSettings["ProductionVDDUserList"];
+                string ProductionVDDEmailList = System.Configuration.ConfigurationManager.AppSettings["ProductionVDDEmailList"];
+
+                string userTextFilePath = localPath + ProductionVDDUserList;
+                string emailTextFilePath = localPath + ProductionVDDEmailList;
+
+
+                string[] lines;
+                var list = new List<string>();
+                if (System.IO.File.Exists(userTextFilePath))
                 {
-                    json = System.IO.File.ReadAllText(jsonFilePath);
+                    var fileStream = new FileStream(userTextFilePath, FileMode.Open, FileAccess.Read);
+                    using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                    {
+                        string line;
+                        while ((line = streamReader.ReadLine()) != null)
+                        {
+                            goProductionBool = false;
+                            list.Add(line.Trim().ToLower());
+                        }
+                    }
+                    lines = list.ToArray();
+
+                    string str = vendordetails.Vendornumber.Trim().ToLower();
+                    userExistsinEligibilityList = Array.Exists(lines, E => E == str);
                 }
             }
-            return Json(json);
+
+            if (userExistsinEligibilityList == true)
+            {
+                if (System.Configuration.ConfigurationManager.AppSettings["ProductionVDDEmailList"] != null)
+                {
+                    string ProductionVDDEmailList = System.Configuration.ConfigurationManager.AppSettings["ProductionVDDEmailList"];
+
+                    string emailTextFilePath = localPath + ProductionVDDEmailList;
+                    if (System.IO.File.Exists(emailTextFilePath))
+                    {
+                        string[] EmailLine;
+                        var emaillist = new List<string>();
+                        var fileStream = new FileStream(emailTextFilePath, FileMode.Open, FileAccess.Read);
+                        using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                        {
+                            string Emailline;
+                            while ((Emailline = streamReader.ReadLine()) != null)
+                            {
+                                if (Emailline.Trim().ToLower() != "")
+                                {
+                                    returnEmailValue = Emailline.Trim().ToLower();
+                                    break;
+                                }
+                            }
+                        }
+                        EmailLine = emaillist.ToArray();
+                    }
+                }
+            }
+
+
+            VM_VendorDetails retProdEligibilityUser = new VM_VendorDetails();
+            retProdEligibilityUser.goProductionBool = goProductionBool;  //  this  checks user list is not avilable so, going full production
+            retProdEligibilityUser.restrictProdEligibilityUser = userExistsinEligibilityList;
+            retProdEligibilityUser.Signeremail = returnEmailValue;
+            return Json(retProdEligibilityUser);
         }
+                //return Request.CreateResponse(HttpStatusCode.OK, new { data = retProdEligibilityUser }); 
+        
 
         //public VM_VendorDetails check_applicationinUATMode(VM_VendorDetails vendordetails)
         //{

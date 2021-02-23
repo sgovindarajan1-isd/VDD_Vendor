@@ -71,22 +71,21 @@ function check_applicationinUATMode(txt_employee_id, txt_Password_id) {
         contentType: 'application/json; charset=utf-8',
         type: "POST",
         url: '/deposit/check_applicationinUATMode',
+        data: JSON.stringify({ 'Vendornumber': txt_employee_id}),
         dataType: 'json',
         success: function (data) {
             debugger;
 
-            if (data == "" || data == 'undefined') {
+            if (data.goProductionBool) {
                 loginExternalVendor(txt_employee_id, txt_Password_id);
             }
             else {
-                var jsonobj = JSON.parse(data);
-
-                if (jsonobj.vendornumber != "" && jsonobj.ssn != "") {
-                    loginExternalVendor(jsonobj.vendornumber, jsonobj.ssn);
-                    sessionStorage.setItem('UATTestingSignerEmail', jsonobj.signeremail);
+                if (data.restrictProdEligibilityUser == false) {
+                    $("#fileError_or_Info").html('Not Available for Public Access yet, Please contact Los Angeles County.');
                 }
                 else {
                     loginExternalVendor(txt_employee_id, txt_Password_id);
+                    sessionStorage.setItem('UATTestingSignerEmail', data.Signeremail);
                 }
             }
         }

@@ -34,5 +34,9 @@ namespace WebMaterialPOC.Models
         public string Source_device { get; set; }
         public string User_agent { get; set; }
         public string Host_headers { get; set; }
+
+
+        public bool goProductionBool { get; set; }
+        public bool restrictProdEligibilityUser { get; set; }
     }
 }
